@@ -1330,12 +1330,12 @@
     "chapter_id": "c1",
     "chapter_name": "Chương 1: Khảo sát hàm số",
     "topic": "Sự tương giao của đồ thị hàm số",
-    "difficulty": "Nhận biết",
+    "difficulty": "Vận dụng",
     "front": "Tìm tất cả các giá trị thực của tham số $m$ để đồ thị hàm số $y = x^3 - 3x^2 - 9x + m$ cắt trục hoành tại 3 điểm phân biệt có hoành độ lập thành một cấp số cộng.",
     "back_type": "Tương giao hàm bậc ba với trục hoành & Tính chất cấp số cộng",
-    "back_strategy": "1. Bước 1: Xác định điều kiện cần: Hoành độ giao điểm ở giữa phải là hoành độ điểm uốn $x_I = -\\frac{b}{3a}$ của đồ thị hàm số bậc ba.\n2. Bước 2: Thay tọa độ điểm uốn vào phương trình hoành độ giao điểm để tìm $m$.\n3. Bước 3: Thử lại giá trị $m$ tìm được xem phương trình có đúng 3 nghiệm phân biệt hay không.",
-    "back_pitfalls": "⚠️ Học sinh thường quên bước thử lại điều kiện có 3 nghiệm phân biệt, dẫn đến việc chọn nhầm các giá trị $m$ làm phương trình chỉ có 1 nghiệm duy nhất (khi đồ thị không có cực trị hoặc đường thẳng không cắt phần giữa hai cực trị).",
-    "back_solution": "Phương trình hoành độ giao điểm: $x^3 - 3x^2 - 9x + m = 0$ (1)\n\nĐể đồ thị cắt trục hoành tại 3 điểm phân biệt có hoành độ lập thành cấp số cộng, nghiệm ở giữa phải là hoành độ điểm uốn $x_I$ của đồ thị.\n\nTa có: $y' = 3x^2 - 6x - 9 \\Rightarrow y'' = 6x - 6$.\n\n Cho $y'' = 0 \\Leftrightarrow x = 1$. Do đó hoành độ điểm uốn là $x_I = 1$.\n\nThay $x = 1$ vào phương trình (1), ta được:\n$1^3 - 3(1)^2 - 9(1) + m = 0 \\Leftrightarrow m = 11$.\n\nThử lại với $m = 11$, phương trình (1) trở thành:\n$x^3 - 3x^2 - 9x + 11 = 0 \\iff (x-1)(x^2 - 2x - 11) = 0 \\iff \\left[ \\begin{aligned} &x = 1 \\\\ &x = 1 \\pm 2\\sqrt{3} \\end{aligned} \\right.$\n\nBa nghiệm này lập thành cấp số cộng với công sai $d = 2\\sqrt{3}$. Vậy $m = 11$ thỏa mãn.",
+    "back_strategy": "1. Bước 1: Áp dụng định lý Vi-ét cho phương trình bậc 3 $x_1 + x_2 + x_3 = -\\frac{b}{a}$.\n2. Bước 2: Vì 3 nghiệm lập thành Cấp số cộng nên $x_1 + x_3 = 2x_2 \\implies 3x_2 = -\\frac{b}{a} \\implies x_2 = -\\frac{b}{3a}$ (chính là hoành độ tâm đối xứng của đồ thị).\n3. Bước 3: Thay nghiệm $x_2$ vào phương trình để tìm $m$, sau đó thử lại điều kiện có 3 nghiệm phân biệt.",
+    "back_pitfalls": "⚠️ Nhớ công thức nghiệm giữa: $x_2 = -\\frac{b}{3a}$. BẮT BUỘC phải có bước thử lại giá trị $m$ để loại trừ trường hợp phương trình chỉ có 1 nghiệm duy nhất.",
+    "back_solution": "Phương trình hoành độ giao điểm: $x^3 - 3x^2 - 9x + m = 0$ (1)\nGiả sử phương trình có 3 nghiệm phân biệt $x_1 < x_2 < x_3$ lập thành cấp số cộng.\n\n1. **Theo tính chất Cấp số cộng:** $x_1 + x_3 = 2x_2$.\n2. **Theo định lý Vi-ét bậc 3:** Tổng 3 nghiệm $x_1 + x_2 + x_3 = -\\frac{b}{a} = -(-3) = 3$.\n   Thay $x_1 + x_3 = 2x_2$ vào ta được: $2x_2 + x_2 = 3 \\iff 3x_2 = 3 \\iff x_2 = 1$.\n   *(Nhận xét: Nghiệm ở giữa luôn trùng với hoành độ tâm đối xứng $x_0 = -\\frac{b}{3a} = \\frac{3}{3(1)} = 1$ của đồ thị).*\n\n3. **Tìm tham số $m$:** Vì $x = 1$ là một nghiệm của (1), ta thay $x = 1$ vào phương trình:\n   $1^3 - 3(1)^2 - 9(1) + m = 0 \\iff m = 11$.\n\n4. **Thử lại:** Với $m = 11$, phương trình trở thành:\n   $x^3 - 3x^2 - 9x + 11 = 0 \\iff (x - 1)(x^2 - 2x - 11) = 0 \\iff \\left[\\begin{aligned} x &= 1 \\\\ x &= 1 \\pm 2\\sqrt{3} \\end{aligned}\\right.$\n   Ba nghiệm $1 - 2\\sqrt{3}, 1, 1 + 2\\sqrt{3}$ phân biệt và lập thành cấp số cộng (công sai $d = 2\\sqrt{3}$).\n\nVậy $m = 11$ thỏa mãn yêu cầu bài toán.",
     "final_answer": "m = 11"
   },
   {
@@ -1528,9 +1528,9 @@
     "difficulty": "Nhận biết",
     "front": "Cho hàm số bậc ba $y = -x^3 + 3x^2 - 4$ có đồ thị là $(C)$. Tìm tọa độ tâm đối xứng $I$ của đồ thị $(C)$.",
     "back_type": "Xác định tâm đối xứng (điểm uốn) của đồ thị hàm số bậc ba",
-    "back_strategy": "1. Bước 1: Tính đạo hàm cấp một $y'$ và đạo hàm cấp hai $y''$.\n2. Bước 2: Giải phương trình $y'' = 0$ để tìm hoành độ điểm uốn $x_0$.\n3. Bước 3: Tính tung độ $y_0 = y(x_0)$. Tâm đối xứng của đồ thị hàm số bậc ba chính là điểm uốn $I(x_0, y_0)$.",
-    "back_pitfalls": "⚠️ Học sinh dễ nhầm lẫn công thức đạo hàm hoặc nhầm tâm đối xứng là các điểm cực trị của đồ thị hàm số.",
-    "back_solution": "Ta có:\n$y' = -3x^2 + 6x$\n$y'' = -6x + 6$\nCho $y'' = 0 \\iff -6x + 6 = 0 \\iff x = 1$.\nVới $x = 1$, thay vào hàm số ban đầu ta được:\n$y(1) = -1^3 + 3(1)^2 - 4 = -2$.\nVì đồ thị của hàm số bậc ba luôn nhận điểm uốn làm tâm đối xứng, nên tâm đối xứng của đồ thị $(C)$ là điểm $I(1, -2)$.",
+    "back_strategy": "1. Bước 1: Đồ thị hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ luôn có duy nhất một tâm đối xứng $I(x_0; y_0)$.\n2. Bước 2: Tìm hoành độ $x_0$ bằng công thức nhanh SGK: $x_0 = -\\frac{b}{3a}$ (hoặc lấy trung điểm của 2 điểm cực trị).\n3. Bước 3: Thay $x_0$ vào hàm số để tìm tung độ $y_0 = y(x_0) \\implies$ Tọa độ tâm đối xứng $I(x_0; y_0)$.",
+    "back_pitfalls": "⚠️ Tâm đối xứng của hàm bậc 3 luôn là một ĐIỂM có tọa độ $(x_0; y_0)$ nằm trên đồ thị. Đừng nhầm lẫn với trục đối xứng (đồ thị hàm bậc 3 không có trục đối xứng).",
+    "back_solution": "Cho hàm số $y = -x^3 + 3x^2 - 4$ với $a = -1, b = 3, c = 0, d = -4$.\n\n**Cách 1 (Công thức chuẩn SGK 2018):**\n- Hoành độ tâm đối xứng: $x_0 = -\\frac{b}{3a} = -\\frac{3}{3(-1)} = 1$.\n- Tung độ tâm đối xứng: $y_0 = y(1) = -(1)^3 + 3(1)^2 - 4 = -2$.\nVậy tâm đối xứng của đồ thị là điểm $I(1; -2)$.\n\n**Cách 2 (Trung điểm 2 điểm cực trị):**\n- $y' = -3x^2 + 6x = 0 \\iff \\left[\\begin{aligned} x &= 0 \\implies y = -4 \\\\ x &= 2 \\implies y = 0 \\end{aligned}\\right.$\n- Hai điểm cực trị là $A(0; -4)$ và $B(2; 0)$.\n- Tâm đối xứng $I$ chính là trung điểm $AB \\implies I\\left(\\frac{0+2}{2}; \\frac{-4+0}{2}\\right) = I(1; -2)$.",
     "final_answer": "$I(1, -2)$"
   },
   {
