@@ -1058,7 +1058,7 @@
     "chapter_name": "Chương 1: Khảo sát hàm số",
     "topic": "Giá trị lớn nhất, nhỏ nhất",
     "difficulty": "Nhận biết",
-    "front": "Cho hàm số $y = f(x)$ liên tục trên đoạn $[-1; 3]$ và có bảng biến thiên như sau:\n- $x = -1 \\implies y = m$\n- $x = 1 \\implies y = m+5$ (Cực đại)\n- $x = 3 \\implies y = m+2$\nTìm $m$ để giá trị nhỏ nhất của hàm số trên $[-1; 3]$ bằng $4$.",
+    "front": "Cho hàm số $y = f(x)$ liên tục trên đoạn $[-1; 3]$ và có bảng biến thiên như sau:\n\n$$\\begin{array}{c|ccccc} \nx & -1 & & 1 & & 3 \\\\ \\hline \nf'(x) & & + & 0 & - & \\\\ \\hline \nf(x) & m & \\nearrow & m + 5 & \\searrow & m + 2 \n\\end{array}$$\n\nTìm tham số $m$ để giá trị nhỏ nhất của hàm số trên đoạn $[-1; 3]$ bằng $4$.",
     "back_type": "Đọc bảng biến thiên chứa tham số",
     "back_strategy": "1. Bước 1: Quan sát các giá trị của $y$ tại các điểm tới hạn và đầu mút: $m, m+5, m+2$.\n2. Bước 2: So sánh các giá trị này để tìm giá trị thấp nhất (GTNN).\n3. Bước 3: Cho GTNN đó bằng 4 để tìm $m$.",
     "back_pitfalls": "⚠️ Nhầm lẫn giữa cực tiểu và giá trị nhỏ nhất. Đôi khi học sinh lấy nhầm $m+2$ là giá trị nhỏ nhất thay vì $m$.",

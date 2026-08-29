@@ -456,9 +456,8 @@ Hãy tạo chính xác {batch_size} câu hỏi bài tập flashcard TOÁN 12 Đ�
 - Dạng toán cụ thể: {subtopic}
 - Phân bổ độ khó đa dạng: gồm cả Nhận biết, Thông hiểu, Vận dụng, Vận dụng cao.
 - Đề bài phải phong phú: có hàm đa thức, lượng giác, phân thức, hàm mũ, logarithmic, căn thức, hình học không gian Oxyz, toán thực tế...
-- QUY TẮC HIỂN THỊ ĐỒ THỊ & BẢNG BIẾN THIÊN:
-  + Nếu bài toán cần BẢNG BIẾN THIÊN (BBT): Hãy viết bằng mã KaTeX array chuẩn, ví dụ:
-    $$\\begin{{array}}{{c|ccccccc}} x & -\\infty & & x_1 & & x_2 & & +\\infty \\\\ \\hline f'(x) & & + & 0 & - & 0 & + & \\\\ \\hline f(x) & -\\infty & \\nearrow & y_{{CĐ}} & \\searrow & y_{{CT}} & \\nearrow & +\\infty \\end{{array}}$$
+- QUY TẮC HIỂN THỊ ĐỒ THỊ & BẢNG BIẾN THIÊN (BẮT BUỘC):
+  + Nếu bài toán cần BẢNG BIẾN THIÊN (BBT): BẮT BUỘC viết bằng mã KaTeX array chuẩn `$$\\begin{{array}}{{c|ccccccc}} ... \\end{{array}}$$` có đầy đủ các dòng x, f'(x), f(x) và các mũi tên `\\nearrow`, `\\searrow`. Tuyệt đối KHÔNG viết tóm tắt dạng danh sách gạch đầu dòng như "- x = 1 => y = 2".
   + Nếu bài toán cần DÁNG ĐIỆU ĐỒ THỊ: Hãy mô tả chi tiết các đặc trưng hình học (chiều các nhánh vô cực, toạ độ điểm cực trị, giao điểm trục Oy, Ox, tiệm cận, điểm uốn tâm đối xứng) hoặc nhúng mã SVG đơn giản.
 - Tuyệt đối KHÔNG sinh câu hỏi mẫu rập khuôn chỉ thay đổi số lẻ. Hãy tạo ra các tình huống toán học thực tế và bài toán tư duy sâu.
 
