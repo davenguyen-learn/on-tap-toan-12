@@ -1,0 +1,153 @@
+﻿Front	Back	Tags
+<h3>Chương 1: Khảo sát hàm số - Tính đơn điệu bậc 3 (Vận dụng)</h3><p>Tìm tất cả các giá trị thực của $m$ để hàm số $y = \frac{1}{3}x^3 - mx^2 + (m^2 - m + 1)x + 2025$ đồng biến trên $\mathbb{R}$.</p>	"<b>🎯 DẠNG TOÁN:</b> Tìm tham số $m$ để tam thức bậc 2 không đổi dấu<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. Tính $y' = x^2 - 2mx + (m^2 - m + 1)$.
+2. Đồng biến trên $\mathbb{R} \iff y' \ge 0, \forall x \in \mathbb{R} \iff \Delta' \le 0$.
+3. Giải bất phương trình $\Delta' \le 0$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Nhớ lấy dấu bằng ở $\Delta' \le 0$ đối với hàm đa thức.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$y' = x^2 - 2mx + m^2 - m + 1 \ge 0, \forall x \iff \Delta' = m^2 - (m^2 - m + 1) = m - 1 \le 0 \iff m \le 1$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $m \le 1$"	Tính_đơn_điệu_bậc_3 Vận_dụng
+<h3>Chương 1: Khảo sát hàm số - Đơn điệu phân thức (Vận dụng cao)</h3><p>Tìm $m$ để hàm số $y = \frac{mx + 4}{x + m}$ nghịch biến trên khoảng $(1; +\infty)$.</p>	"<b>🎯 DẠNG TOÁN:</b> Hàm bậc nhất/bậc nhất đơn điệu trên khoảng<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. $y' = \frac{m^2 - 4}{(x + m)^2}$.
+2. Điều kiện nghịch biến: $y' < 0$ và $-m \notin (1; +\infty) \iff -m \le 1 \iff m \ge -1$.
+3. Giải hệ điều kiện.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Tuyệt đối KHÔNG CÓ DẤU BẰNG ở đạo hàm hàm bậc nhất/bậc nhất ($y' < 0$). Và đừng quên điều kiện điểm gián đoạn $-m \le 1$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$\begin{cases} m^2 - 4 < 0 \\ -m \le 1 \end{cases} \iff \begin{cases} -2 < m < 2 \\ m \ge -1 \end{cases} \iff -1 \le m < 2$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $-1 \le m < 2$"	Đơn_điệu_phân_thức Vận_dụng_cao
+<h3>Chương 1: Khảo sát hàm số - Đường thẳng qua 2 cực trị (Thông hiểu)</h3><p>Viết phương trình đường thẳng đi qua 2 điểm cực trị của $y = \frac{x^2 - 3x + 6}{x - 1}$.</p>	"<b>🎯 DẠNG TOÁN:</b> Đường thẳng qua 2 cực trị của hàm phân thức bậc 2/bậc 1<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Dùng công thức đạo hàm tử chia đạo hàm mẫu: $y = \frac{u'(x)}{v'(x)} = \frac{2x - 3}{1} = 2x - 3$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Không cần giải phương trình tìm toạ độ từng điểm cực trị.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$y = \frac{(x^2 - 3x + 6)'}{(x - 1)'} = \frac{2x - 3}{1} = 2x - 3$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $y = 2x - 3$"	Đường_thẳng_qua_2_cực_trị Thông_hiểu
+<h3>Chương 1: Khảo sát hàm số - Cực trị trị tuyệt đối (Vận dụng cao)</h3><p>Tìm số điểm cực trị của hàm số $g(x) = |x^3 - 3x^2 + 1|$.</p>	"<b>🎯 DẠNG TOÁN:</b> Số điểm cực trị của $y = |f(x)|$<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Số cực trị $= m + n$, với $m$ là số cực trị của $f(x)$ và $n$ là số nghiệm đơn của $f(x) = 0$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Chỉ đếm nghiệm đơn (cắt trục $Ox$), bỏ qua nghiệm kép (tiếp xúc).<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$f(x) = x^3 - 3x^2 + 1$ có $m = 2$ cực trị ($x = 0, x = 2$).
+$f(0) = 1 > 0, f(2) = -3 < 0 \implies f(x)=0$ có $n = 3$ nghiệm đơn.
+Số cực trị $= 2 + 3 = 5$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $5$ điểm cực trị"	Cực_trị_trị_tuyệt_đối Vận_dụng_cao
+<h3>Chương 1: Khảo sát hàm số - Tiệm cận xiên (Thông hiểu)</h3><p>Tìm phương trình tiệm cận xiên của đồ thị hàm số $y = \frac{2x^2 - 5x + 7}{x - 2}$.</p>	"<b>🎯 DẠNG TOÁN:</b> Xác định tiệm cận xiên bằng chia đa thức<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Chia tử cho mẫu: $\frac{2x^2 - 5x + 7}{x - 2} = 2x - 1 + \frac{5}{x - 2}$.
+Phần thương $y = 2x - 1$ là tiệm cận xiên.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Tiệm cận xiên có dạng $y = ax + b$ với $a \ne 0$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$y = 2x - 1 + \frac{5}{x - 2} \implies \lim_{x \to \pm\infty} [y - (2x - 1)] = 0 \implies y = 2x - 1$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $y = 2x - 1$"	Tiệm_cận_xiên Thông_hiểu
+<h3>Chương 1: Khảo sát hàm số - Tối ưu hóa kinh tế (Vận dụng)</h3><p>Hàm tổng chi phí sản xuất là $C(x) = x^2 + 40x + 1600$, giá bán mỗi sản phẩm là $p(x) = 200 - x$. Tìm sản lượng $x$ để lợi nhuận tối đa.</p>	"<b>🎯 DẠNG TOÁN:</b> Tối ưu hóa hàm lợi nhuận $P(x) = R(x) - C(x)$<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. Doanh thu: $R(x) = x(200 - x) = -x^2 + 200x$.
+2. Lợi nhuận: $P(x) = R(x) - C(x) = -2x^2 + 160x - 1600$.
+3. Cho $P'(x) = 0$ tìm $x$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Phân biệt rõ giữa hàm doanh thu $R(x) = x \cdot p(x)$ và hàm lợi nhuận $P(x) = R(x) - C(x)$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$P'(x) = -4x + 160 = 0 \iff x = 40$. $P''(x) = -4 < 0 \implies x = 40$ cho lợi nhuận tối đa.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $x = 40$ sản phẩm"	Tối_ưu_hóa_kinh_tế Vận_dụng
+<h3>Chương 1: Khảo sát hàm số - Tối ưu hóa vật liệu (Vận dụng)</h3><p>Sản xuất lon nước ngọt hình trụ có thể tích $V_0$ cố định. Tìm tỉ số giữa chiều cao $h$ và bán kính $r$ để tốn ít kim loại nhất (diện tích toàn phần nhỏ nhất).</p>	"<b>🎯 DẠNG TOÁN:</b> Bài toán cực trị hình học không gian bằng BĐT Cauchy<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. $V_0 = \pi r^2 h \implies h = \frac{V_0}{\pi r^2}$.
+2. $S_{tp} = 2\pi r^2 + 2\pi r h = 2\pi r^2 + \frac{V_0}{r} + \frac{V_0}{r}$.
+3. Áp dụng Cauchy 3 số: $2\pi r^2 = \frac{V_0}{r} \iff h = 2r$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Lon nước ngọt có 2 nắp (diện tích toàn phần $2\pi r^2 + 2\pi rh$), khác với cốc/hộp không nắp (chỉ có 1 đáy $\pi r^2$).<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>Dấu bằng Cauchy xảy ra khi $2\pi r^2 = \frac{V_0}{r} \iff 2\pi r^3 = \pi r^2 h \iff h = 2r$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $\frac{h}{r} = 2$ (Chiều cao bằng đường kính đáy)"	Tối_ưu_hóa_vật_liệu Vận_dụng
+<h3>Chương 1: Khảo sát hàm số - Quang học Regiomontanus (Vận dụng cao)</h3><p>Bảng quảng cáo cao $h$ gắn trên tường, mép dưới cách tầm mắt khoảng $b$, mép trên cách tầm mắt khoảng $a$. Người quan sát đứng cách tường khoảng $x$ bằng bao nhiêu thì góc nhìn lớn nhất?</p>	"<b>🎯 DẠNG TOÁN:</b> Bài toán cực đại góc nhìn Regiomontanus<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. $\tan \theta = \tan(\alpha - \beta) = \frac{\tan \alpha - \tan \beta}{1 + \tan \alpha \tan \beta} = \frac{\frac{a}{x} - \frac{b}{x}}{1 + \frac{ab}{x^2}} = \frac{a - b}{x + \frac{ab}{x}}$.
+2. Góc lớn nhất $\iff$ Mẫu nhỏ nhất $\iff x = \sqrt{ab}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ $a$ và $b$ là khoảng cách tính từ tầm mắt người quan sát, không phải từ mặt đất.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>Theo BĐT Cauchy: $x + \frac{ab}{x} \ge 2\sqrt{ab}$. Dấu bằng $\iff x = \frac{ab}{x} \iff x = \sqrt{ab}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $x = \sqrt{ab}$"	Quang_học_Regiomontanus Vận_dụng_cao
+<h3>Chương 2: Vectơ & Không gian - Quy tắc hình hộp (Nhận biết)</h3><p>Cho hình hộp $ABCD.A'B'C'D'$. Biểu diễn $\vec{AC'}$ theo $\vec{AB}, \vec{AD}, \vec{AA'}$.</p>	"<b>🎯 DẠNG TOÁN:</b> Quy tắc hình hộp<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$\vec{AC'} = \vec{AB} + \vec{AD} + \vec{AA'}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Cả 3 vectơ phải cùng gốc $A$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$\vec{AB} + \vec{AD} = \vec{AC}$ và $\vec{AC} + \vec{AA'} = \vec{AC'}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $\vec{AC'} = \vec{AB} + \vec{AD} + \vec{AA'}$"	Quy_tắc_hình_hộp Nhận_biết
+<h3>Chương 2: Vectơ & Không gian - Trọng tâm tứ diện (Thông hiểu)</h3><p>Cho tứ diện $ABCD$ có trọng tâm $G$. Đẳng thức nào đúng với điểm $O$ bất kỳ?</p>	"<b>🎯 DẠNG TOÁN:</b> Hệ thức trọng tâm tứ diện<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$\vec{OA} + \vec{OB} + \vec{OC} + \vec{OD} = 4\vec{OG}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Hệ số của tứ diện là 4, không phải 3 như tam giác.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>Vì $\vec{GA} + \vec{GB} + \vec{GC} + \vec{GD} = \vec{0} \implies \vec{OA} + \vec{OB} + \vec{OC} + \vec{OD} = 4\vec{OG}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $\vec{OA} + \vec{OB} + \vec{OC} + \vec{OD} = 4\vec{OG}$"	Trọng_tâm_tứ_diện Thông_hiểu
+<h3>Chương 2: Vectơ & Không gian - Tích có hướng (Thông hiểu)</h3><p>Cho $\vec{a} = (1; 2; -1), \vec{b} = (3; 0; 2)$. Tính $[\vec{a}, \vec{b}]$.</p>	"<b>🎯 DẠNG TOÁN:</b> Tính toạ độ tích có hướng<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$[\vec{a}, \vec{b}] = (y_1 z_2 - y_2 z_1; z_1 x_2 - z_2 x_1; x_1 y_2 - x_2 y_1)$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Chú ý dấu ở toạ độ thứ hai: $(-1)(3) - 2(1) = -5$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$[\vec{a}, \vec{b}] = (4 - 0; -3 - 2; 0 - 6) = (4; -5; -6)$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $(4; -5; -6)$"	Tích_có_hướng Thông_hiểu
+<h3>Chương 2: Vectơ & Không gian - Thể tích tứ diện (Vận dụng)</h3><p>Cho tứ diện $ABCD$ có $A(1;0;0), B(0;2;0), C(0;0;3), D(2;2;2)$. Tính thể tích tứ diện $ABCD$.</p>	"<b>🎯 DẠNG TOÁN:</b> Thể tích tứ diện bằng tích hỗn tạp<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$V = \frac{1}{6} |[\vec{AB}, \vec{AC}] \cdot \vec{AD}|$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Hệ số là $\frac{1}{6}$, không phải $\frac{1}{3}$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$\vec{AB} = (-1;2;0), \vec{AC} = (-1;0;3) \implies [\vec{AB}, \vec{AC}] = (6; 3; 2)$.
+$\vec{AD} = (1; 2; 2) \implies (6)(1) + (3)(2) + (2)(2) = 16 \implies V = \frac{16}{6} = \frac{8}{3}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $V = \frac{8}{3}$"	Thể_tích_tứ_diện Vận_dụng
+<h3>Chương 2: Vectơ & Không gian - Cân bằng lực 3D (Vận dụng cao)</h3><p>Treo đèn chùm nặng $120\text{ N}$ bằng 3 dây cáp đối xứng gắn vào trần nhà tại $A(1; \sqrt{3}; 0), B(1; -\sqrt{3}; 0), C(-2; 0; 0)$ với điểm buộc $S(0; 0; -2)$. Tính lực căng mỗi dây.</p>	"<b>🎯 DẠNG TOÁN:</b> Bài toán cân bằng lực tĩnh học trong không gian<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. Chiều dài mỗi dây: $L = \sqrt{1 + 3 + 4} = 2\sqrt{2}\text{ m}$.
+2. Chiếu lên trục $Oz$: $3 \cdot \left(T \cdot \frac{2}{2\sqrt{2}}\right) = 120 \implies \frac{3T}{\sqrt{2}} = 120 \implies T = 40\sqrt{2}\text{ N}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Nhớ nhân hệ số 3 do có 3 sợi dây cáp cùng chịu tải trọng lực $P$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$3 \cdot \frac{T}{\sqrt{2}} = 120 \implies T = 40\sqrt{2} \approx 56.57\text{ N}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $40\sqrt{2}\text{ N} \approx 56.57\text{ N}$"	Cân_bằng_lực_3D Vận_dụng_cao
+<h3>Chương 3: Thống kê ghép nhóm - Tứ phân vị Q1 (Thông hiểu)</h3><p>Viết công thức nội suy tuyến tính tính Tứ phân vị thứ nhất $Q_1$ của mẫu số liệu ghép nhóm.</p>	"<b>🎯 DẠNG TOÁN:</b> Công thức nội suy $Q_1$<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$Q_1 = u_p + \frac{\frac{n}{4} - cf_{p-1}}{n_p} \cdot (u_{p+1} - u_p)$ với nhóm $p$ là nhóm đầu tiên có $cf_p \ge \frac{n}{4}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ $cf_{p-1}$ là tần số tích lũy của nhóm trước nhóm $p$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$Q_1 = u_p + \frac{\frac{n}{4} - cf_{p-1}}{n_p} \cdot (u_{p+1} - u_p)$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $$Q_1 = u_p + \frac{\frac{n}{4} - cf_{p-1}}{n_p} \cdot (u_{p+1} - u_p)$$"	Tứ_phân_vị_Q1 Thông_hiểu
+<h3>Chương 3: Thống kê ghép nhóm - Khoảng tứ phân vị (Thông hiểu)</h3><p>Khoảng tứ phân vị $\Delta_Q$ được định nghĩa như thế nào và có ưu điểm gì so với khoảng biến thiên $R$?</p>	"<b>🎯 DẠNG TOÁN:</b> Độ phân tán và tính kháng ngoại lai<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$\Delta_Q = Q_3 - Q_1$, đo độ phân tán của $50\%$ số liệu trung tâm và không bị ảnh hưởng bởi giá trị ngoại lai.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Khoảng biến thiên $R = x_{max} - x_{min}$ rất nhạy cảm với các điểm đột biến ở 2 đầu mút.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$\Delta_Q = Q_3 - Q_1$, có tính kháng ngoại lai vượt trội so với $R$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $\Delta_Q = Q_3 - Q_1$, tính kháng ngoại lai cao"	Khoảng_tứ_phân_vị Thông_hiểu
+<h3>Chương 3: Thống kê ghép nhóm - Hệ số biến thiên (Vận dụng)</h3><p>Khi nào cần sử dụng Hệ số biến thiên $CV = \frac{s}{\bar{x}}$ thay vì Độ lệch chuẩn $s$ để so sánh độ phân tán?</p>	"<b>🎯 DẠNG TOÁN:</b> Ứng dụng hệ số biến thiên $CV$<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Khi hai mẫu số liệu có đơn vị đo khác nhau hoặc có giá trị trung bình $\bar{x}$ chênh lệch nhau đáng kể.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Nếu hai mẫu có cùng số trung bình thì so sánh trực tiếp độ lệch chuẩn $s$ là đủ.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>Sử dụng $CV = \frac{s}{\bar{x}}$ để đo mức độ phân tán tương đối độc lập với quy mô của số trung bình.<br><br>
+<b>🏁 ĐÁP SỐ:</b> Khi hai mẫu có số trung bình khác nhau"	Hệ_số_biến_thiên Vận_dụng
+<h3>Chương 4: Nguyên hàm & Tích phân - Đổi biến loại 1 (Thông hiểu)</h3><p>Tính tích phân $I = \int_1^e \frac{\ln x}{x} \, dx$.</p>	"<b>🎯 DẠNG TOÁN:</b> Đổi biến vi phân nhanh $\int u du$<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Đặt $t = \ln x \implies dt = \frac{dx}{x}$. Cận: $x=1 \to t=0, x=e \to t=1$. Khi đó $I = \int_0^1 t dt = \frac{1}{2}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Nhớ đổi cận khi đổi biến số.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$I = \left[\frac{\ln^2 x}{2}\right]_1^e = \frac{1^2}{2} - 0 = \frac{1}{2}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $I = \frac{1}{2}$"	Đổi_biến_loại_1 Thông_hiểu
+<h3>Chương 4: Nguyên hàm & Tích phân - Từng phần múa cột (Thông hiểu)</h3><p>Tính $I = \int_0^1 (2x + 1)e^x \, dx$.</p>	"<b>🎯 DẠNG TOÁN:</b> Tích phân từng phần đa thức nhân hàm mũ<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Múa cột: $D: 2x+1 \to 2 \to 0$; $I: e^x \to e^x \to e^x$. $I = [(2x - 1)e^x]_0^1 = e + 1$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Nhớ đan dấu $+ - +$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$I = [(2x+1)e^x - 2e^x]_0^1 = [(2x-1)e^x]_0^1 = e - (-1) = e + 1$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $e + 1$"	Từng_phần_múa_cột Thông_hiểu
+<h3>Chương 4: Nguyên hàm & Tích phân - Diện tích Parabol (Thông hiểu)</h3><p>Tính diện tích hình phẳng giới hạn bởi $y = -x^2 + 4x$ và trục hoành $Ox$.</p>	"<b>🎯 DẠNG TOÁN:</b> Diện tích Parabol Archimedes<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Nghiệm $x = 0, x = 4$. Đáy $= 4$, Chiều cao đỉnh $= 4$. $S = \frac{2}{3} \cdot 4 \cdot 4 = \frac{32}{3}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Hoặc tính tích phân $\int_0^4 (-x^2 + 4x)dx = [-\frac{x^3}{3} + 2x^2]_0^4 = \frac{32}{3}$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$S = \int_0^4 (-x^2 + 4x) dx = \frac{32}{3}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $S = \frac{32}{3}$"	Diện_tích_Parabol Thông_hiểu
+<h3>Chương 4: Nguyên hàm & Tích phân - Hàm ẩn vi phân (Vận dụng cao)</h3><p>Cho $f(x) > 0, \forall x \in [0; 1]$ thỏa mãn $f'(x) + 2x f(x) = 0$ và $f(0) = 1$. Tính $f(1)$.</p>	"<b>🎯 DẠNG TOÁN:</b> Phương trình vi phân cấp 1<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$\frac{f'(x)}{f(x)} = -2x \implies \ln f(x) = -x^2 + C \implies f(x) = e^{-x^2}$. $f(1) = e^{-1}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Chia cho $f(x)$ được vì $f(x) > 0$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$\ln f(x) = -x^2 \implies f(x) = e^{-x^2} \implies f(1) = \frac{1}{e}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $f(1) = \frac{1}{e} = e^{-1}$"	Hàm_ẩn_vi_phân Vận_dụng_cao
+<h3>Chương 5: Phương pháp Oxyz - Mặt phẳng đoạn chắn (Nhận biết)</h3><p>Viết phương trình mặt phẳng đi qua $A(2;0;0), B(0;-3;0), C(0;0;4)$.</p>	"<b>🎯 DẠNG TOÁN:</b> Phương trình mặt phẳng theo đoạn chắn<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$\frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1 \implies \frac{x}{2} + \frac{y}{-3} + \frac{z}{4} = 1$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Chú ý dấu âm ở $y$-intercept: $\frac{y}{-3}$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$\frac{x}{2} - \frac{y}{3} + \frac{z}{4} = 1 \iff 6x - 4y + 3z - 12 = 0$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $\frac{x}{2} - \frac{y}{3} + \frac{z}{4} = 1$"	Mặt_phẳng_đoạn_chắn Nhận_biết
+<h3>Chương 5: Phương pháp Oxyz - Vị trí 2 đường thẳng (Thông hiểu)</h3><p>Hai đường thẳng $d_1(A, \vec{u}_1)$ và $d_2(B, \vec{u}_2)$ chéo nhau khi nào?</p>	"<b>🎯 DẠNG TOÁN:</b> Điều kiện hai đường thẳng chéo nhau<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$[\vec{u}_1, \vec{u}_2] \cdot \vec{AB} \ne 0$ (tích hỗn tạp khác 0, tức 3 vectơ không đồng phẳng).<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Nếu $[ec{u}_1, ec{u}_2] \cdot ec{AB} = 0$ và $[ec{u}_1, ec{u}_2] 
+e ec{0}$ thì 2 đường thẳng CẮT NHAU.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$d_1$ và $d_2$ chéo nhau $\iff [\vec{u}_1, \vec{u}_2] \cdot \vec{AB} \ne 0$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $[\vec{u}_1, \vec{u}_2] \cdot \vec{AB} \ne 0$"	Vị_trí_2_đường_thẳng Thông_hiểu
+<h3>Chương 5: Phương pháp Oxyz - Khoảng cách 2 đường chéo (Thông hiểu)</h3><p>Viết công thức khoảng cách giữa 2 đường thẳng chéo nhau $d_1(A, \vec{u}_1)$ và $d_2(B, \vec{u}_2)$.</p>	"<b>🎯 DẠNG TOÁN:</b> Khoảng cách giữa hai đường thẳng chéo nhau<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$d(d_1, d_2) = \frac{|[\vec{u}_1, \vec{u}_2] \cdot \vec{AB}|}{|[\vec{u}_1, \vec{u}_2]|}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Tử số là độ lớn vô hướng, mẫu số là độ dài vectơ.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$d(d_1, d_2) = \frac{|[\vec{u}_1, \vec{u}_2] \cdot \vec{AB}|}{|[\vec{u}_1, \vec{u}_2]|}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $$d(d_1, d_2) = \frac{|[\vec{u}_1, \vec{u}_2] \cdot \vec{AB}|}{|[\vec{u}_1, \vec{u}_2]|}$$"	Khoảng_cách_2_đường_chéo Thông_hiểu
+<h3>Chương 5: Phương pháp Oxyz - Tâm tỉ cự cực trị (Vận dụng cao)</h3><p>Tìm $M \in (P): x+y+z-6=0$ để $MA^2 + MB^2$ đạt GTNN với $A(1;2;1), B(-1;0;3)$.</p>	"<b>🎯 DẠNG TOÁN:</b> Cực trị tổng bình phương bằng tâm tỉ cự<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>1. Trung điểm $I(0; 1; 2)$ của $AB$.
+2. $MA^2 + MB^2 = 2MI^2 + \frac{AB^2}{2} \implies$ GTNN khi $M$ là hình chiếu của $I$ lên $(P)$.
+3. Tìm hình chiếu $M(1; 2; 3)$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Luôn quy về $MI^2$ thông qua điểm tâm tỉ cự $I$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>Đường thẳng qua $I(0;1;2)$ vuông góc $(P)$: $x=t, y=1+t, z=2+t$. Thế vào $(P): 3t - 3 = 0 \implies t=1 \implies M(1; 2; 3)$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $M(1; 2; 3)$"	Tâm_tỉ_cự_cực_trị Vận_dụng_cao
+<h3>Chương 6: Xác suất & Bayes - Xác suất có điều kiện (Nhận biết)</h3><p>Viết công thức định nghĩa xác suất có điều kiện $P(A|B)$ và công thức nhân xác suất.</p>	"<b>🎯 DẠNG TOÁN:</b> Định nghĩa xác suất có điều kiện<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$P(A|B) = \frac{P(A \cap B)}{P(B)}$ và $P(A \cap B) = P(B)P(A|B)$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Điều kiện $P(B) > 0$.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$P(A|B) = \frac{P(A \cap B)}{P(B)}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $$P(A|B) = \frac{P(A \cap B)}{P(B)}$$"	Xác_suất_có_điều_kiện Nhận_biết
+<h3>Chương 6: Xác suất & Bayes - Định lý Bayes (Thông hiểu)</h3><p>Viết công thức định lý Bayes cho hệ đầy đủ $\{B_1, \dots, B_n\}$.</p>	"<b>🎯 DẠNG TOÁN:</b> Công thức Bayes<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>$P(B_k|A) = \frac{P(B_k)P(A|B_k)}{\sum_{i=1}^n P(B_i)P(A|B_i)}$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Hệ $\{B_i\}$ phải là hệ đầy đủ.<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$P(B_k|A) = \frac{P(B_k)P(A|B_k)}{\sum_{i=1}^n P(B_i)P(A|B_i)}$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $$P(B_k|A) = \frac{P(B_k)P(A|B_k)}{\sum_{i=1}^n P(B_i)P(A|B_i)}$$"	Định_lý_Bayes Thông_hiểu
+<h3>Chương 6: Xác suất & Bayes - Xét nghiệm y tế Bayes (Vận dụng cao)</h3><p>Tỷ lệ bệnh $0.1\%$. Test nhạy $99\%$, dương tính giả $2\%$. Một người test DƯƠNG TÍNH, tính xác suất thực sự mắc bệnh.</p>	"<b>🎯 DẠNG TOÁN:</b> Nghịch lý dương tính giả trong y tế<br><br>
+<b>💡 HƯỚNG GIẢI:</b><br>Bayes: $P(B|+) = \frac{0.001(0.99)}{0.001(0.99) + 0.999(0.02)} = \frac{0.00099}{0.02097} \approx 4.72\%$.<br><br>
+<b>⚠️ LƯU Ý & CẠM BẪY:</b><br>⚠️ Đừng nhầm lẫn giữa độ nhạy của test ($99\%$) và xác suất có bệnh khi test dương tính ($4.72\%$).<br><br>
+<b>📝 LỜI GIẢI CHI TIẾT:</b><br>$P(B|+) = \frac{0.00099}{0.00099 + 0.01998} = \frac{99}{2097} \approx 4.72\%$.<br><br>
+<b>🏁 ĐÁP SỐ:</b> $\approx 4.72\%$"	Xét_nghiệm_y_tế_Bayes Vận_dụng_cao
