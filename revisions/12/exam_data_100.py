@@ -82,9 +82,9 @@ EXAM_CHAPTERS = [
                     },
                     {
                         "q": "Cho hàm số $y = f(x)$ có bảng xét dấu của $f'(x)$ như sau: $f'(x) > 0$ trên $(-1; 2)$ và $f'(x) < 0$ trên $(-\\infty; -1) \\cup (2; +\\infty)$. Hàm số $g(x) = f(x^2 - 2)$ nghịch biến trên khoảng nào?",
-                        "options": ["$(0; 2)$", "$(-2; 0)$", "$(1; 2)$", "$(-\\infty; -2)$"],
+                        "options": ["$(0; 1)$", "$(-2; 0)$", "$(1; 2)$", "$(-\\infty; -2)$"],
                         "answer": "A",
-                        "solution": "Ta có $g'(x) = 2x f'(x^2 - 2)$. Để $g(x)$ nghịch biến thì $g'(x) < 0$. Xét $x > 0$: cần $f'(x^2-2) < 0 \\Leftrightarrow x^2-2 < -1$ hoặc $x^2-2 > 2 \\Leftrightarrow x^2 < 1$ hoặc $x^2 > 4 \\Leftrightarrow 0 < x < 1$ hoặc $x > 2$. Xét $x < 0$: cần $f'(x^2-2) > 0 \\Leftrightarrow -1 < x^2-2 < 2 \\Leftrightarrow 1 < x^2 < 4 \\Leftrightarrow -2 < x < -1$."
+                        "solution": "Ta có $g'(x) = 2x \\cdot f'(x^2 - 2)$. Để $g(x)$ nghịch biến thì $g'(x) \\le 0$. TH1: Với $x > 0$, cần $f'(x^2 - 2) \\le 0 \\Leftrightarrow x^2 - 2 \\le -1$ hoặc $x^2 - 2 \\ge 2 \\Leftrightarrow x^2 \\le 1$ hoặc $x^2 \\ge 4$. Vì $x > 0$ nên $0 < x \\le 1$ hoặc $x \\ge 2$. Do đó hàm số nghịch biến trên $(0; 1)$ và $(2; +\\infty)$. TH2: Với $x < 0$, cần $f'(x^2 - 2) \\ge 0 \\Leftrightarrow -1 \\le x^2 - 2 \\le 2 \\Leftrightarrow 1 \\le x^2 \\le 4 \\Leftrightarrow -2 \\le x \\le -1$. Do đó hàm số nghịch biến trên $(-2; -1)$. Đối chiếu với 4 phương án, hàm số nghịch biến trên khoảng $(0; 1)$."
                     }
                 ]
             },
