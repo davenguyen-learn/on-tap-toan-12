@@ -518,21 +518,21 @@ HTML_HEADER = """<!DOCTYPE html>
             </a>
             <div class="bar-title">
                 <i class="fa-solid fa-file-pdf" style="color: #dc2626;"></i>
-                Đề Kiểm Tra Tổng Hợp Toán 12
-                <span class="badge-total">100 Câu (50 Dạng &times; 2 Câu)</span>
+                Đề Kiểm Tra Tổng Hợp Toàn Diện Toán 12
+                <span class="badge-total">144 Câu (72 Dạng &times; 2 Câu)</span>
             </div>
         </div>
 
         <div class="bar-actions">
             <!-- Filter by Chapter -->
             <select id="chapterFilter" class="filter-select" onchange="filterChapter(this.value)">
-                <option value="all">📚 Tất cả 6 Chương (100 câu)</option>
-                <option value="ch1">Chương 1: Khảo sát hàm số (24 câu)</option>
-                <option value="ch2">Chương 2: Vectơ không gian (10 câu)</option>
-                <option value="ch3">Chương 3: Thống kê ghép nhóm (14 câu)</option>
-                <option value="ch4">Chương 4: Nguyên hàm & Tích phân (22 câu)</option>
-                <option value="ch5">Chương 5: Hình học Oxyz (16 câu)</option>
-                <option value="ch6">Chương 6: Xác suất & Bayes (14 câu)</option>
+                <option value="all">📚 Tất cả 6 Chương (144 câu)</option>
+                <option value="ch1">Chương 1: Khảo sát hàm số (32 câu)</option>
+                <option value="ch2">Chương 2: Vectơ không gian (16 câu)</option>
+                <option value="ch3">Chương 3: Thống kê ghép nhóm (18 câu)</option>
+                <option value="ch4">Chương 4: Nguyên hàm & Tích phân (30 câu)</option>
+                <option value="ch5">Chương 5: Hình học Oxyz (26 câu)</option>
+                <option value="ch6">Chương 6: Xác suất & Bayes (22 câu)</option>
             </select>
 
             <!-- Toggle Solutions -->
@@ -555,12 +555,12 @@ HTML_HEADER = """<!DOCTYPE html>
             <div class="header-left">
                 <div class="header-sub">BỘ GIÁO DỤC VÀ ĐÀO TẠO</div>
                 <div class="header-title-org">TRƯỜNG THPT CHUYÊN ÔN TẬP</div>
-                <div style="font-size: 10pt; margin-top: 2px;">ĐỀ THI ĐÁNH GIÁ NĂNG LỰC TOÀN DIỆN</div>
+                <div style="font-size: 10pt; margin-top: 2px;">NGÂN HÀNG ĐỀ ĐÁNH GIÁ NĂNG LỰC TOÀN DIỆN</div>
             </div>
             <div class="header-right">
-                <div class="header-main-title">ĐỀ KIỂM TRA TẤT CẢ DẠNG TOÁN 12</div>
-                <div class="header-desc">Năm học 2024 - 2025 • Chuẩn GDPT 2018</div>
-                <div class="header-desc">Thời gian làm bài: 180 phút (Không kể phát đề)</div>
+                <div class="header-main-title">ĐỀ KIỂM TRA TOÀN BỘ 72 DẠNG TOÁN 12</div>
+                <div class="header-desc">Chuẩn CT GDPT 2018 (KNTT, Cánh Diều, Chân Trời Sáng Tạo)</div>
+                <div class="header-desc">Quy mô: 144 Câu Phân Loại (Mỗi dạng 2 câu chuẩn hóa)</div>
                 <div class="exam-code">MÃ ĐỀ THI: 102</div>
             </div>
         </div>
@@ -583,7 +583,7 @@ HTML_HEADER = """<!DOCTYPE html>
 
         <!-- EXAM INSTRUCTIONS -->
         <div style="font-size: 10.5pt; font-style: italic; margin-bottom: 14px; text-align: justify; border-left: 2.5px solid #64748b; padding-left: 8px;">
-            * Đề thi gồm 100 câu trắc nghiệm bao phủ toàn bộ 50 dạng toán cốt lõi của 6 chương Toán 12 (mỗi dạng 2 câu tiêu biểu). Thí sinh chọn một phương án đúng duy nhất cho mỗi câu.
+            * Đề thi gồm 144 câu trắc nghiệm bao phủ toàn diện 100% tất cả 72 dạng toán cốt lõi của 6 chương Toán 12 (mỗi dạng đúng 2 câu tiêu biểu). Thí sinh chọn một phương án đúng duy nhất cho mỗi câu.
         </div>
 
         <!-- QUESTIONS CONTENT PLACEHOLDER -->
