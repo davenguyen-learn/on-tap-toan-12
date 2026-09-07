@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng Ôn Tập Toán THPT - Chương Trình GDPT 2018 (Mục Tiêu 9+)</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --accent: #f59e0b;
+      --bg: #0f172a;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --border-card: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #090d16 0%, #0f172a 50%, #1e1b4b 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background glow effects */
+    .glow-blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-blob-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: 50px;
+      right: -50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ffffff, #93c5fd, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* MAIN GRID */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96, 165, 250, 0.5);
+      box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.3);
+    }
+
+    .card.featured {
+      grid-column: span 2;
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 27, 75, 0.8) 100%);
+      border: 1.5px solid rgba(99, 102, 241, 0.4);
+    }
+
+    @media (max-width: 800px) {
+      .card.featured {
+        grid-column: span 1;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .icon-12 {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: #fff;
+    }
+
+    .icon-exam {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: #fff;
+    }
+
+    .icon-soon {
+      background: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    .tag-hot {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .tag-ready {
+      background: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .tag-soon {
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* QUICK LINKS LIST */
+    .links-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .link-item:hover {
+      background: rgba(37, 99, 235, 0.2);
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    /* ACTION BUTTONS */
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    }
+
+    .btn-danger:hover {
+      background: linear-gradient(135deg, #b91c1c, #991b1b);
+    }
+
+    .btn-disabled {
+      background: rgba(255, 255, 255, 0.06);
+      color: #64748b;
+      cursor: not-allowed;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-blob"></div>
+  <div class="glow-blob-2"></div>
+
+  <div class="container">
+    
+    <!-- HEADER SECTION -->
+    <header>
+      <div class="badge-top">
+        <i class="fa-solid fa-sparkles"></i> Hệ Thống Ôn Luyện Toán THPT 2025+
+      </div>
+      <h1>Cẩm Nang & Đề Thi Toán THPT</h1>
+      <p class="subtitle">
+        Bám sát 100% Chương trình GDPT 2018 (Kết nối tri thức, Cánh Diều, Chân trời sáng tạo). Mục tiêu đạt điểm 9+ kỳ thi Tốt nghiệp THPT, ĐGNL (HSA, V-SAT) và ĐGTD (TSA).
+      </p>
+    </header>
+
+    <!-- PORTAL GRID -->
+    <div class="portal-grid">
+      
+      <!-- FEATURED CARD: TOÁN 12 TOÀN DIỆN -->
+      <div class="card featured">
+        <div class="card-header">
+          <div class="card-icon icon-12">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <span class="card-tag tag-ready">Đã Sẵn Sàng (Full 6 Chương)</span>
+        </div>
+        
+        <h2 class="card-title">Chương Trình Ôn Tập Toán 12</h2>
+        <p class="card-desc">
+          Tích hợp đầy đủ lý thuyết chuyên sâu, bản đồ tư duy Mermaid, ngân hàng 141+ thẻ ghi nhớ Flashcard, cùng hệ thống câu hỏi trắc nghiệm thực chiến định dạng mới.
+        </p>
+
+        <!-- Quick navigation modules -->
+        <div class="links-list">
+          <a href="revisions/12/index.html?view=theory" class="link-item">
+            <i class="fa-solid fa-book-open" style="color: #60a5fa;"></i> Toàn văn 6 Chuyên đề
+          </a>
+          <a href="revisions/12/index.html?view=flashcard" class="link-item">
+            <i class="fa-solid fa-clone" style="color: #f59e0b;"></i> Flashcard 141+ Thẻ
+          </a>
+          <a href="revisions/12/index.html?view=quiz" class="link-item">
+            <i class="fa-solid fa-pen-to-square" style="color: #34d399;"></i> Luyện Quizz Trắc Nghiệm
+          </a>
+          <a href="revisions/12/de_kiem_tra_toan_12_all_types.html" class="link-item">
+            <i class="fa-solid fa-file-pdf" style="color: #f87171;"></i> Đề 144 Câu (Xuất PDF)
+          </a>
+        </div>
+
+        <div>
+          <a href="revisions/12/index.html" class="btn-main btn-primary">
+            🚀 Truy Cập Ứng Dụng Toán 12 <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD: ĐỀ KIỂM TRA 144 CÂU PHÂN LOẠI -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-exam">
+            <i class="fa-solid fa-file-pdf"></i>
+          </div>
+          <span class="card-tag tag-hot">HOT • In & Xuất PDF</span>
+        </div>
+        
+        <h3 class="card-title">Đề Tổng Hợp 144 Câu (72 Dạng)</h3>
+        <p class="card-desc">
+          Bao phủ không bỏ sót dạng toán nào của cả 6 chương Toán 12 (mỗi dạng đúng 2 câu). Hỗ trợ in khổ A4 và xuất ra file PDF có hoặc không kèm lời giải chi tiết.
+        </p>
+
+        <div>
+          <a href="revisions/12/de_kiem_tra_toan_12_all_types.html" class="btn-main btn-danger" style="width: 100%;">
+            🖨️ Mở Trang In / Xuất PDF <i class="fa-solid fa-print"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD: TOÁN 11 (COMING SOON) -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-soon">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+          <span class="card-tag tag-soon">Đang Biên Soạn</span>
+        </div>
+        
+        <h3 class="card-title">Toán 11 (GDPT 2018)</h3>
+        <p class="card-desc">
+          Lượng giác, Dãy số - Cấp số cộng/nhân, Giới hạn - Hàm liên tục, Hàm mũ - Logarit, Quan hệ vuông góc và Xác suất cổ điển.
+        </p>
+
+        <div>
+          <button class="btn-main btn-disabled" style="width: 100%;" disabled>
+            <i class="fa-solid fa-clock"></i> Sắp Ra Mắt
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD: TOÁN 10 (COMING SOON) -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-soon">
+            <i class="fa-solid fa-shapes"></i>
+          </div>
+          <span class="card-tag tag-soon">Đang Biên Soạn</span>
+        </div>
+        
+        <h3 class="card-title">Toán 10 (GDPT 2018)</h3>
+        <p class="card-desc">
+          Mệnh đề - Tập hợp, Bất phương trình bậc hai, Vectơ phẳng, Thống kê mô tả và Đại số tổ hợp.
+        </p>
+
+        <div>
+          <button class="btn-main btn-disabled" style="width: 100%;" disabled>
+            <i class="fa-solid fa-clock"></i> Sắp Ra Mắt
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 DaveNguyen Learn • Cẩm Nang Ôn Tập Toán THPT Chuyên Sâu 9+</p>
+  </footer>
+
+</body>
+</html>
