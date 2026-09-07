@@ -549,38 +549,6 @@ HTML_HEADER = """<!DOCTYPE html>
 
     <!-- MAIN EXAM PAPER CONTAINER -->
     <div class="exam-container">
-        
-        <!-- EXAM FORMAL HEADER -->
-        <div class="exam-header">
-            <div class="header-left">
-                <div class="header-sub">BỘ GIÁO DỤC VÀ ĐÀO TẠO</div>
-                <div class="header-title-org">TRƯỜNG THPT CHUYÊN ÔN TẬP</div>
-                <div style="font-size: 10pt; margin-top: 2px;">NGÂN HÀNG ĐỀ ĐÁNH GIÁ NĂNG LỰC TOÀN DIỆN</div>
-            </div>
-            <div class="header-right">
-                <div class="header-main-title">ĐỀ KIỂM TRA TOÀN BỘ 72 DẠNG TOÁN 12</div>
-                <div class="header-desc">Chuẩn CT GDPT 2018 (KNTT, Cánh Diều, Chân Trời Sáng Tạo)</div>
-                <div class="header-desc">Quy mô: 144 Câu Phân Loại (Mỗi dạng 2 câu chuẩn hóa)</div>
-                <div class="exam-code">MÃ ĐỀ THI: 102</div>
-            </div>
-        </div>
-
-        <!-- STUDENT INFO BOX -->
-        <div class="student-info-box">
-            <div class="info-field">
-                <strong>Họ và tên thí sinh:</strong>
-                <span class="info-dots" style="min-width: 220px;"></span>
-            </div>
-            <div class="info-field">
-                <strong>Số báo danh:</strong>
-                <span class="info-dots" style="min-width: 100px;"></span>
-            </div>
-            <div class="info-field">
-                <strong>Phòng thi:</strong>
-                <span class="info-dots" style="min-width: 60px;"></span>
-            </div>
-        </div>
-
         <!-- EXAM INSTRUCTIONS -->
         <div style="font-size: 10.5pt; font-style: italic; margin-bottom: 14px; text-align: justify; border-left: 2.5px solid #64748b; padding-left: 8px;">
             * Đề thi gồm 144 câu trắc nghiệm bao phủ toàn diện 100% tất cả 72 dạng toán cốt lõi của 6 chương Toán 12 (mỗi dạng đúng 2 câu tiêu biểu). Thí sinh chọn một phương án đúng duy nhất cho mỗi câu.

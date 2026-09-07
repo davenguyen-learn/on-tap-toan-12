@@ -77,8 +77,8 @@ EXAM_CHAPTERS = [
                     {
                         "q": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x - 2)^2(x + 3)$. Hàm số $g(x) = f(1 - 2x)$ đồng biến trên khoảng nào?",
                         "options": ["$(2; +\\infty)$", "$(\\frac{1}{2}; 2)$", "$(-\\infty; \\frac{1}{2})$", "$(-1; 1)$"],
-                        "answer": "A",
-                        "solution": "Ta có $g'(x) = -2 f'(1 - 2x) = -2(1-2x)(1-2x-2)^2(1-2x+3) = -2(1-2x)(-2x-1)^2(4-2x)$. Ta có $g'(x) > 0 \\Leftrightarrow (1-2x)(4-2x) < 0$ (vì $(-2x-1)^2 \\ge 0$) $\\Leftrightarrow (2x-1)(2x-4) < 0 \\Leftrightarrow \\frac{1}{2} < x < 2$. Tuy nhiên với dấu âm ở đầu: $g'(x) = -4(1-2x)(2-x)(-2x-1)^2$. $g'(x) > 0 \\Leftrightarrow (2x-1)(x-2) > 0 \\Leftrightarrow x < \\frac{1}{2}$ hoặc $x > 2$. Vậy trên $(2; +\\infty)$ hàm số đồng biến."
+                        "answer": "B",
+                        "solution": "Ta có $g'(x) = (1 - 2x)' \\cdot f'(1 - 2x) = -2 f'(1 - 2x)$. Hàm số $g(x)$ đồng biến khi $g'(x) \\ge 0 \\Leftrightarrow -2 f'(1 - 2x) \\ge 0 \\Leftrightarrow f'(1 - 2x) \\le 0$. Mà $f'(t) = t(t - 2)^2(t + 3) \\le 0 \\Leftrightarrow t(t + 3) \\le 0 \\Leftrightarrow -3 \\le t \\le 0$ (vì $(t - 2)^2 \\ge 0, \\forall t$). Thay $t = 1 - 2x$, ta được: $-3 \\le 1 - 2x \\le 0 \\Leftrightarrow -4 \\le -2x \\le -1 \\Leftrightarrow 1 \\le 2x \\le 4 \\Leftrightarrow \\frac{1}{2} \\le x \\le 2$. Vậy hàm số $g(x)$ đồng biến trên khoảng $(\\frac{1}{2}; 2)$."
                     },
                     {
                         "q": "Cho hàm số $y = f(x)$ có bảng xét dấu của $f'(x)$ như sau: $f'(x) > 0$ trên $(-1; 2)$ và $f'(x) < 0$ trên $(-\\infty; -1) \\cup (2; +\\infty)$. Hàm số $g(x) = f(x^2 - 2)$ nghịch biến trên khoảng nào?",
