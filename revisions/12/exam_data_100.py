@@ -386,7 +386,7 @@ EXAM_CHAPTERS = [
             },
             {
                 "id": "2.4",
-                "name": "Dạng 2.4: Điều kiện 3 vectơ đồng phẳng & Tích hỗn tạp $[\vec{a}, \vec{b}] \\cdot \\vec{c} = 0$",
+                "name": "Dạng 2.4: Điều kiện 3 vectơ đồng phẳng & Tích hỗn tạp $[\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0$",
                 "tip": "Ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ đồng phẳng $\\Leftrightarrow [\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0$ hoặc tồn tại $m, n$ sao cho $\\vec{c} = m\\vec{a} + n\\vec{b}$.",
                 "questions": [
                     {
