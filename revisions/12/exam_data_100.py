@@ -1,8 +1,11 @@
-# -*- coding: utf-8 -*-
 """
-Dữ liệu 144 câu hỏi (72 dạng bài x 2 câu) bao phủ 100% tất cả các dạng bài của cả 6 chương Toán 12 mới (GDPT 2018).
+Dữ liệu 201 câu hỏi (77 dạng bài) bao phủ 100% tất cả các dạng bài của cả 6 chương Toán 12 mới (GDPT 2018).
+Đặc biệt, Chương 1 và Chương 2 được mở rộng tối thiểu 3-4 câu/dạng bài kèm nhãn highlight các câu hỏi bẫy, đánh lừa (is_trap=True).
+Mỗi subtopic (dạng bài) đều có:
+- ID, tên dạng bài, phương pháp giải cô đọng
+- 3 đến 4 câu hỏi trắc nghiệm điển hình (có câu hỏi nhận biết lý thuyết, câu tính toán và câu bẫy)
+- Lời giải chi tiết từng bước, cảnh báo bẫy (trap_note)
 """
-
 EXAM_CHAPTERS = [
     # =========================================================================
     # CHƯƠNG 1: ỨNG DỤNG ĐẠO HÀM ĐỂ KHẢO SÁT VÀ VẼ ĐỒ THỊ HÀM SỐ (16 dạng = 32 câu)
@@ -10,476 +13,1431 @@ EXAM_CHAPTERS = [
     {
         "id": "ch1",
         "title": "Chương 1: Ứng Dụng Đạo Hàm Khảo Sát & Vẽ Đồ Thị Hàm Số",
-        "badge": "16 Dạng • 32 Câu",
+        "badge": "16 Dạng • 59 Câu (≥3-4 câu/dạng)",
         "subtopics": [
-            {
-                "id": "1.1",
-                "name": "Dạng 1.1: Tính đơn điệu của hàm số bậc ba trên R và trên từng khoảng",
-                "tip": "Hàm $y = ax^3 + bx^2 + cx + d$ có $y' = 3ax^2 + 2bx + c$. Hàm số đồng biến trên $\\mathbb{R} \\Leftrightarrow a > 0$ và $\\Delta' \\le 0$; nghịch biến trên $\\mathbb{R} \\Leftrightarrow a < 0$ và $\\Delta' \\le 0$.",
-                "questions": [
-                    {
-                        "q": "Cho hàm số $y = \\frac{1}{3}x^3 - 2x^2 + 3x + 1$. Hàm số nghịch biến trên khoảng nào dưới đây?",
-                        "options": ["$(1; 3)$", "$(-\\infty; 1)$", "$(3; +\\infty)$", "$(-\\infty; 3)$"],
-                        "answer": "A",
-                        "solution": "Ta có $y' = x^2 - 4x + 3$. Cho $y' = 0 \\Leftrightarrow x = 1$ hoặc $x = 3$. Bảng xét dấu: $y' < 0$ khi $x \\in (1; 3)$. Do đó hàm số nghịch biến trên khoảng $(1; 3)$."
-                    },
-                    {
-                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để hàm số $y = \\frac{1}{3}x^3 - mx^2 + (m+2)x - 5$ đồng biến trên $\\mathbb{R}$.",
-                        "options": ["$-1 \\le m \\le 2$", "$m < -1$ hoặc $m > 2$", "$-2 \\le m \\le 1$", "$m \\le -1$"],
-                        "answer": "A",
-                        "solution": "Ta có $y' = x^2 - 2mx + (m+2)$. Hàm số đồng biến trên $\\mathbb{R} \\Leftrightarrow y' \\ge 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\Delta' = m^2 - (m+2) \\le 0 \\Leftrightarrow m^2 - m - 2 \\le 0 \\Leftrightarrow -1 \\le m \\le 2$."
-                    }
-                ]
-            },
-            {
-                "id": "1.2",
-                "name": "Dạng 1.2: Tính đơn điệu của hàm phân thức bậc nhất / bậc nhất $y = \\frac{ax+b}{cx+d}$",
-                "tip": "Đạo hàm $y' = \\frac{ad - bc}{(cx+d)^2}$. Hàm đồng biến khi $ad - bc > 0$, nghịch biến khi $ad - bc < 0$ trên từng khoảng xác định. Tuyệt đối không dùng dấu bằng.",
-                "questions": [
-                    {
-                        "q": "Hàm số $y = \\frac{2x - 1}{x + 1}$ đồng biến trên khoảng nào sau đây?",
-                        "options": ["$(-\\infty; -1)$ và $(-1; +\\infty)$", "$\\mathbb{R} \\setminus \\{-1\\}$", "$(-\\infty; 1)$", "$(-1; 2)$"],
-                        "answer": "A",
-                        "solution": "Tập xác định: $D = \\mathbb{R} \\setminus \\{-1\\}$. Ta có $y' = \\frac{2(1) - (-1)(1)}{(x+1)^2} = \\frac{3}{(x+1)^2} > 0, \\forall x \\ne -1$. Vậy hàm số đồng biến trên từng khoảng $(-\\infty; -1)$ và $(-1; +\\infty)$."
-                    },
-                    {
-                        "q": "Tìm tất cả các giá trị của tham số $m$ để hàm số $y = \\frac{mx - 4}{x - m}$ đồng biến trên khoảng $(1; +\\infty)$.",
-                        "options": ["$-2 < m \\le 1$", "$m > 2$", "$-2 < m < 2$", "$m > 2$ hoặc $m < -2$"],
-                        "answer": "A",
-                        "solution": "TXĐ: $x \\ne m$. Đạo hàm $y' = \\frac{-m^2 + 4}{(x-m)^2}$. Để hàm số đồng biến trên $(1; +\\infty)$, cần: $\\begin{cases} y' > 0 \\\\ m \\notin (1; +\\infty) \\end{cases} \\Leftrightarrow \\begin{cases} -m^2 + 4 > 0 \\\\ m \\le 1 \\end{cases} \\Leftrightarrow \\begin{cases} -2 < m < 2 \\\\ m \\le 1 \\end{cases} \\Leftrightarrow -2 < m \\le 1$."
-                    }
-                ]
-            },
-            {
-                "id": "1.3",
-                "name": "Dạng 1.3: Tính đơn điệu của hàm phân thức bậc hai / bậc nhất $y = \\frac{ax^2+bx+c}{dx+e}$",
-                "tip": "Đạo hàm theo công thức nhanh $y' = \\frac{ad x^2 + 2ae x + (be - cd)}{(dx+e)^2}$. Dấu của $y'$ phụ thuộc hoàn toàn vào tử số bậc 2.",
-                "questions": [
-                    {
-                        "q": "Cho hàm số $y = \\frac{x^2 - 3x + 3}{x - 1}$. Hàm số đồng biến trên các khoảng nào?",
-                        "options": ["$(-\\infty; 0)$ và $(2; +\\infty)$", "$(0; 2) \\setminus \\{1\\}$", "$(0; 1)$ và $(1; 2)$", "$(-\\infty; 1)$ và $(1; +\\infty)$"],
-                        "answer": "A",
-                        "solution": "TXĐ: $x \\ne 1$. Ta có $y' = \\frac{(2x-3)(x-1) - (x^2-3x+3)(1)}{(x-1)^2} = \\frac{x^2 - 2x}{(x-1)^2}$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu cho thấy $y' > 0$ khi $x \\in (-\\infty; 0) \\cup (2; +\\infty)$."
-                    },
-                    {
-                        "q": "Cho hàm số $y = \\frac{x^2 + 2x + 2}{x + 1}$. Khẳng định nào sau đây là đúng?",
-                        "options": ["Hàm số đồng biến trên $(-\\infty; -2)$ và $(0; +\\infty)$", "Hàm số đồng biến trên $\\mathbb{R}$", "Hàm số nghịch biến trên $(-\\infty; -1)$", "Hàm số đạt cực đại tại $x = 0$"],
-                        "answer": "A",
-                        "solution": "TXĐ: $x \\ne -1$. $y = x + 1 + \\frac{1}{x+1} \\Rightarrow y' = 1 - \\frac{1}{(x+1)^2} = \\frac{x^2 + 2x}{(x+1)^2}$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = -2$. Hàm số đồng biến trên $(-\\infty; -2)$ và $(0; +\\infty)$."
-                    }
-                ]
-            },
-            {
-                "id": "1.4",
-                "name": "Dạng 1.4: Tính đơn điệu của hàm hợp $g(x) = f(u(x))$ khi biết đồ thị/bảng xét dấu của $f'(x)$",
-                "tip": "Đạo hàm $g'(x) = u'(x) \\cdot f'(u(x))$. Xét dấu bằng cách giải $g'(x) > 0$ hoặc lập bảng xét dấu với từng nghiệm đơn.",
-                "questions": [
-                    {
-                        "q": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x - 2)^2(x + 3)$. Hàm số $g(x) = f(1 - 2x)$ đồng biến trên khoảng nào?",
-                        "options": ["$(2; +\\infty)$", "$(\\frac{1}{2}; 2)$", "$(-\\infty; \\frac{1}{2})$", "$(-1; 1)$"],
-                        "answer": "B",
-                        "solution": "Ta có $g'(x) = (1 - 2x)' \\cdot f'(1 - 2x) = -2 f'(1 - 2x)$. Hàm số $g(x)$ đồng biến khi $g'(x) \\ge 0 \\Leftrightarrow -2 f'(1 - 2x) \\ge 0 \\Leftrightarrow f'(1 - 2x) \\le 0$. Mà $f'(t) = t(t - 2)^2(t + 3) \\le 0 \\Leftrightarrow t(t + 3) \\le 0 \\Leftrightarrow -3 \\le t \\le 0$ (vì $(t - 2)^2 \\ge 0, \\forall t$). Thay $t = 1 - 2x$, ta được: $-3 \\le 1 - 2x \\le 0 \\Leftrightarrow -4 \\le -2x \\le -1 \\Leftrightarrow 1 \\le 2x \\le 4 \\Leftrightarrow \\frac{1}{2} \\le x \\le 2$. Vậy hàm số $g(x)$ đồng biến trên khoảng $(\\frac{1}{2}; 2)$."
-                    },
-                    {
-                        "q": "Cho hàm số $y = f(x)$ có bảng xét dấu của $f'(x)$ như sau: $f'(x) > 0$ trên $(-1; 2)$ và $f'(x) < 0$ trên $(-\\infty; -1) \\cup (2; +\\infty)$. Hàm số $g(x) = f(x^2 - 2)$ nghịch biến trên khoảng nào?",
-                        "options": ["$(0; 1)$", "$(-2; 0)$", "$(1; 2)$", "$(-\\infty; -2)$"],
-                        "answer": "A",
-                        "solution": "Ta có $g'(x) = 2x \\cdot f'(x^2 - 2)$. Để $g(x)$ nghịch biến thì $g'(x) \\le 0$. TH1: Với $x > 0$, cần $f'(x^2 - 2) \\le 0 \\Leftrightarrow x^2 - 2 \\le -1$ hoặc $x^2 - 2 \\ge 2 \\Leftrightarrow x^2 \\le 1$ hoặc $x^2 \\ge 4$. Vì $x > 0$ nên $0 < x \\le 1$ hoặc $x \\ge 2$. Do đó hàm số nghịch biến trên $(0; 1)$ và $(2; +\\infty)$. TH2: Với $x < 0$, cần $f'(x^2 - 2) \\ge 0 \\Leftrightarrow -1 \\le x^2 - 2 \\le 2 \\Leftrightarrow 1 \\le x^2 \\le 4 \\Leftrightarrow -2 \\le x \\le -1$. Do đó hàm số nghịch biến trên $(-2; -1)$. Đối chiếu với 4 phương án, hàm số nghịch biến trên khoảng $(0; 1)$."
-                    }
-                ]
-            },
-            {
-                "id": "1.5",
-                "name": "Dạng 1.5: Cực trị của hàm đa thức bậc ba và bậc bốn",
-                "tip": "Hàm bậc ba $y = ax^3+bx^2+cx+d$ có 2 điểm cực trị khi $y'=0$ có 2 nghiệm phân biệt ($\\Delta' > 0$). Điểm cực đại là điểm mà $y'$ đổi dấu từ $+$ sang $-$.",
-                "questions": [
-                    {
-                        "q": "Tìm tọa độ điểm cực đại của đồ thị hàm số $y = -x^3 + 3x^2 - 4$.",
-                        "options": ["$(2; 0)$", "$(0; -4)$", "$(1; -2)$", "$(-2; 16)$"],
-                        "answer": "A",
-                        "solution": "Ta có $y' = -3x^2 + 6x = -3x(x - 2)$. $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Xét dấu: $y'$ đổi dấu từ $+$ sang $-$ khi qua $x = 2$. Với $x = 2 \\Rightarrow y(2) = 0$. Điểm cực đại của đồ thị là $(2; 0)$."
-                    },
-                    {
-                        "q": "Tìm tất cả giá trị thực của tham số $m$ để hàm số $y = x^3 - 3x^2 + mx - 1$ đạt cực trị tại 2 điểm phân biệt $x_1, x_2$ thỏa mãn $x_1^2 + x_2^2 = 6$.",
-                        "options": ["$m = -3$", "$m = 3$", "$m = 1$", "$m = -1$"],
-                        "answer": "A",
-                        "solution": "$y' = 3x^2 - 6x + m$. Để có 2 cực trị thì $\\Delta' = 9 - 3m > 0 \\Leftrightarrow m < 3$. Theo Viet: $x_1 + x_2 = 2, x_1 x_2 = \\frac{m}{3}$. Ta có $x_1^2 + x_2^2 = (x_1+x_2)^2 - 2x_1 x_2 = 4 - \\frac{2m}{3} = 6 \\Leftrightarrow \\frac{2m}{3} = -2 \\Leftrightarrow m = -3$."
-                    }
-                ]
-            },
-            {
-                "id": "1.6",
-                "name": "Dạng 1.6: Cực trị hàm chứa dấu giá trị tuyệt đối $|f(x)|$ và $f(|x|)$",
-                "tip": "Số điểm cực trị của $y = |f(x)|$ bằng $a + b$ (với $a$ là số điểm cực trị của $f(x)$, $b$ là số nghiệm đơn của $f(x)=0$). Số điểm cực trị của $y = f(|x|)$ bằng $2k + 1$ ($k$ là số điểm cực trị dương).",
-                "questions": [
-                    {
-                        "q": "Cho hàm số $y = f(x)$ có 2 điểm cực trị và phương trình $f(x) = 0$ có đúng 3 nghiệm phân biệt không trùng với điểm cực trị. Hỏi hàm số $y = |f(x)|$ có bao nhiêu điểm cực trị?",
-                        "options": ["$5$", "$3$", "$4$", "$7$"],
-                        "answer": "A",
-                        "solution": "Số điểm cực trị của hàm số $y = |f(x)|$ bằng tổng số điểm cực trị của $f(x)$ ($a = 2$) cộng với số nghiệm đơn của phương trình $f(x) = 0$ ($b = 3$). Do đó số điểm cực trị là $2 + 3 = 5$."
-                    },
-                    {
-                        "q": "Cho hàm số $y = f(x)$ có 3 điểm cực trị là $x_1 = -2, x_2 = 1, x_3 = 3$. Hỏi hàm số $g(x) = f(|x|)$ có bao nhiêu điểm cực trị?",
-                        "options": ["$5$", "$7$", "$3$", "$4$"],
-                        "answer": "A",
-                        "solution": "Số điểm cực trị của hàm $g(x) = f(|x|)$ bằng $2k + 1$, trong đó $k$ là số điểm cực trị dương của $f(x)$. Ở đây các điểm cực trị dương là $x_2 = 1$ và $x_3 = 3$ ($k = 2$). Do đó số điểm cực trị của $g(x)$ là $2(2) + 1 = 5$."
-                    }
-                ]
-            },
-            {
-                "id": "1.7",
-                "name": "Dạng 1.7: Cực trị hàm hợp $g(x) = f(u(x))$ dựa trên bảng xét dấu của $f'(x)$",
-                "tip": "Số điểm cực trị của $g(x) = f(u(x))$ là số nghiệm bội lẻ của $u'(x) = 0$ cộng với số nghiệm bội lẻ của các phương trình $u(x) = x_i$ (với $x_i$ là điểm cực trị của $f(x)$).",
-                "questions": [
-                    {
-                        "q": "Cho hàm số $f(x)$ có đạo hàm $f'(x) = (x-1)(x-2)(x+3)$. Hàm số $g(x) = f(x^2 - 1)$ có bao nhiêu điểm cực trị?",
-                        "options": ["$5$", "$3$", "$4$", "$7$"],
-                        "answer": "A",
-                        "solution": "Ta có $g'(x) = 2x f'(x^2 - 1) = 2x (x^2 - 1 - 1)(x^2 - 1 - 2)(x^2 - 1 + 3) = 2x(x^2 - 2)(x^2 - 3)(x^2 + 2)$. Nghiệm của $g'(x) = 0$ là: $x = 0; x = \\pm \\sqrt{2}; x = \\pm \\sqrt{3}$ (đều là nghiệm đơn), còn $x^2 + 2 > 0, \\forall x$. Vậy có đúng 5 điểm cực trị."
-                    },
-                    {
-                        "q": "Cho hàm số $y = f(x)$ có 3 điểm cực trị là $-1, 1, 4$. Hỏi hàm số $g(x) = f(x^2)$ có bao nhiêu điểm cực trị?",
-                        "options": ["$5$", "$3$", "$7$", "$6$"],
-                        "answer": "A",
-                        "solution": "Ta có $g'(x) = 2x f'(x^2) = 0 \\Leftrightarrow x = 0$ hoặc $x^2 = -1$ (vô nghiệm), $x^2 = 1 \\Leftrightarrow x = \\pm 1$, $x^2 = 4 \\Leftrightarrow x = \\pm 2$. Tất cả 5 nghiệm này đều là nghiệm đơn. Vậy $g(x)$ có 5 điểm cực trị."
-                    }
-                ]
-            },
-            {
-                "id": "1.8",
-                "name": "Dạng 1.8: Đạo hàm cấp 2, tính lồi - lõm và Điểm uốn của đồ thị hàm số",
-                "tip": "Đồ thị lồi trên khoảng nếu $y'' < 0$; lõm nếu $y'' > 0$. Điểm $U(x_0; y(x_0))$ là điểm uốn nếu $y''(x_0) = 0$ (hoặc không xác định) và $y''$ đổi dấu khi qua $x_0$.",
-                "questions": [
-                    {
-                        "q": "Tìm tọa độ điểm uốn của đồ thị hàm số $y = x^3 - 3x^2 + 2$.",
-                        "options": ["$U(1; 0)$", "$U(0; 2)$", "$U(2; -2)$", "$U(-1; -2)$"],
-                        "answer": "A",
-                        "solution": "Ta có $y' = 3x^2 - 6x \\Rightarrow y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 \\Leftrightarrow x = 1$. Khi $x = 1 \\Rightarrow y(1) = 1 - 3 + 2 = 0$. Vì $y''$ đổi dấu từ $-$ sang $+$ khi qua $x = 1$ nên điểm uốn của đồ thị là $U(1; 0)$."
-                    },
-                    {
-                        "q": "Khoảng nào dưới đây là khoảng lồi của đồ thị hàm số $y = -x^3 + 6x^2 - 9x + 1$?",
-                        "options": ["$(2; +\\infty)$", "$(-\\infty; 2)$", "$(1; 3)$", "$(-\\infty; 0)$"],
-                        "answer": "A",
-                        "solution": "Ta có $y' = -3x^2 + 12x - 9 \\Rightarrow y'' = -6x + 12$. Đồ thị hàm số lồi khi $y'' < 0 \\Leftrightarrow -6x + 12 < 0 \\Leftrightarrow x > 2$. Vậy đồ thị lồi trên khoảng $(2; +\\infty)$."
-                    }
-                ]
-            },
-            {
-                "id": "1.9",
-                "name": "Dạng 1.9: Tâm đối xứng và Trục đối xứng của đồ thị hàm số",
-                "tip": "Đồ thị hàm bậc ba nhận điểm uốn $U(x_0; y_0)$ làm tâm đối xứng. Đồ thị phân thức bậc 1/1 và 2/1 nhận giao điểm của 2 đường tiệm cận làm tâm đối xứng.",
-                "questions": [
-                    {
-                        "q": "Tâm đối xứng của đồ thị hàm số bậc ba $y = 2x^3 - 6x + 1$ là điểm:",
-                        "options": ["$I(0; 1)$", "$I(1; -3)$", "$I(-1; 5)$", "$I(0; 0)$"],
-                        "answer": "A",
-                        "solution": "Tâm đối xứng của hàm số bậc ba là điểm uốn: $y' = 6x^2 - 6 \\Rightarrow y'' = 12x = 0 \\Leftrightarrow x = 0 \\Rightarrow y(0) = 1$. Vậy tâm đối xứng là $I(0; 1)$."
-                    },
-                    {
-                        "q": "Tâm đối xứng của đồ thị hàm số phân thức $y = \\frac{2x - 3}{x + 1}$ có tọa độ là:",
-                        "options": ["$I(-1; 2)$", "$I(1; 2)$", "$I(-1; -3)$", "$I(2; -1)$"],
-                        "answer": "A",
-                        "solution": "Tâm đối xứng của đồ thị hàm phân thức bậc 1/bậc 1 là giao điểm của tiệm cận đứng $x = -1$ và tiệm cận ngang $y = 2$. Do đó tọa độ tâm đối xứng là $I(-1; 2)$."
-                    }
-                ]
-            },
-            {
-                "id": "1.10",
-                "name": "Dạng 1.10: Giá trị lớn nhất và nhỏ nhất (Min - Max) trên đoạn $[a; b]$",
-                "tip": "Để tìm $\\min, \\max$ của $f(x)$ trên $[a; b]$: Tính $f'(x)$, tìm các nghiệm $x_i \\in [a; b]$, tính các giá trị $f(a), f(b), f(x_i)$ rồi so sánh.",
-                "questions": [
-                    {
-                        "q": "Giá trị lớn nhất của hàm số $f(x) = x^4 - 2x^2 + 3$ trên đoạn $[0; 2]$ bằng:",
-                        "options": ["$11$", "$3$", "$2$", "$19$"],
-                        "answer": "A",
-                        "solution": "Ta có $f'(x) = 4x^3 - 4x = 4x(x^2 - 1) = 0 \\Leftrightarrow x = 0, x = 1, x = -1$. Trên $[0; 2]$ nhận $x = 0, x = 1$. Tính: $f(0) = 3; f(1) = 2; f(2) = 11$. Vậy $\\max_{[0; 2]} f(x) = 11$."
-                    },
-                    {
-                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để giá trị nhỏ nhất của hàm số $y = \\frac{x + m}{x - 1}$ trên đoạn $[2; 4]$ bằng $3$.",
-                        "options": ["$m = 5$", "$m = -1$", "$m = 7$", "$m = 2$"],
-                        "answer": "A",
-                        "solution": "TXĐ: $x \\ne 1$. Ta có $y' = \\frac{-1 - m}{(x-1)^2}$. Nếu $-1-m < 0 \\Leftrightarrow m > -1$: hàm nghịch biến $\\Rightarrow \\min = y(4) = \\frac{4+m}{3} = 3 \\Leftrightarrow m = 5$ (thỏa mãn $m > -1$)."
-                    }
-                ]
-            },
-            {
-                "id": "1.11",
-                "name": "Dạng 1.11: Tiệm cận đứng và tiệm cận ngang của đồ thị hàm phân thức",
-                "tip": "Đồ thị $y = \\frac{P(x)}{Q(x)}$: Tiệm cận đứng là $x = x_0$ khi $Q(x_0)=0$ và không bị triệt tiêu hết bởi nghiệm tử. Tiệm cận ngang $y = \\lim_{x \\to \\pm \\infty} y$.",
-                "questions": [
-                    {
-                        "q": "Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\frac{x - 1}{x^2 - 4x + 3}$ là:",
-                        "options": ["$2$", "$3$", "$1$", "$4$"],
-                        "answer": "A",
-                        "solution": "Ta có $y = \\frac{x - 1}{(x-1)(x-3)} = \\frac{1}{x - 3}$ (với $x \\ne 1$). Ta có $\\lim_{x \\to 3^+} y = +\\infty \\Rightarrow x = 3$ là TCĐ. Giới hạn $\\lim_{x \\to \\pm \\infty} y = 0 \\Rightarrow y = 0$ là TCN. Vậy tổng số đường tiệm cận là $1 + 1 = 2$."
-                    },
-                    {
-                        "q": "Đồ thị hàm số $y = \\frac{2x + 1}{\\sqrt{x^2 - 4}}$ có bao nhiêu đường tiệm cận?",
-                        "options": ["$4$", "$2$", "$3$", "$1$"],
-                        "answer": "A",
-                        "solution": "TXĐ: $(-\\infty; -2) \\cup (2; +\\infty)$. Có 2 TCĐ là $x = 2$ và $x = -2$. Có 2 TCN là $y = 2$ (khi $x \\to +\\infty$) và $y = -2$ (khi $x \\to -\\infty$). Tổng cộng có $2 + 2 = 4$ tiệm cận."
-                    }
-                ]
-            },
-            {
-                "id": "1.12",
-                "name": "Dạng 1.12: Tiệm cận xiên của đồ thị hàm phân thức bậc hai / bậc nhất",
-                "tip": "Hàm $y = \\frac{ax^2+bx+c}{dx+e} = Ax + B + \\frac{R}{dx+e}$. Đường thẳng $y = Ax + B$ là tiệm cận xiên khi $\\lim_{x \\to \\pm \\infty} [y - (Ax+B)] = 0$.",
-                "questions": [
-                    {
-                        "q": "Tìm phương trình đường tiệm cận xiên của đồ thị hàm số $y = \\frac{2x^2 - 3x + 5}{x - 1}$.",
-                        "options": ["$y = 2x - 1$", "$y = 2x + 1$", "$y = 2x - 3$", "$y = x - 1$"],
-                        "answer": "A",
-                        "solution": "Thực hiện phép chia đa thức: $2x^2 - 3x + 5 = (2x - 1)(x - 1) + 4 \\Rightarrow y = 2x - 1 + \\frac{4}{x - 1}$. Đường tiệm cận xiên là $y = 2x - 1$."
-                    },
-                    {
-                        "q": "Giao điểm của hai đường tiệm cận của đồ thị hàm số $y = \\frac{x^2 + 2x - 3}{x + 2}$ là điểm:",
-                        "options": ["$I(-2; -2)$", "$I(-2; 0)$", "$I(2; 2)$", "$I(-2; 4)$"],
-                        "answer": "A",
-                        "solution": "Ta có $y = x - \\frac{3}{x+2}$. Tiệm cận đứng: $x = -2$. Tiệm cận xiên: $y = x$. Giao điểm $I(-2; -2)$."
-                    }
-                ]
-            },
-            {
-                "id": "1.13",
-                "name": "Dạng 1.13: Nhận dạng đồ thị hàm số và đọc dấu hệ số $a, b, c, d$",
-                "tip": "Nhánh cuối cùng đi lên $\\Rightarrow a > 0$; giao điểm với $Oy$ cho biết $d$; hoành độ các cực trị $x_1+x_2, x_1 x_2$ cho biết dấu của $b, c$.",
-                "questions": [
-                    {
-                        "q": "Cho hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ có đồ thị có nhánh cuối cùng đi xuống, cắt trục tung tại điểm $(0; 2)$, có 2 điểm cực trị nằm về 2 phía của trục tung ($x_1 < 0 < x_2$) và tổng $x_1 + x_2 > 0$. Dấu của các hệ số $a, b, c, d$ là:",
-                        "options": ["$a < 0, b > 0, c > 0, d > 0$", "$a > 0, b < 0, c < 0, d > 0$", "$a < 0, b < 0, c > 0, d > 0$", "$a < 0, b > 0, c < 0, d > 0$"],
-                        "answer": "A",
-                        "solution": "1) Nhánh cuối đi xuống $\\Rightarrow a < 0$. 2) Cắt $Oy$ tại $(0; 2) \\Rightarrow d = 2 > 0$. 3) Hai cực trị trái dấu $\\Rightarrow \\frac{c}{3a} < 0 \\Rightarrow c > 0$. 4) Tổng $x_1+x_2 = \\frac{-2b}{3a} > 0 \\Rightarrow b > 0$."
-                    },
-                    {
-                        "q": "Cho hàm số $y = \\frac{ax + b}{cx + d}$ ($ad - bc \\ne 0$) có tiệm cận đứng $x = 1$, tiệm cận ngang $y = 2$ và cắt trục tung tại điểm $(0; -3)$. Mệnh đề nào sau đây đúng?",
-                        "options": ["$a = 2, b = 3, c = 1, d = -1$", "$a = 2, b = -3, c = 1, d = -1$", "$a = -2, b = 3, c = 1, d = 1$", "$a = 2, b = 3, c = -1, d = 1$"],
-                        "answer": "A",
-                        "solution": "Chuẩn hóa $c = 1$: TCĐ $x = -d = 1 \\Rightarrow d = -1$. TCN $y = a = 2$. Giao điểm $Oy$: $y(0) = \\frac{b}{-1} = -3 \\Rightarrow b = 3$."
-                    }
-                ]
-            },
-            {
-                "id": "1.14",
-                "name": "Dạng 1.14: Tiếp tuyến của đồ thị hàm số (Tại điểm, biết hệ số góc $k$)",
-                "tip": "Phương trình tiếp tuyến tại $M(x_0; y_0)$ là $y = f'(x_0)(x - x_0) + y_0$. Tiếp tuyến song song với $y = kx + m$ thì $f'(x_0) = k$.",
-                "questions": [
-                    {
-                        "q": "Phương trình tiếp tuyến của đồ thị hàm số $y = x^3 - 3x + 2$ tại điểm có hoành độ $x_0 = 2$ là:",
-                        "options": ["$y = 9x - 14$", "$y = 9x + 4$", "$y = 3x - 2$", "$y = 9x - 4$"],
-                        "answer": "A",
-                        "solution": "Với $x_0 = 2 \\Rightarrow y_0 = 4$. Đạo hàm: $y' = 3x^2 - 3 \\Rightarrow f'(2) = 9$. Phương trình tiếp tuyến là $y = 9(x - 2) + 4 = 9x - 14$."
-                    },
-                    {
-                        "q": "Có bao nhiêu tiếp tuyến của đồ thị hàm số $y = \\frac{2x - 1}{x + 1}$ song song với đường thẳng $d: 3x - y + 5 = 0$?",
-                        "options": ["$2$", "$1$", "$0$", "$3$"],
-                        "answer": "A",
-                        "solution": "Hệ số góc $k = 3$. Đạo hàm $y' = \\frac{3}{(x+1)^2} = 3 \\Leftrightarrow (x+1)^2 = 1 \\Leftrightarrow x = 0$ hoặc $x = -2$. Cả 2 điểm đều cho tiếp tuyến phân biệt với $d$."
-                    }
-                ]
-            },
-            {
-                "id": "1.15",
-                "name": "Dạng 1.15: Bài toán tương giao và nghiệm phương trình $f(x) = m$",
-                "tip": "Số nghiệm của $f(x) = m$ là số giao điểm của đồ thị $y = f(x)$ và đường thẳng nằm ngang $y = m$.",
-                "questions": [
-                    {
-                        "q": "Cho hàm số $y = f(x)$ có bảng biến thiên với giá trị cực đại $y_{CĐ} = 4$ và giá trị cực tiểu $y_{CT} = -2$. Phương trình $f(x) - 1 = 0$ có bao nhiêu nghiệm thực phân biệt?",
-                        "options": ["$3$", "$2$", "$1$", "$4$"],
-                        "answer": "A",
-                        "solution": "Phương trình tương đương $f(x) = 1$. Vì $-2 < 1 < 4$ nên đường thẳng $y = 1$ cắt đồ thị tại đúng 3 điểm phân biệt."
-                    },
-                    {
-                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để đồ thị hàm số $y = x^3 - 3x^2 + 2$ cắt đường thẳng $d: y = m$ tại 3 điểm phân biệt.",
-                        "options": ["$-2 < m < 2$", "$m > 2$", "$m < -2$", "$-2 \\le m \\le 2$"],
-                        "answer": "A",
-                        "solution": "Khảo sát hàm số $y = x^3 - 3x^2 + 2$, ta có $y_{CĐ} = 2$ (tại $x=0$) và $y_{CT} = -2$ (tại $x=2$). Để cắt tại 3 điểm phân biệt thì $-2 < m < 2$."
-                    }
-                ]
-            },
-            {
-                "id": "1.16",
-                "name": "Dạng 1.16: Ứng dụng đạo hàm giải bài toán tối ưu hóa thực tế",
-                "tip": "Thiết lập hàm mục tiêu $f(x)$ theo 1 biến số $x$, tìm tập xác định thực tế và khảo sát tìm giá trị lớn nhất / nhỏ nhất.",
-                "questions": [
-                    {
-                        "q": "Một người nông dân muốn rào một khu đất hình chữ nhật có một cạnh giáp bờ sông thẳng (không cần rào bờ sông). Với $120\\text{ m}$ lưới thép gai có sẵn, diện tích lớn nhất khu đất có thể rào được là bao nhiêu?",
-                        "options": ["$1800\\text{ m}^2$", "$1600\\text{ m}^2$", "$2400\\text{ m}^2$", "$900\\text{ m}^2$"],
-                        "answer": "A",
-                        "solution": "Gọi $x$ là chiều rộng ($0 < x < 60$). Chiều dài là $120 - 2x$. Diện tích $S(x) = x(120 - 2x) = -2x^2 + 120x$. $S'(x) = -4x + 120 = 0 \\Leftrightarrow x = 30$. Khi đó $S_{\\max} = 1800\\text{ m}^2$."
-                    },
-                    {
-                        "q": "Một công ty sản xuất muốn thiết kế một chiếc hộp hình trụ không nắp có thể tích $V = 54\\pi\\text{ cm}^3$. Bán kính đáy $R$ của hình trụ để diện tích toàn phần không nắp nhỏ nhất bằng:",
-                        "options": ["$3\\sqrt[3]{2}\\text{ cm}$", "$3\\text{ cm}$", "$2\\text{ cm}$", "$6\\text{ cm}$"],
-                        "answer": "A",
-                        "solution": "Thể tích $V = \\pi R^2 h = 54\\pi \\Rightarrow h = \\frac{54}{R^2}$. Diện tích vỏ hộp không nắp là $S(R) = \\pi R^2 + \\frac{108\\pi}{R}$. Đạo hàm $S'(R) = 2\\pi R - \\frac{108\\pi}{R^2} = 0 \\Leftrightarrow R^3 = 54 \\Rightarrow R = 3\\sqrt[3]{2}\\text{ cm}$."
-                    }
-                ]
-            }
+                {
+                        "id": "1.1",
+                        "name": "Dạng 1.1: Tính đơn điệu của hàm số bậc ba trên R và trên từng khoảng",
+                        "tip": "Hàm $y = ax^3 + bx^2 + cx + d$ có $y' = 3ax^2 + 2bx + c$. Đồng biến trên $\\mathbb{R} \\Leftrightarrow a > 0, \\Delta' \\le 0$; nghịch biến trên $\\mathbb{R} \\Leftrightarrow a < 0, \\Delta' \\le 0$. Khi hệ số $a$ chứa tham số, phải xét riêng $a = 0$.",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số $y = \\frac{1}{3}x^3 - 2x^2 + 3x + 1$. Hàm số nghịch biến trên khoảng nào dưới đây?",
+                                        "options": [
+                                                "$(1; 3)$",
+                                                "$(-\\infty; 1)$",
+                                                "$(3; +\\infty)$",
+                                                "$(-\\infty; 3)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $y' = x^2 - 4x + 3$. Cho $y' = 0 \\Leftrightarrow x = 1$ hoặc $x = 3$. Bảng xét dấu: $y' < 0$ khi $x \\in (1; 3)$. Do đó hàm số nghịch biến trên khoảng $(1; 3)$."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để hàm số $y = \\frac{1}{3}x^3 - mx^2 + (m+2)x - 5$ đồng biến trên $\\mathbb{R}$.",
+                                        "options": [
+                                                "$-1 \\le m \\le 2$",
+                                                "$m < -1$ hoặc $m > 2$",
+                                                "$-2 \\le m \\le 1$",
+                                                "$m \\le -1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $y' = x^2 - 2mx + (m+2)$. Hàm số đồng biến trên $\\mathbb{R} \\Leftrightarrow y' \\ge 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\Delta' = m^2 - (m+2) \\le 0 \\Leftrightarrow m^2 - m - 2 \\le 0 \\Leftrightarrow -1 \\le m \\le 2$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Khi hệ số $a$ chứa tham số $m$, bắt buộc phải xét riêng trường hợp $a = 0$! Nếu $a = 0$, hàm số trở thành bậc nhất hoặc bậc hai, không được dùng công thức $\\Delta' \\le 0$.",
+                                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để hàm số $y = \\frac{m}{3}x^3 - mx^2 + (2m-1)x + 1$ đồng biến trên $\\mathbb{R}$.",
+                                        "options": [
+                                                "$m \\ge 1$",
+                                                "$m > 1$",
+                                                "$0 \\le m \\le 1$",
+                                                "$m \\le 0$ hoặc $m \\ge 1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Xét 2 trường hợp:\n- TH1: $m = 0 \\Rightarrow y = -x + 1$ có $y' = -1 < 0, \\forall x \\Rightarrow$ nghịch biến trên $\\mathbb{R}$ (loại $m = 0$).\n- TH2: $m \\ne 0$. Đạo hàm $y' = mx^2 - 2mx + 2m - 1$. Hàm số đồng biến trên $\\mathbb{R} \\Leftrightarrow \\begin{cases} a = m > 0 \\\\ \\Delta' = m^2 - m(2m-1) \\le 0 \\end{cases} \\Leftrightarrow \\begin{cases} m > 0 \\\\ -m^2 + m \\le 0 \\end{cases} \\Leftrightarrow \\begin{cases} m > 0 \\\\ m \\le 0 \\text{ hoặc } m \\ge 1 \\end{cases} \\Leftrightarrow m \\ge 1$.\nKết hợp lại: $m \\ge 1$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.2",
+                        "name": "Dạng 1.2: Tính đơn điệu của hàm phân thức bậc nhất / bậc nhất $y = \\frac{ax+b}{cx+d}$",
+                        "tip": "Đạo hàm $y' = \\frac{ad - bc}{(cx+d)^2}$. Tuyệt đối KHÔNG CÓ DẤU BẰNG ở $y'$: đồng biến khi $ad - bc > 0$, nghịch biến khi $ad - bc < 0$. Trên khoảng $(a; b)$ phải kèm điều kiện điểm gián đoạn $-\\frac{d}{c} \\notin (a; b)$.",
+                        "questions": [
+                                {
+                                        "q": "Hàm số $y = \\frac{2x - 1}{x + 1}$ đồng biến trên khoảng nào sau đây?",
+                                        "options": [
+                                                "$(-\\infty; -1)$ và $(-1; +\\infty)$",
+                                                "$\\mathbb{R} \\setminus \\{-1\\}$",
+                                                "$(-\\infty; 1)$",
+                                                "$(-1; 2)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Tập xác định: $D = \\mathbb{R} \\setminus \\{-1\\}$. Ta có $y' = \\frac{2(1) - (-1)(1)}{(x+1)^2} = \\frac{3}{(x+1)^2} > 0, \\forall x \\ne -1$. Vậy hàm số đồng biến trên từng khoảng $(-\\infty; -1)$ và $(-1; +\\infty)$."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị của tham số $m$ để hàm số $y = \\frac{mx - 4}{x - m}$ đồng biến trên khoảng $(1; +\\infty)$.",
+                                        "options": [
+                                                "$-2 < m \\le 1$",
+                                                "$m > 2$",
+                                                "$-2 < m < 2$",
+                                                "$m > 2$ hoặc $m < -2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $x \\ne m$. Đạo hàm $y' = \\frac{-m^2 + 4}{(x-m)^2}$. Để hàm số đồng biến trên $(1; +\\infty)$, cần: $\\begin{cases} y' > 0 \\\\ m \\notin (1; +\\infty) \\end{cases} \\Leftrightarrow \\begin{cases} -m^2 + 4 > 0 \\\\ m \\le 1 \\end{cases} \\Leftrightarrow \\begin{cases} -2 < m < 2 \\\\ m \\le 1 \\end{cases} \\Leftrightarrow -2 < m \\le 1$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Tử số của $y'$ là hằng số nên $y'$ luôn mang dấu cố định. Tuyệt đối KHÔNG LẤY DẤU BẰNG ở đạo hàm hàm bậc 1/bậc 1! Nếu $y'=0$ thì hàm số suy biến thành hàm hằng.",
+                                        "q": "Tìm tất cả các giá trị của tham số $m$ để hàm số $y = \\frac{x + 2m}{x + 2}$ đồng biến trên từng khoảng xác định.",
+                                        "options": [
+                                                "$m < 1$",
+                                                "$m \\le 1$",
+                                                "$m > 1$",
+                                                "$m \\ge 1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $x \\ne -2$. Đạo hàm: $y' = \\frac{1(2) - 2m(1)}{(x+2)^2} = \\frac{2 - 2m}{(x+2)^2}$. Để hàm số đồng biến trên từng khoảng xác định thì $y' > 0, \\forall x \\ne -2 \\Leftrightarrow 2 - 2m > 0 \\Leftrightarrow m < 1$. Cạm bẫy: Học sinh lấy $y' \\ge 0 \\Rightarrow m \\le 1$ là SAI, vì khi $m = 1$ hàm số trở thành $y = 1$ không đổi."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Quy ước SGK GDPT: Tính đơn điệu chỉ xét trên từng khoảng/đoạn rời nhau. Tuyệt đối KHÔNG dùng ký hiệu hợp $\\cup$ hoặc hiệu $\\setminus$ để kết luận khoảng đơn điệu!",
+                                        "q": "Cho hàm số $y = \\frac{x + 3}{x - 2}$. Mệnh đề nào sau đây ĐÚNG?",
+                                        "options": [
+                                                "Hàm số nghịch biến trên các khoảng $(-\\infty; 2)$ và $(2; +\\infty)$",
+                                                "Hàm số nghịch biến trên $\\mathbb{R} \\setminus \\{2\\}$",
+                                                "Hàm số nghịch biến trên $(-\\infty; 2) \\cup (2; +\\infty)$",
+                                                "Hàm số đồng biến trên từng khoảng xác định"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Đạo hàm $y' = \\frac{-5}{(x-2)^2} < 0, \\forall x \\ne 2$. Theo quy ước định nghĩa sách giáo khoa, tính đồng biến/nghịch biến chỉ xét trên từng khoảng, không được viết dưới dạng hợp $(\\cup)$ hoặc hiệu $(\\setminus)$. Do đó mệnh đề A đúng chuẩn xác."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.3",
+                        "name": "Dạng 1.3: Tính đơn điệu của hàm phân thức bậc hai / bậc nhất $y = \\frac{ax^2+bx+c}{dx+e}$",
+                        "tip": "Đạo hàm nhanh $y' = \\frac{ad x^2 + 2ae x + (be - cd)}{(dx+e)^2}$. Dấu của $y'$ phụ thuộc vào tam thức bậc hai ở tử số.",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số $y = \\frac{x^2 - 3x + 3}{x - 1}$. Hàm số đồng biến trên các khoảng nào?",
+                                        "options": [
+                                                "$(-\\infty; 0)$ và $(2; +\\infty)$",
+                                                "$(0; 2) \\setminus \\{1\\}$",
+                                                "$(0; 1)$ và $(1; 2)$",
+                                                "$(-\\infty; 1)$ và $(1; +\\infty)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $x \\ne 1$. Ta có $y' = \\frac{(2x-3)(x-1) - (x^2-3x+3)(1)}{(x-1)^2} = \\frac{x^2 - 2x}{(x-1)^2}$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu cho thấy $y' > 0$ khi $x \\in (-\\infty; 0) \\cup (2; +\\infty)$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = \\frac{x^2 + 2x + 2}{x + 1}$. Khẳng định nào sau đây là đúng?",
+                                        "options": [
+                                                "Hàm số đồng biến trên $(-\\infty; -2)$ và $(0; +\\infty)$",
+                                                "Hàm số đồng biến trên $\\mathbb{R}$",
+                                                "Hàm số nghịch biến trên $(-\\infty; -1)$",
+                                                "Hàm số đạt cực đại tại $x = 0$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $x \\ne -1$. $y = x + 1 + \\frac{1}{x+1} \\Rightarrow y' = 1 - \\frac{1}{(x+1)^2} = \\frac{x^2 + 2x}{(x+1)^2}$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = -2$. Hàm số đồng biến trên $(-\\infty; -2)$ và $(0; +\\infty)$."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị của tham số $m$ để hàm số $y = \\frac{x^2 - 2x + m}{x - 1}$ có hai khoảng đồng biến và hai khoảng nghịch biến.",
+                                        "options": [
+                                                "$m > 1$",
+                                                "$m < 1$",
+                                                "$m \\ge 1$",
+                                                "$m \\le 1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $x \\ne 1$. Đạo hàm $y' = \\frac{(2x-2)(x-1) - (x^2-2x+m)}{(x-1)^2} = \\frac{x^2 - 2x + 2 - m}{(x-1)^2}$. Để hàm số có 2 khoảng đồng biến và 2 khoảng nghịch biến thì tử số phải có 2 nghiệm phân biệt khác 1 $\\Leftrightarrow \\begin{cases} \\Delta' = 1 - (2 - m) > 0 \\\\ 1^2 - 2(1) + 2 - m \\ne 0 \\end{cases} \\Leftrightarrow \\begin{cases} m - 1 > 0 \\\\ 1 - m \\ne 0 \\end{cases} \\Leftrightarrow m > 1$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.4",
+                        "name": "Dạng 1.4: Tính đơn điệu của hàm hợp $g(x) = f(u(x))$ khi biết đồ thị/bảng xét dấu của $f'(x)$",
+                        "tip": "Đạo hàm $g'(x) = u'(x) \\cdot f'(u(x))$. Cho $g'(x) = 0$, lập bảng xét dấu. Nghiệm bội chẵn của $f'(x) = 0$ không làm đổi dấu nên có thể bỏ qua.",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x - 2)^2(x + 3)$. Hàm số $g(x) = f(1 - 2x)$ đồng biến trên khoảng nào?",
+                                        "options": [
+                                                "$(2; +\\infty)$",
+                                                "$(\\frac{1}{2}; 2)$",
+                                                "$(-\\infty; \\frac{1}{2})$",
+                                                "$(-1; 1)$"
+                                        ],
+                                        "answer": "B",
+                                        "solution": "Ta có $g'(x) = -2 f'(1 - 2x)$. Hàm số $g(x)$ đồng biến khi $g'(x) \\ge 0 \\Leftrightarrow f'(1 - 2x) \\le 0$. Mà $f'(t) \\le 0 \\Leftrightarrow -3 \\le t \\le 0$ (do $(t-2)^2 \\ge 0$). Thay $t = 1 - 2x$: $-3 \\le 1 - 2x \\le 0 \\Leftrightarrow \\frac{1}{2} \\le x \\le 2$. Vậy đồng biến trên $(\\frac{1}{2}; 2)$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có bảng xét dấu của $f'(x)$ như sau: $f'(x) > 0$ trên $(-1; 2)$ và $f'(x) < 0$ trên $(-\\infty; -1) \\cup (2; +\\infty)$. Hàm số $g(x) = f(x^2 - 2)$ nghịch biến trên khoảng nào?",
+                                        "options": [
+                                                "$(0; 1)$",
+                                                "$(-2; 0)$",
+                                                "$(1; 2)$",
+                                                "$(-\\infty; -2)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $g'(x) = 2x \\cdot f'(x^2 - 2)$. Để $g(x)$ nghịch biến thì $g'(x) \\le 0$. Với $x > 0$, cần $f'(x^2 - 2) \\le 0 \\Leftrightarrow x^2 - 2 \\le -1$ hoặc $x^2 - 2 \\ge 2 \\Leftrightarrow x^2 \\le 1 \\Leftrightarrow 0 < x \\le 1$. Do đó hàm số nghịch biến trên $(0; 1)$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có bảng biến thiên với $f'(x) < 0$ trên khoảng $(1; 3)$ và $f'(x) > 0$ trên các khoảng $(-\\infty; 1)$, $(3; +\\infty)$. Hàm số $g(x) = f(3 - x)$ đồng biến trên khoảng nào sau đây?",
+                                        "options": [
+                                                "$(0; 2)$",
+                                                "$(-\\infty; 0)$",
+                                                "$(2; +\\infty)$",
+                                                "$(1; 3)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Đạo hàm: $g'(x) = (3 - x)' \\cdot f'(3 - x) = -f'(3 - x)$. Để $g(x)$ đồng biến $\\Leftrightarrow g'(x) \\ge 0 \\Leftrightarrow f'(3 - x) \\le 0 \\Leftrightarrow 1 \\le 3 - x \\le 3 \\Leftrightarrow 0 \\le x \\le 2$. Do đó hàm số đồng biến trên khoảng $(0; 2)$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Nghiệm bội chẵn của $f'(x) = 0$ là điểm tiếp xúc, đạo hàm KHÔNG ĐỔI DẤU qua nghiệm này. Khi xét dấu đơn điệu, ta có thể bỏ qua toàn bộ các nhân tử có số mũ chẵn!",
+                                        "q": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = (x - 1)^2(x + 2)^3(x - 3)$. Hàm số $y = f(x)$ đồng biến trên các khoảng nào?",
+                                        "options": [
+                                                "$(-\\infty; -2)$ và $(3; +\\infty)$",
+                                                "$(-2; 1)$ và $(1; 3)$",
+                                                "$(-2; 3)$",
+                                                "$(1; 3)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Nhân tử $(x - 1)^2 \\ge 0, \\forall x$ là nghiệm bội chẵn nên không làm đổi dấu $f'(x)$. Dấu của $f'(x)$ phụ thuộc vào $(x + 2)(x - 3)$. Cho $f'(x) > 0 \\Leftrightarrow (x + 2)(x - 3) > 0 \\Leftrightarrow x < -2$ hoặc $x > 3$. Vậy hàm số đồng biến trên $(-\\infty; -2)$ và $(3; +\\infty)$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.5",
+                        "name": "Dạng 1.5: Cực trị của hàm đa thức bậc ba và bậc bốn",
+                        "tip": "Hàm bậc ba $y = ax^3+bx^2+cx+d$ có 2 cực trị khi $\\Delta' = b^2 - 3ac > 0$. Phân biệt: Điểm cực trị của hàm số là $x_0$; Giá trị cực trị là $y(x_0)$; Điểm cực trị của đồ thị là $M(x_0; y_0)$.",
+                        "questions": [
+                                {
+                                        "q": "Tìm tọa độ điểm cực đại của đồ thị hàm số $y = -x^3 + 3x^2 - 4$.",
+                                        "options": [
+                                                "$(2; 0)$",
+                                                "$(0; -4)$",
+                                                "$(1; -2)$",
+                                                "$(-2; 16)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $y' = -3x^2 + 6x = -3x(x - 2) = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. $y'$ đổi dấu từ $+$ sang $-$ khi qua $x = 2$. $y(2) = 0$. Điểm cực đại của đồ thị là $(2; 0)$."
+                                },
+                                {
+                                        "q": "Tìm tất cả giá trị thực của tham số $m$ để hàm số $y = x^3 - 3x^2 + mx - 1$ đạt cực trị tại 2 điểm phân biệt $x_1, x_2$ thỏa mãn $x_1^2 + x_2^2 = 6$.",
+                                        "options": [
+                                                "$m = -3$",
+                                                "$m = 3$",
+                                                "$m = 1$",
+                                                "$m = -1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y' = 3x^2 - 6x + m$. Có 2 cực trị khi $\\Delta' = 9 - 3m > 0 \\Leftrightarrow m < 3$. Viet: $x_1 + x_2 = 2, x_1 x_2 = \\frac{m}{3}$. $x_1^2 + x_2^2 = 4 - \\frac{2m}{3} = 6 \\Leftrightarrow m = -3$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy thuật ngữ: 'Điểm cực trị của hàm số' là $x$; 'Giá trị cực trị' là $y$; 'Điểm cực trị của ĐỒ THỊ hàm số' là cặp toạ độ $(x; y)$. Học sinh thường nhầm lẫn giữa 3 khái niệm này!",
+                                        "q": "Cho hàm số $y = x^3 - 3x + 1$. Khẳng định nào sau đây SAI?",
+                                        "options": [
+                                                "Điểm cực đại của hàm số là $(-1; 3)$",
+                                                "Giá trị cực đại của hàm số bằng $3$",
+                                                "Điểm cực tiểu của hàm số là $x = 1$",
+                                                "Điểm cực đại của đồ thị hàm số là điểm $(-1; 3)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Khẳng định A SAI vì 'Điểm cực đại của hàm số' là hoành độ $x = -1$, không phải toạ độ $(-1; 3)$. Cặp $(-1; 3)$ được gọi là 'Điểm cực đại của ĐỒ THỊ hàm số'."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Điều kiện cần để đạt cực trị là $y'(x_0) = 0$, nhưng CHƯA ĐỦ! Đạo hàm phải ĐỔI DẤU khi qua $x_0$. Ví dụ $y = x^3$ có $y'(0) = 0$ nhưng $x = 0$ không phải điểm cực trị.",
+                                        "q": "Cho hàm số $y = f(x)$ xác định trên $\\mathbb{R}$ có $f'(x_0) = 0$. Mệnh đề nào sau đây đúng?",
+                                        "options": [
+                                                "Hàm số đạt cực trị tại $x_0$ khi và chỉ khi $f'(x)$ đổi dấu khi qua $x_0$",
+                                                "Hàm số chắc chắn đạt cực trị tại điểm $x_0$",
+                                                "Nếu $f''(x_0) = 0$ thì $x_0$ không thể là điểm cực trị",
+                                                "Giá trị $f(x_0)$ luôn là giá trị lớn nhất của hàm số trên $\\mathbb{R}$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Định lý cực trị: Điều kiện cần và đủ để hàm số có đạo hàm đạt cực trị tại $x_0$ là $f'(x)$ phải đổi dấu khi biến số $x$ đi qua $x_0$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.6",
+                        "name": "Dạng 1.6: Cực trị hàm chứa dấu giá trị tuyệt đối $|f(x)|$ và $f(|x|)$",
+                        "tip": "Số điểm cực trị của $y = |f(x)|$ bằng $m + n$ ($m$ là số cực trị của $f(x)$, $n$ là số nghiệm đơn của $f(x)=0$). Số điểm cực trị của $y = f(|x|)$ bằng $2k + 1$ ($k$ là số cực trị dương của $f(x)$).",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có 2 điểm cực trị và phương trình $f(x) = 0$ có đúng 3 nghiệm phân biệt không trùng với điểm cực trị. Hỏi hàm số $y = |f(x)|$ có bao nhiêu điểm cực trị?",
+                                        "options": [
+                                                "$5$",
+                                                "$3$",
+                                                "$4$",
+                                                "$7$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Số điểm cực trị của hàm $y = |f(x)|$ bằng $m + n = 2 + 3 = 5$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có 3 điểm cực trị là $x_1 = -2, x_2 = 1, x_3 = 3$. Hỏi hàm số $g(x) = f(|x|)$ có bao nhiêu điểm cực trị?",
+                                        "options": [
+                                                "$5$",
+                                                "$7$",
+                                                "$3$",
+                                                "$4$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Số điểm cực trị dương là $x = 1$ và $x = 3$ ($k = 2$). Số điểm cực trị của $g(x) = f(|x|)$ là $2k + 1 = 2(2) + 1 = 5$."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để hàm số $y = |x^3 - 3x + m|$ có đúng 5 điểm cực trị.",
+                                        "options": [
+                                                "$-2 < m < 2$",
+                                                "$m > 2$",
+                                                "$m < -2$",
+                                                "$-2 \\le m \\le 2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Xét $f(x) = x^3 - 3x + m$. $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = \\pm 1$ ($m = 2$ cực trị). Hai giá trị cực trị là $f(-1) = m + 2$ và $f(1) = m - 2$. Để $y = |f(x)|$ có 5 cực trị thì $f(x)=0$ phải có 3 nghiệm đơn phân biệt $\\Leftrightarrow y_{CĐ} \\cdot y_{CT} < 0 \\Leftrightarrow (m + 2)(m - 2) < 0 \\Leftrightarrow -2 < m < 2$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy nghiệm kép: Khi $f(x) = 0$ có nghiệm kép (tiếp xúc trục hoành), đồ thị không bị lật qua trục hoành tại nghiệm đó, do đó KHÔNG TẠO RA cực trị mới tại nghiệm kép!",
+                                        "q": "Cho hàm số $f(x) = (x - 1)^2(x + 2)$. Hỏi đồ thị hàm số $y = |f(x)|$ có tất cả bao nhiêu điểm cực trị?",
+                                        "options": [
+                                                "$3$",
+                                                "$5$",
+                                                "$4$",
+                                                "$2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Hàm $f(x)$ có 2 cực trị ($m = 2$). Phương trình $f(x) = 0$ có 1 nghiệm đơn $x = -2$ và 1 nghiệm kép $x = 1$. Nghiệm kép tiếp xúc trục hoành không làm đảo chiều đồ thị nên không sinh thêm cực trị. Số cực trị của $|f(x)|$ bằng $m + n_{đơn} = 2 + 1 = 3$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.7",
+                        "name": "Dạng 1.7: Cực trị hàm hợp $g(x) = f(u(x))$ dựa trên bảng xét dấu của $f'(x)$",
+                        "tip": "Đạo hàm $g'(x) = u'(x) \\cdot f'(u(x))$. Các điểm cực trị của $g(x)$ là các nghiệm bội lẻ của $u'(x) = 0$ và của các phương trình $u(x) = x_i$ (với $x_i$ là điểm cực trị của $f(x)$).",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số $f(x)$ có đạo hàm $f'(x) = (x-1)(x-2)(x+3)$. Hàm số $g(x) = f(x^2 - 1)$ có bao nhiêu điểm cực trị?",
+                                        "options": [
+                                                "$5$",
+                                                "$3$",
+                                                "$4$",
+                                                "$7$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$g'(x) = 2x(x^2 - 2)(x^2 - 3)(x^2 + 2) = 0$. Có 5 nghiệm đơn: $x = 0; \\pm\\sqrt{2}; \\pm\\sqrt{3}$. Vậy có 5 điểm cực trị."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có 3 điểm cực trị là $-1, 1, 4$. Hỏi hàm số $g(x) = f(x^2)$ có bao nhiêu điểm cực trị?",
+                                        "options": [
+                                                "$5$",
+                                                "$3$",
+                                                "$7$",
+                                                "$6$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$g'(x) = 2x f'(x^2) = 0 \\Leftrightarrow x = 0$ hoặc $x^2 = 1 \\Leftrightarrow x = \\pm 1$ hoặc $x^2 = 4 \\Leftrightarrow x = \\pm 2$ ($x^2 = -1$ vô nghiệm). Có 5 nghiệm đơn, vậy có 5 điểm cực trị."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x-1)^2(x+2)$. Số điểm cực trị của hàm số $g(x) = f(x^3)$ là:",
+                                        "options": [
+                                                "$2$",
+                                                "$1$",
+                                                "$3$",
+                                                "$4$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$g'(x) = 3x^2 \\cdot f'(x^3) = 3x^2 \\cdot [x^3(x^3-1)^2(x^3+2)] = 3x^5(x^3-1)^2(x^3+2)$. Nghiệm $x^3-1=0$ là nghiệm bội chẵn (bội 2) nên không đổi dấu. Đạo hàm chỉ đổi dấu khi qua $x = 0$ (bội lẻ 5) và $x = -\\sqrt[3]{2}$ (bội lẻ 1). Vậy $g(x)$ có đúng 2 điểm cực trị."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy đạo hàm hàm hợp: Rất nhiều học sinh quên tính nghiệm của $u'(x) = 0$ mà chỉ đi giải $u(x) = x_i$, dẫn đến thiếu điểm cực trị của hàm ngoài!",
+                                        "q": "Cho hàm số $y = f(x)$ có bảng biến thiên với 2 điểm cực trị là $x = -1$ và $x = 2$. Hỏi hàm số $g(x) = f(x^2 - 2x)$ có tối đa bao nhiêu điểm cực trị?",
+                                        "options": [
+                                                "$5$",
+                                                "$3$",
+                                                "$4$",
+                                                "$2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Đạo hàm $g'(x) = (2x - 2) \\cdot f'(x^2 - 2x)$. Cho $g'(x) = 0 \\Leftrightarrow x = 1$ hoặc $x^2 - 2x = -1 \\Leftrightarrow (x-1)^2 = 0$ (nghiệm kép) hoặc $x^2 - 2x = 2 \\Leftrightarrow x^2 - 2x - 2 = 0$ (2 nghiệm đơn phân biệt khác 1). Tổng các nghiệm bội lẻ là $x = 1$ và 2 nghiệm của $x^2-2x-2=0$, tổng cộng có 3 cực trị. Tuy nhiên nếu $u(x)$ cắt các điểm cực trị tại các giá trị khác để tạo 2 nghiệm đơn mỗi phương trình, số điểm cực trị tối đa là $1 + 2 + 2 = 5$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.8",
+                        "name": "Dạng 1.8: Đạo hàm cấp 2, tính lồi - lõm và Điểm uốn của đồ thị hàm số",
+                        "tip": "Đồ thị lồi trên khoảng khi $y'' < 0$; lõm khi $y'' > 0$. Điểm $U(x_0; y_0)$ là điểm uốn nếu $y''(x_0) = 0$ và $y''$ đổi dấu qua $x_0$.",
+                        "questions": [
+                                {
+                                        "q": "Tìm tọa độ điểm uốn của đồ thị hàm số $y = x^3 - 3x^2 + 2$.",
+                                        "options": [
+                                                "$U(1; 0)$",
+                                                "$U(0; 2)$",
+                                                "$U(2; -2)$",
+                                                "$U(-1; -2)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y'' = 6x - 6 = 0 \\Leftrightarrow x = 1 \\Rightarrow y(1) = 0$. $y''$ đổi dấu khi qua $x = 1$. Điểm uốn là $U(1; 0)$."
+                                },
+                                {
+                                        "q": "Khoảng nào dưới đây là khoảng lồi của đồ thị hàm số $y = -x^3 + 6x^2 - 9x + 1$?",
+                                        "options": [
+                                                "$(2; +\\infty)$",
+                                                "$(-\\infty; 2)$",
+                                                "$(1; 3)$",
+                                                "$(-\\infty; 0)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y'' = -6x + 12 < 0 \\Leftrightarrow x > 2$. Đồ thị lồi trên khoảng $(2; +\\infty)$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = ax^3 + bx^2 + cx + d$ ($a \\ne 0$). Hoành độ điểm uốn của đồ thị hàm số luôn được tính theo công thức nào sau đây?",
+                                        "options": [
+                                                "$x_U = -\\frac{b}{3a}$",
+                                                "$x_U = -\\frac{b}{2a}$",
+                                                "$x_U = -\\frac{2b}{3a}$",
+                                                "$x_U = \\frac{b}{3a}$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $y' = 3ax^2 + 2bx + c \\Rightarrow y'' = 6ax + 2b$. Cho $y'' = 0 \\Leftrightarrow 6ax + 2b = 0 \\Leftrightarrow x = -\\frac{2b}{6a} = -\\frac{b}{3a}$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.9",
+                        "name": "Dạng 1.9: Tâm đối xứng và Trục đối xứng của đồ thị hàm số",
+                        "tip": "Đồ thị hàm bậc ba nhận điểm uốn $I(-b/(3a); y_0)$ làm tâm đối xứng. Đồ thị phân thức bậc 1/1 và bậc 2/1 nhận giao điểm hai đường tiệm cận làm tâm đối xứng.",
+                        "questions": [
+                                {
+                                        "q": "Tâm đối xứng của đồ thị hàm số bậc ba $y = 2x^3 - 6x + 1$ là điểm:",
+                                        "options": [
+                                                "$I(0; 1)$",
+                                                "$I(1; -3)$",
+                                                "$I(-1; 5)$",
+                                                "$I(0; 0)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y'' = 12x = 0 \\Leftrightarrow x = 0 \\Rightarrow y(0) = 1$. Tâm đối xứng là $I(0; 1)$."
+                                },
+                                {
+                                        "q": "Tâm đối xứng của đồ thị hàm số phân thức $y = \\frac{2x - 3}{x + 1}$ có tọa độ là:",
+                                        "options": [
+                                                "$I(-1; 2)$",
+                                                "$I(1; 2)$",
+                                                "$I(-1; -3)$",
+                                                "$I(2; -1)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Giao điểm tiệm cận đứng $x = -1$ và tiệm cận ngang $y = 2$ là $I(-1; 2)$."
+                                },
+                                {
+                                        "q": "Tọa độ tâm đối xứng của đồ thị hàm số phân thức bậc hai/bậc nhất $y = \\frac{x^2 - x + 1}{x - 1}$ là:",
+                                        "options": [
+                                                "$I(1; 1)$",
+                                                "$I(1; 0)$",
+                                                "$I(1; 2)$",
+                                                "$I(-1; 1)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Chia đa thức: $y = x + \\frac{1}{x-1}$. Tiệm cận đứng: $x = 1$. Tiệm cận xiên: $y = x$. Giao điểm của 2 đường tiệm cận là nghiệm của hệ $\\begin{cases} x = 1 \\\\ y = x \\end{cases} \\Rightarrow I(1; 1)$. Đây chính là tâm đối xứng của đồ thị."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.10",
+                        "name": "Dạng 1.10: Giá trị lớn nhất và nhỏ nhất (Min - Max) trên đoạn $[a; b]$",
+                        "tip": "Trên $[a; b]$, tính đạo hàm, tìm nghiệm trong đoạn, tính $f(a), f(b), f(x_i)$ và so sánh. Trên khoảng $(a; b)$, nếu GTLN/GTNN rơi vào đầu mút thì KHÔNG TỒN TẠI.",
+                        "questions": [
+                                {
+                                        "q": "Giá trị lớn nhất của hàm số $f(x) = x^4 - 2x^2 + 3$ trên đoạn $[0; 2]$ bằng:",
+                                        "options": [
+                                                "$11$",
+                                                "$3$",
+                                                "$2$",
+                                                "$19$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$f'(x) = 4x(x^2 - 1) = 0 \\Rightarrow x = 0, 1$ trên $[0; 2]$. $f(0)=3, f(1)=2, f(2)=11 \\Rightarrow \\max = 11$."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để giá trị nhỏ nhất của hàm số $y = \\frac{x + m}{x - 1}$ trên đoạn $[2; 4]$ bằng $3$.",
+                                        "options": [
+                                                "$m = 5$",
+                                                "$m = -1$",
+                                                "$m = 7$",
+                                                "$m = 2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $x \\ne 1$. $y' = \\frac{-1-m}{(x-1)^2}$. Khi $m > -1$, hàm nghịch biến $\\Rightarrow \\min = y(4) = \\frac{4+m}{3} = 3 \\Leftrightarrow m = 5$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ liên tục trên đoạn $[-1; 3]$ có bảng biến thiên với giá trị cực đại $f(1) = 4$, giá trị cực tiểu $f(-1) = 0$ và $f(3) = 2$. Giá trị lớn nhất của hàm số $g(x) = |f(x) - 2|$ trên $[-1; 3]$ bằng:",
+                                        "options": [
+                                                "$2$",
+                                                "$4$",
+                                                "$0$",
+                                                "$1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Đặt $u = f(x)$. Với $x \\in [-1; 3]$, ta có $u \\in [0; 4]$. Khi đó $g(x) = |u - 2|$ với $u \\in [0; 4]$. Hàm số $|u - 2|$ đạt GTLN tại các đầu mút $u = 0 \\Rightarrow |0 - 2| = 2$ hoặc $u = 4 \\Rightarrow |4 - 2| = 2$. Do đó GTLN bằng $2$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cực kỳ cảnh giác: Nếu đề bài hỏi giá trị lớn nhất / nhỏ nhất trên KHOẢNG MỞ $(a; b)$ mà điểm đạt rơi vào đầu mút $a$ hoặc $b$ thì hàm số KHÔNG TỒN TẠI GTLN/GTNN trên khoảng đó!",
+                                        "q": "Tìm giá trị lớn nhất $M$ của hàm số $y = \\frac{2x - 1}{x + 1}$ trên khoảng $(0; 3)$.",
+                                        "options": [
+                                                "Không tồn tại",
+                                                "$M = \\frac{5}{4}$",
+                                                "$M = 2$",
+                                                "$M = -1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $y' = \\frac{3}{(x+1)^2} > 0, \\forall x \\in (0; 3)$ nên hàm số đồng biến trên khoảng $(0; 3)$. Do đó $\\sup_{(0; 3)} y = \\lim_{x \\to 3^-} y = \\frac{5}{4}$. Tuy nhiên vì $x \\in (0; 3)$ không chứa điểm $x = 3$ nên hàm số KHÔNG ĐẠT ĐƯỢC giá trị $\\frac{5}{4}$. Do đó không tồn tại giá trị lớn nhất trên khoảng $(0; 3)$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.11",
+                        "name": "Dạng 1.11: Tiệm cận đứng và tiệm cận ngang của đồ thị hàm phân thức",
+                        "tip": "Đồ thị $y = \\frac{P(x)}{Q(x)}$: Tiệm cận đứng $x = x_0$ khi $Q(x_0)=0$ và không bị triệt tiêu hết bởi nghiệm tử. Tiệm cận ngang $y = \\lim_{x \\to \\pm\\infty} y$. Chú ý căn bậc hai khi $x \\to -\\infty$ sinh dấu âm.",
+                        "questions": [
+                                {
+                                        "q": "Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\frac{x - 1}{x^2 - 4x + 3}$ là:",
+                                        "options": [
+                                                "$2$",
+                                                "$3$",
+                                                "$1$",
+                                                "$4$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y = \\frac{1}{x-3}$ ($x \\ne 1$). TCĐ: $x = 3$. TCN: $y = 0$. Tổng số tiệm cận là 2."
+                                },
+                                {
+                                        "q": "Đồ thị hàm số $y = \\frac{2x + 1}{\\sqrt{x^2 - 4}}$ có bao nhiêu đường tiệm cận?",
+                                        "options": [
+                                                "$4$",
+                                                "$2$",
+                                                "$3$",
+                                                "$1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "TXĐ: $(-\\infty; -2) \\cup (2; +\\infty)$. Có 2 TCĐ: $x = \\pm 2$. Có 2 TCN: $y = 2$ ($x \\to +\\infty$) và $y = -2$ ($x \\to -\\infty$). Tổng cộng 4 đường tiệm cận."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy triệt tiêu nghiệm: Nghiệm của mẫu số KHÔNG PHẢI lúc nào cũng là TCĐ nếu nó bị nghiệm của tử số triệt tiêu hoàn toàn (bội nghiệm tử $\\ge$ bội nghiệm mẫu)!",
+                                        "q": "Số đường tiệm cận đứng của đồ thị hàm số $y = \\frac{x^2 - 3x + 2}{x^2 - 1}$ là:",
+                                        "options": [
+                                                "$1$",
+                                                "$2$",
+                                                "$0$",
+                                                "$3$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Mẫu số có nghiệm $x = 1, x = -1$. Ta có $y = \\frac{(x-1)(x-2)}{(x-1)(x+1)} = \\frac{x-2}{x+1}$ với $x \\ne 1$. Giới hạn $\\lim_{x \\to 1} y = \\frac{-1}{2}$ (hữu hạn) nên $x = 1$ KHÔNG PHẢI là TCĐ. Chỉ có $\\lim_{x \\to -1} y = \\infty \\Rightarrow x = -1$ là TCĐ duy nhất."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Khi $x \\to -\\infty$, ta có $\\sqrt{x^2} = |x| = -x$. Rất nhiều học sinh quên dấu trừ dẫn đến tính sai tiệm cận ngang khi $x \\to -\\infty$!",
+                                        "q": "Tổng số tiệm cận ngang của đồ thị hàm số $y = \\frac{\\sqrt{4x^2 + 1} - 1}{x - 2}$ là:",
+                                        "options": [
+                                                "$2$",
+                                                "$1$",
+                                                "$0$",
+                                                "$3$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Khi $x \\to +\\infty$: $\\lim y = \\lim \\frac{2x\\sqrt{1+1/(4x^2)}}{x} = 2 \\Rightarrow y = 2$ là TCN. Khi $x \\to -\\infty$: $\\lim y = \\lim \\frac{-2x\\sqrt{1+1/(4x^2)}}{x} = -2 \\Rightarrow y = -2$ là TCN. Vậy đồ thị có đúng 2 tiệm cận ngang."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.12",
+                        "name": "Dạng 1.12: Tiệm cận xiên của đồ thị hàm phân thức bậc hai / bậc nhất",
+                        "tip": "Chia đa thức $y = \\frac{ax^2+bx+c}{dx+e} = Ax + B + \\frac{R}{dx+e}$. Tiệm cận xiên là $y = Ax + B$. Hoặc dùng giới hạn: $A = \\lim \\frac{y}{x}, B = \\lim (y - Ax)$.",
+                        "questions": [
+                                {
+                                        "q": "Tìm phương trình đường tiệm cận xiên của đồ thị hàm số $y = \\frac{2x^2 - 3x + 5}{x - 1}$.",
+                                        "options": [
+                                                "$y = 2x - 1$",
+                                                "$y = 2x + 1$",
+                                                "$y = 2x - 3$",
+                                                "$y = x - 1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$2x^2 - 3x + 5 = (2x - 1)(x - 1) + 4 \\Rightarrow y = 2x - 1 + \\frac{4}{x - 1}$. TCX: $y = 2x - 1$."
+                                },
+                                {
+                                        "q": "Giao điểm của hai đường tiệm cận của đồ thị hàm số $y = \\frac{x^2 + 2x - 3}{x + 2}$ là điểm:",
+                                        "options": [
+                                                "$I(-2; -2)$",
+                                                "$I(-2; 0)$",
+                                                "$I(2; 2)$",
+                                                "$I(-2; 4)$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y = x - \\frac{3}{x+2}$. TCĐ: $x = -2$. TCX: $y = x$. Giao điểm là $I(-2; -2)$."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị của tham số $m$ để đường tiệm cận xiên của đồ thị hàm số $y = \\frac{x^2 + mx - 2}{x - 2}$ đi qua điểm $A(1; 5)$.",
+                                        "options": [
+                                                "$m = 2$",
+                                                "$m = -2$",
+                                                "$m = 4$",
+                                                "$m = 0$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Chia đa thức: $x^2 + mx - 2 = (x + m + 2)(x - 2) + 2m + 2 \\Rightarrow$ Tiệm cận xiên là $y = x + m + 2$. Đường tiệm cận đi qua $A(1; 5) \\Leftrightarrow 5 = 1 + m + 2 \\Leftrightarrow m = 2$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.13",
+                        "name": "Dạng 1.13: Nhận dạng đồ thị hàm số và đọc dấu hệ số $a, b, c, d$",
+                        "tip": "Đọc đồ thị: Nhánh vô cực cuối cho dấu $a$; giao điểm $Oy$ cho $d$; toạ độ các điểm cực trị cho hệ thức Viet dấu của $b, c$. Phân biệt rõ đồ thị $f'(x)$ và $f(x)$.",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ có đồ thị có nhánh cuối cùng đi xuống, cắt trục tung tại điểm $(0; 2)$, có 2 điểm cực trị nằm về 2 phía của trục tung ($x_1 < 0 < x_2$) và tổng $x_1 + x_2 > 0$. Dấu của các hệ số $a, b, c, d$ là:",
+                                        "options": [
+                                                "$a < 0, b > 0, c > 0, d > 0$",
+                                                "$a > 0, b < 0, c < 0, d > 0$",
+                                                "$a < 0, b < 0, c > 0, d > 0$",
+                                                "$a < 0, b > 0, c < 0, d > 0$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "1) Nhánh cuối đi xuống $\\Rightarrow a < 0$. 2) Cắt $Oy$ tại $(0; 2) \\Rightarrow d = 2 > 0$. 3) Hai cực trị trái dấu $\\Rightarrow \\frac{c}{3a} < 0 \\Rightarrow c > 0$. 4) Tổng $x_1+x_2 = \\frac{-2b}{3a} > 0 \\Rightarrow b > 0$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = \\frac{ax + b}{cx + d}$ ($ad - bc \\ne 0$) có tiệm cận đứng $x = 1$, tiệm cận ngang $y = 2$ và cắt trục tung tại điểm $(0; -3)$. Mệnh đề nào sau đây đúng?",
+                                        "options": [
+                                                "$a = 2, b = 3, c = 1, d = -1$",
+                                                "$a = 2, b = -3, c = 1, d = -1$",
+                                                "$a = -2, b = 3, c = 1, d = 1$",
+                                                "$a = 2, b = 3, c = -1, d = 1$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Chuẩn hóa $c = 1$: TCĐ $x = -d = 1 \\Rightarrow d = -1$. TCN $y = a = 2$. Giao điểm $Oy$: $y(0) = \\frac{b}{-1} = -3 \\Rightarrow b = 3$."
+                                },
+                                {
+                                        "q": "Cho hàm số $y = \\frac{ax + 1}{bx - 2}$ có đồ thị như hình vẽ. Biết tiệm cận đứng là $x = 1$ và tiệm cận ngang là $y = 3$. Giá trị của biểu thức $P = a + b$ bằng:",
+                                        "options": [
+                                                "$P = 8$",
+                                                "$P = 5$",
+                                                "$P = -4$",
+                                                "$P = 2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Tiệm cận đứng: $x = \\frac{2}{b} = 1 \\Rightarrow b = 2$. Tiệm cận ngang: $y = \\frac{a}{b} = 3 \\Rightarrow a = 3b = 6$. Vậy $P = a + b = 6 + 2 = 8$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy đọc đồ thị: Đọc kỹ đề bài cho đồ thị của hàm số $y = f(x)$ hay đồ thị của đạo hàm $y = f'(x)$! Nếu là đồ thị $f'(x)$, điểm cực trị của $f(x)$ là giao điểm với trục hoành (cắt ngang), không phải là đỉnh của đồ thị $f'(x)$!",
+                                        "q": "Cho đường cong trong hình vẽ là đồ thị của hàm số ĐẠO HÀM $y = f'(x)$. Biết $f'(x)$ cắt trục hoành tại 3 điểm phân biệt $x_1, x_2, x_3$. Số điểm cực trị của hàm số $y = f(x)$ là:",
+                                        "options": [
+                                                "Bằng số giao điểm cắt qua trục hoành của đồ thị $f'(x)$",
+                                                "Bằng số điểm cực trị của đồ thị $f'(x)$",
+                                                "Luôn bằng 2 điểm cực trị",
+                                                "Bằng số giao điểm của đồ thị $f'(x)$ với trục tung"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Điểm cực trị của hàm số $y = f(x)$ là nghiệm bội lẻ của $f'(x) = 0$, tương ứng là các điểm mà đồ thị $f'(x)$ CẮT NGANG qua trục hoành (đổi dấu). Điểm đỉnh của đồ thị $f'(x)$ chỉ là cực trị của hàm $f'$, không phải cực trị của $f$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.14",
+                        "name": "Dạng 1.14: Tiếp tuyến của đồ thị hàm số (Tại điểm, biết hệ số góc $k$)",
+                        "tip": "Tiếp tuyến tại $M(x_0; y_0)$: $y = f'(x_0)(x - x_0) + y_0$. Tiếp tuyến song song với đường thẳng $d: y = kx + b$: giải $f'(x_0) = k$ và phải LOẠI tiếp tuyến nếu nó trùng với $d$.",
+                        "questions": [
+                                {
+                                        "q": "Phương trình tiếp tuyến của đồ thị hàm số $y = x^3 - 3x + 2$ tại điểm có hoành độ $x_0 = 2$ là:",
+                                        "options": [
+                                                "$y = 9x - 14$",
+                                                "$y = 9x + 4$",
+                                                "$y = 3x - 2$",
+                                                "$y = 9x - 4$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$x_0 = 2 \\Rightarrow y_0 = 4$. $y' = 3x^2 - 3 \\Rightarrow f'(2) = 9$. PTTT: $y = 9(x - 2) + 4 = 9x - 14$."
+                                },
+                                {
+                                        "q": "Có bao nhiêu tiếp tuyến của đồ thị hàm số $y = \\frac{2x - 1}{x + 1}$ song song với đường thẳng $d: 3x - y + 5 = 0$?",
+                                        "options": [
+                                                "$2$",
+                                                "$1$",
+                                                "$0$",
+                                                "$3$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Hệ số góc $k = 3$. Đạo hàm $y' = \\frac{3}{(x+1)^2} = 3 \\Leftrightarrow (x+1)^2 = 1 \\Leftrightarrow x = 0$ hoặc $x = -2$. Cả 2 tiếp tuyến đều không trùng với $d$."
+                                },
+                                {
+                                        "q": "Viết phương trình tiếp tuyến của đồ thị hàm số $y = -x^4 + 2x^2 + 3$ biết tiếp tuyến vuông góc với trục tung $Oy$.",
+                                        "options": [
+                                                "$y = 4$ và $y = 3$",
+                                                "$y = 0$",
+                                                "$y = 4$",
+                                                "$y = 3$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Tiếp tuyến vuông góc với trục tung $Oy$ là đường thẳng nằm ngang có hệ số góc $k = 0$. Cho $y' = -4x^3 + 4x = 0 \\Leftrightarrow x = 0$ hoặc $x = \\pm 1$. Với $x = 0 \\Rightarrow y = 3 \\Rightarrow$ PTTT $y = 3$. Với $x = \\pm 1 \\Rightarrow y = 4 \\Rightarrow$ PTTT $y = 4$. Vậy có 2 tiếp tuyến là $y = 4$ và $y = 3$."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy tiếp tuyến song song: Sau khi tìm được phương trình tiếp tuyến $y = kx + b$, BẮT BUỘC phải đối chiếu lại xem nó có TRÙNG với đường thẳng song song ban đầu không. Nếu trùng thì phải LOẠI!",
+                                        "q": "Có bao nhiêu tiếp tuyến của đồ thị hàm số $y = \\frac{x + 2}{x - 1}$ song song với đường thẳng $d: y = -3x + 1$?",
+                                        "options": [
+                                                "$1$",
+                                                "$2$",
+                                                "$0$",
+                                                "$3$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Ta có $y' = \\frac{-3}{(x-1)^2}$. Tiếp tuyến song song với $d$ có hệ số góc $k = -3 \\Rightarrow \\frac{-3}{(x-1)^2} = -3 \\Leftrightarrow (x-1)^2 = 1 \\Leftrightarrow x = 2$ hoặc $x = 0$.\n- Tại $x = 2 \\Rightarrow y = 4$. PTTT: $y = -3(x - 2) + 4 = -3x + 10$ (thỏa mãn song song với $d$).\n- Tại $x = 0 \\Rightarrow y = -2$. PTTT: $y = -3(x - 0) - 2 = -3x - 2$ (thỏa mãn song song với $d$).\nCả 2 tiếp tuyến đều không trùng $d$. Vậy có đúng 2 tiếp tuyến. (Lưu ý: Nếu một trong hai PTTT trùng $y = -3x + 1$ thì chỉ lấy 1)."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.15",
+                        "name": "Dạng 1.15: Bài toán tương giao và nghiệm phương trình $f(x) = m$",
+                        "tip": "Số nghiệm của phương trình $f(x) = m$ là số giao điểm của đồ thị $y = f(x)$ và đường thẳng $y = m$. Dạng hàm hợp $f(u(x)) = m$: giải $u(x)$ theo các nghiệm giao điểm rồi đếm nghiệm $x$.",
+                        "questions": [
+                                {
+                                        "q": "Cho hàm số $y = f(x)$ có bảng biến thiên với giá trị cực đại $y_{CĐ} = 4$ và giá trị cực tiểu $y_{CT} = -2$. Phương trình $f(x) - 1 = 0$ có bao nhiêu nghiệm thực phân biệt?",
+                                        "options": [
+                                                "$3$",
+                                                "$2$",
+                                                "$1$",
+                                                "$4$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Phương trình tương đương $f(x) = 1$. Vì $-2 < 1 < 4$ nên đường thẳng $y = 1$ cắt đồ thị tại đúng 3 điểm phân biệt."
+                                },
+                                {
+                                        "q": "Tìm tất cả các giá trị thực của tham số $m$ để đồ thị hàm số $y = x^3 - 3x^2 + 2$ cắt đường thẳng $d: y = m$ tại 3 điểm phân biệt.",
+                                        "options": [
+                                                "$-2 < m < 2$",
+                                                "$m > 2$",
+                                                "$m < -2$",
+                                                "$-2 \\le m \\le 2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "$y_{CĐ} = 2$ và $y_{CT} = -2$. Cắt tại 3 điểm phân biệt khi $-2 < m < 2$."
+                                },
+                                {
+                                        "q": "Cho hàm số bậc ba $y = f(x)$ có bảng biến thiên với $y_{CĐ} = 3$ tại $x = -1$ và $y_{CT} = -1$ tại $x = 1$. Số nghiệm thực của phương trình $f(x^2 - 1) = 0$ là:",
+                                        "options": [
+                                                "$4$",
+                                                "$2$",
+                                                "$3$",
+                                                "$6$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Phương trình $f(t) = 0$ có 3 nghiệm phân biệt $t_1 < -1 < t_2 < 1 < t_3$ (vì $y_{CT} = -1 < 0 < y_{CĐ} = 3$). Thay $t = x^2 - 1$:\n- $x^2 - 1 = t_1 < -1 \\Rightarrow x^2 = t_1 + 1 < 0$ (vô nghiệm).\n- $x^2 - 1 = t_2 \\in (-1; 1) \\Rightarrow x^2 = t_2 + 1 \\in (0; 2) \\Rightarrow$ có 2 nghiệm phân biệt.\n- $x^2 - 1 = t_3 > 1 \\Rightarrow x^2 = t_3 + 1 > 2 \\Rightarrow$ có 2 nghiệm phân biệt.\nTổng cộng phương trình có $2 + 2 = 4$ nghiệm thực phân biệt."
+                                },
+                                {
+                                        "is_trap": True,
+                                        "trap_note": "Cạm bẫy nghiệm kép và điểm tiếp xúc: Khi đường thẳng $y = m$ đi qua điểm cực trị ($m = y_{CĐ}$ hoặc $m = y_{CT}$), tiếp xúc đồ thị tạo nghiệm kép. Số nghiệm phân biệt chỉ còn là 2, không phải 3!",
+                                        "q": "Phương trình $x^3 - 3x + 2 = m$ có đúng 2 nghiệm thực phân biệt khi và chỉ khi:",
+                                        "options": [
+                                                "$m = 0$ hoặc $m = 4$",
+                                                "$0 < m < 4$",
+                                                "$m > 4$ hoặc $m < 0$",
+                                                "$m = 2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Khảo sát $f(x) = x^3 - 3x + 2$: Có cực đại tại $x = -1, y_{CĐ} = 4$; cực tiểu tại $x = 1, y_{CT} = 0$. Đường thẳng $y = m$ cắt đồ thị tại đúng 2 điểm phân biệt khi và chỉ khi nó đi qua một điểm cực trị, tức $m = 4$ hoặc $m = 0$."
+                                }
+                        ]
+                },
+                {
+                        "id": "1.16",
+                        "name": "Dạng 1.16: Ứng dụng đạo hàm giải bài toán tối ưu hóa thực tế",
+                        "tip": "Thiết lập hàm mục tiêu $f(x)$ theo 1 biến số $x$, xác định tập xác định thực tế và khảo sát tìm giá trị lớn nhất / nhỏ nhất. Phân biệt hàm doanh thu $R(x) = x \\cdot p(x)$ và lợi nhuận $P(x) = R(x) - C(x)$.",
+                        "questions": [
+                                {
+                                        "q": "Một người nông dân muốn rào một khu đất hình chữ nhật có một cạnh giáp bờ sông thẳng (không cần rào bờ sông). Với $120\\text{ m}$ lưới thép gai có sẵn, diện tích lớn nhất khu đất có thể rào được là bao nhiêu?",
+                                        "options": [
+                                                "$1800\\text{ m}^2$",
+                                                "$1600\\text{ m}^2$",
+                                                "$2400\\text{ m}^2$",
+                                                "$900\\text{ m}^2$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Gọi $x$ là chiều rộng ($0 < x < 60$). Chiều dài là $120 - 2x$. Diện tích $S(x) = x(120 - 2x) = -2x^2 + 120x$. $S'(x) = -4x + 120 = 0 \\Leftrightarrow x = 30$. Khi đó $S_{\\max} = 1800\\text{ m}^2$."
+                                },
+                                {
+                                        "q": "Một công ty sản xuất muốn thiết kế một chiếc hộp hình trụ không nắp có thể tích $V = 54\\pi\\text{ cm}^3$. Bán kính đáy $R$ của hình trụ để diện tích toàn phần không nắp nhỏ nhất bằng:",
+                                        "options": [
+                                                "$3\\sqrt[3]{2}\\text{ cm}$",
+                                                "$3\\text{ cm}$",
+                                                "$2\\text{ cm}$",
+                                                "$6\\text{ cm}$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Thể tích $V = \\pi R^2 h = 54\\pi \\Rightarrow h = \\frac{54}{R^2}$. Diện tích vỏ hộp không nắp là $S(R) = \\pi R^2 + \\frac{108\\pi}{R}$. Đạo hàm $S'(R) = 2\\pi R - \\frac{108\\pi}{R^2} = 0 \\Leftrightarrow R^3 = 54 \\Rightarrow R = 3\\sqrt[3]{2}\\text{ cm}$."
+                                },
+                                {
+                                        "q": "Một doanh nghiệp sản xuất một loại sản phẩm với hàm chi phí tổng cộng là $C(x) = x^2 + 40x + 1600$ (nghìn đồng), trong đó $x$ là số sản phẩm sản xuất ($x > 0$). Giá bán mỗi sản phẩm trên thị trường là $p(x) = 200 - x$ (nghìn đồng). Mức sản lượng $x$ để doanh nghiệp thu được lợi nhuận lớn nhất là:",
+                                        "options": [
+                                                "$x = 40$",
+                                                "$x = 50$",
+                                                "$x = 80$",
+                                                "$x = 30$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Hàm doanh thu: $R(x) = x \\cdot p(x) = x(200 - x) = -x^2 + 200x$. Hàm lợi nhuận: $P(x) = R(x) - C(x) = (-x^2 + 200x) - (x^2 + 40x + 1600) = -2x^2 + 160x - 1600$. Đạo hàm $P'(x) = -4x + 160 = 0 \\Leftrightarrow x = 40$. Vì parabol có hệ số $a = -2 < 0$ nên lợi nhuận cực đại đạt được tại $x = 40$ sản phẩm."
+                                },
+                                {
+                                        "q": "Bảng quảng cáo hình chữ nhật cao $h = 3\\text{ m}$ được gắn thẳng đứng trên tường. Mép dưới của bảng cách tầm mắt người quan sát khoảng $b = 1\\text{ m}$, mép trên cách tầm mắt $a = 4\\text{ m}$. Người quan sát cần đứng cách tường một khoảng cách $x$ bằng bao nhiêu mét để góc nhìn bảng quảng cáo là lớn nhất?",
+                                        "options": [
+                                                "$2\\text{ m}$",
+                                                "$2.5\\text{ m}$",
+                                                "$3\\text{ m}$",
+                                                "$1.5\\text{ m}$"
+                                        ],
+                                        "answer": "A",
+                                        "solution": "Gọi $\\theta$ là góc nhìn. Ta có $\\tan \\theta = \\tan(\\alpha - \\beta) = \\frac{\\tan \\alpha - \\tan \\beta}{1 + \\tan \\alpha \\tan \\beta} = \\frac{\\frac{4}{x} - \\frac{1}{x}}{1 + \\frac{4}{x^2}} = \\frac{3}{x + \\frac{4}{x}}$. Để góc nhìn $\\theta$ lớn nhất thì mẫu số $x + \\frac{4}{x}$ phải nhỏ nhất. Theo bất đẳng thức Cauchy: $x + \\frac{4}{x} \\ge 2\\sqrt{x \\cdot \\frac{4}{x}} = 4$. Dấu bằng xảy ra khi $x = \\frac{4}{x} \\Leftrightarrow x^2 = 4 \\Leftrightarrow x = 2\\text{ m}$."
+                                }
+                        ]
+                }
         ]
-    },
+},
 
-    # =========================================================================
-    # CHƯƠNG 2: VECTƠ VÀ HỆ TỌA ĐỘ TRONG KHÔNG GIAN (8 dạng = 16 câu)
+    # CHƯƠNG 2: VECTƠ VÀ HỆ TỌA ĐỘ TRONG KHÔNG GIAN (13 dạng = 46 câu)
     # =========================================================================
     {
-        "id": "ch2",
-        "title": "Chương 2: Vectơ & Hệ Tọa Độ Trong Không Gian",
-        "badge": "8 Dạng • 16 Câu",
-        "subtopics": [
-            {
-                "id": "2.1",
-                "name": "Dạng 2.1: Quy tắc hình hộp, quy tắc 3 điểm và trọng tâm tứ diện",
-                "tip": "Hình hộp $ABCD.A'B'C'$: $\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$. Trọng tâm $G$ tứ diện $ABCD$: $\\vec{GA} + \\vec{GB} + \\vec{GC} + \\vec{GD} = \\vec{0}$.",
-                "questions": [
+            "id": "ch2",
+            "title": "Chương 2: Vectơ & Hệ Tọa Độ Trong Không Gian",
+            "badge": "13 Dạng • 46 Câu (≥3-4 câu/dạng)",
+            "subtopics": [
                     {
-                        "q": "Cho hình hộp $ABCD.A'B'C'D'$. Đẳng thức vectơ nào sau đây luôn đúng?",
-                        "options": ["$\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$", "$\\vec{AC'} = \\vec{AB} + \\vec{AC} + \\vec{AA'}$", "$\\vec{DB'} = \\vec{DA} + \\vec{DC} + \\vec{BB'}$", "$\\vec{AC'} = \\vec{A'B'} + \\vec{A'D'} + \\vec{CC'}$"],
-                        "answer": "A",
-                        "solution": "Theo quy tắc hình hộp: $\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$."
+                            "id": "2.1",
+                            "name": "Dạng 2.1: Quy tắc hình hộp, quy tắc 3 điểm và trọng tâm tứ diện",
+                            "tip": "Hình hộp $ABCD.A'B'C'$: $\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$. Trọng tâm $G$ tứ diện $ABCD$: $\\vec{GA} + \\vec{GB} + \\vec{GC} + \\vec{GD} = \\vec{0}$ hay $\\sum \\vec{OA} = 4\\vec{OG}$. Đoạn nối trung điểm: $\\vec{IJ} = \\frac{1}{2}(\\vec{AC} + \\vec{BD})$.",
+                            "questions": [
+                                    {
+                                            "q": "Cho hình hộp $ABCD.A'B'C'D'$. Đẳng thức vectơ nào sau đây luôn đúng?",
+                                            "options": [
+                                                    "$\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$",
+                                                    "$\\vec{AC'} = \\vec{AB} + \\vec{AC} + \\vec{AA'}$",
+                                                    "$\\vec{DB'} = \\vec{DA} + \\vec{DC} + \\vec{BB'}$",
+                                                    "$\\vec{AC'} = \\vec{A'B'} + \\vec{A'D'} + \\vec{CC'}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Theo quy tắc hình hộp: đường chéo xuất phát từ đỉnh $A$ là $\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$."
+                                    },
+                                    {
+                                            "q": "Cho tứ diện $ABCD$. Gọi $G$ là trọng tâm của tứ diện và $M$ là điểm bất kỳ trong không gian. Mệnh đề nào sau đây đúng?",
+                                            "options": [
+                                                    "$\\vec{MA} + \\vec{MB} + \\vec{MC} + \\vec{MD} = 4\\vec{MG}$",
+                                                    "$\\vec{MA} + \\vec{MB} + \\vec{MC} + \\vec{MD} = \\vec{MG}$",
+                                                    "$\\vec{GA} + \\vec{GB} + \\vec{GC} + \\vec{GD} = 4\\vec{OG}$",
+                                                    "$\\vec{MA} + \\vec{MB} + \\vec{MC} + \\vec{MD} = \\vec{0}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Vì $G$ là trọng tâm tứ diện nên $\\sum \\vec{GA} = \\vec{0} \\Rightarrow \\sum (\\vec{GM} + \\vec{MA}) = \\vec{0} \\Rightarrow \\sum \\vec{MA} = 4\\vec{MG}$."
+                                    },
+                                    {
+                                            "q": "Cho tứ diện $ABCD$. Gọi $I, J$ lần lượt là trung điểm của hai cạnh đối diện $AB$ và $CD$. Đẳng thức vectơ nào sau đây đúng?",
+                                            "options": [
+                                                    "$\\vec{IJ} = \\frac{1}{2}(\\vec{AC} + \\vec{BD})$",
+                                                    "$\\vec{IJ} = \\vec{AC} + \\vec{BD}$",
+                                                    "$\\vec{IJ} = \\frac{1}{2}(\\vec{AD} - \\vec{BC})$",
+                                                    "$\\vec{IJ} = \\frac{1}{3}(\\vec{AB} + \\vec{CD})$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{IJ} = \\vec{IA} + \\vec{AC} + \\vec{CJ}$ và $\\vec{IJ} = \\vec{IB} + \\vec{BD} + \\vec{DJ}$. Cộng hai vế lại ta được: $2\\vec{IJ} = (\\vec{IA} + \\vec{IB}) + (\\vec{AC} + \\vec{BD}) + (\\vec{CJ} + \\vec{DJ}) = \\vec{0} + \\vec{AC} + \\vec{BD} + \\vec{0} = \\vec{AC} + \\vec{BD} \\implies \\vec{IJ} = \\frac{1}{2}(\\vec{AC} + \\vec{BD})$."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Cho tứ diện $ABCD$. Gọi $G$ là trọng tâm của tứ diện và $M$ là điểm bất kỳ trong không gian. Mệnh đề nào sau đây đúng?",
-                        "options": ["$\\vec{MA} + \\vec{MB} + \\vec{MC} + \\vec{MD} = 4\\vec{MG}$", "$\\vec{MA} + \\vec{MB} + \\vec{MC} + \\vec{MD} = \\vec{MG}$", "$\\vec{GA} + \\vec{GB} + \\vec{GC} + \\vec{GD} = 4\\vec{OG}$", "$\\vec{MA} + \\vec{MB} + \\vec{MC} + \\vec{MD} = \\vec{0}$"],
-                        "answer": "A",
-                        "solution": "Vì $G$ là trọng tâm tứ diện nên $\\sum \\vec{GA} = \\vec{0} \\Rightarrow \\sum \\vec{MA} = 4\\vec{MG}$."
-                    }
-                ]
-            },
-            {
-                "id": "2.2",
-                "name": "Dạng 2.2: Phân tích một vectơ theo 3 vectơ không đồng phẳng trong không gian",
-                "tip": "Cho 3 vectơ không đồng phẳng $\\vec{a}, \\vec{b}, \\vec{c}$. Mọi vectơ $\\vec{x}$ đều biểu diễn duy nhất: $\\vec{x} = m\\vec{a} + n\\vec{b} + p\\vec{c}$.",
-                "questions": [
-                    {
-                        "q": "Cho tứ diện $S.ABC$. Gọi $M$ là trung điểm của $BC$. Biểu diễn vectơ $\\vec{SM}$ theo ba vectơ $\\vec{SA}, \\vec{SB}, \\vec{SC}$ là:",
-                        "options": ["$\\vec{SM} = \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SC}$", "$\\vec{SM} = \\vec{SA} + \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SC}$", "$\\vec{SM} = \\frac{1}{3}\\vec{SA} + \\frac{1}{3}\\vec{SB} + \\frac{1}{3}\\vec{SC}$", "$\\vec{SM} = \\frac{1}{2}\\vec{SB} - \\frac{1}{2}\\vec{SC}$"],
-                        "answer": "A",
-                        "solution": "Vì $M$ là trung điểm của đoạn thẳng $BC$ nên với điểm $S$ bất kỳ ta có $\\vec{SM} = \\frac{1}{2}(\\vec{SB} + \\vec{SC}) = \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SC}$."
+                            "id": "2.2",
+                            "name": "Dạng 2.2: Phân tích một vectơ theo 3 vectơ không đồng phẳng trong không gian",
+                            "tip": "Cho 3 vectơ không đồng phẳng $\\vec{a}, \\vec{b}, \\vec{c}$. Mọi vectơ $\\vec{x}$ đều biểu diễn duy nhất: $\\vec{x} = m\\vec{a} + n\\vec{b} + p\\vec{c}$. Đáy hình bình hành $ABCD$: $\\vec{SA} + \\vec{SC} = \\vec{SB} + \\vec{SD} = 2\\vec{SO}$.",
+                            "questions": [
+                                    {
+                                            "q": "Cho tứ diện $S.ABC$. Gọi $M$ là trung điểm của $BC$. Biểu diễn vectơ $\\vec{SM}$ theo ba vectơ $\\vec{SA}, \\vec{SB}, \\vec{SC}$ là:",
+                                            "options": [
+                                                    "$\\vec{SM} = \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SC}$",
+                                                    "$\\vec{SM} = \\vec{SA} + \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SC}$",
+                                                    "$\\vec{SM} = \\frac{1}{3}\\vec{SA} + \\frac{1}{3}\\vec{SB} + \\frac{1}{3}\\vec{SC}$",
+                                                    "$\\vec{SM} = \\frac{1}{2}\\vec{SB} - \\frac{1}{2}\\vec{SC}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Vì $M$ là trung điểm của đoạn thẳng $BC$ nên với điểm $S$ bất kỳ ta có $\\vec{SM} = \\frac{1}{2}(\\vec{SB} + \\vec{SC}) = \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SC}$."
+                                    },
+                                    {
+                                            "q": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Phân tích vectơ $\\vec{SO}$ theo $\\vec{SA}, \\vec{SB}, \\vec{SC}$ là:",
+                                            "options": [
+                                                    "$\\vec{SO} = \\frac{1}{2}\\vec{SA} + \\frac{1}{2}\\vec{SC}$",
+                                                    "$\\vec{SO} = \\frac{1}{4}(\\vec{SA}+\\vec{SB}+\\vec{SC}+\\vec{SD})$",
+                                                    "$\\vec{SO} = \\vec{SA} + \\vec{SC} - \\vec{SB}$",
+                                                    "$\\vec{SO} = \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SD}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Vì $O$ là trung điểm của đường chéo $AC$ nên $\\vec{SO} = \\frac{1}{2}(\\vec{SA} + \\vec{SC}) = \\frac{1}{2}\\vec{SA} + \\frac{1}{2}\\vec{SC}$."
+                                    },
+                                    {
+                                            "q": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Đẳng thức nào sau đây biểu diễn đúng mối quan hệ giữa 4 vectơ cạnh bên?",
+                                            "options": [
+                                                    "$\\vec{SA} + \\vec{SC} = \\vec{SB} + \\vec{SD}$",
+                                                    "$\\vec{SA} + \\vec{SB} = \\vec{SC} + \\vec{SD}$",
+                                                    "$\\vec{SA} - \\vec{SC} = \\vec{SB} - \\vec{SD}$",
+                                                    "$\\vec{SA} + \\vec{SD} = \\vec{SB} + \\vec{SC}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Gọi $O$ là tâm của hình bình hành $ABCD$. Vì $O$ vừa là trung điểm của $AC$, vừa là trung điểm của $BD$ nên $\\vec{SA} + \\vec{SC} = 2\\vec{SO}$ và $\\vec{SB} + \\vec{SD} = 2\\vec{SO}$. Từ đó suy ra $\\vec{SA} + \\vec{SC} = \\vec{SB} + \\vec{SD}$."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Phân tích vectơ $\\vec{SO}$ theo $\\vec{SA}, \\vec{SB}, \\vec{SC}$ là:",
-                        "options": ["$\\vec{SO} = \\frac{1}{2}\\vec{SA} + \\frac{1}{2}\\vec{SC}$", "$\\vec{SO} = \\frac{1}{4}(\\vec{SA}+\\vec{SB}+\\vec{SC}+\\vec{SD})$", "$\\vec{SO} = \\vec{SA} + \\vec{SC} - \\vec{SB}$", "$\\vec{SO} = \\frac{1}{2}\\vec{SB} + \\frac{1}{2}\\vec{SD}$"],
-                        "answer": "A",
-                        "solution": "Vì $O$ là trung điểm của đường chéo $AC$ nên $\\vec{SO} = \\frac{1}{2}(\\vec{SA} + \\vec{SC}) = \\frac{1}{2}\\vec{SA} + \\frac{1}{2}\\vec{SC}$."
-                    }
-                ]
-            },
-            {
-                "id": "2.3",
-                "name": "Dạng 2.3: Tích vô hướng của 2 vectơ trong không gian & Tính góc",
-                "tip": "Tích vô hướng: $\\vec{u} \\cdot \\vec{v} = |\\vec{u}| |\\vec{v}| \\cos(\\vec{u}, \\vec{v})$. Hai vectơ vuông góc $\\Leftrightarrow \\vec{u} \\cdot \\vec{v} = 0$.",
-                "questions": [
-                    {
-                        "q": "Cho tứ diện đều $ABCD$ cạnh $a$. Tích vô hướng $\\vec{AB} \\cdot \\vec{AC}$ bằng:",
-                        "options": ["$\\frac{a^2}{2}$", "$\\frac{a^2\\sqrt{3}}{2}$", "$-\\frac{a^2}{2}$", "$a^2$"],
-                        "answer": "A",
-                        "solution": "Tam giác $ABC$ đều cạnh $a \\Rightarrow \\widehat{BAC} = 60^\\circ$. Do đó $\\vec{AB} \\cdot \\vec{AC} = a \\cdot a \\cdot \\cos 60^\\circ = \\frac{a^2}{2}$."
+                            "id": "2.3",
+                            "name": "Dạng 2.3: Tích vô hướng của 2 vectơ trong không gian & Tính góc",
+                            "tip": "Tích vô hướng: $\\vec{u} \\cdot \\vec{v} = |\\vec{u}| |\\vec{v}| \\cos(\\vec{u}, \\vec{v})$. Góc giữa hai vectơ thỏa mãn $0^\\circ \\le (\\vec{u}, \\vec{v}) \\le 180^\\circ$. $\\cos(\\vec{u}, \\vec{v}) = \\frac{x_1 x_2 + y_1 y_2 + z_1 z_2}{\\sqrt{x_1^2+y_1^2+z_1^2}\\sqrt{x_2^2+y_2^2+z_2^2}}$.",
+                            "questions": [
+                                    {
+                                            "q": "Cho tứ diện đều $ABCD$ cạnh $a$. Tích vô hướng $\\vec{AB} \\cdot \\vec{AC}$ bằng:",
+                                            "options": [
+                                                    "$\\frac{a^2}{2}$",
+                                                    "$\\frac{a^2\\sqrt{3}}{2}$",
+                                                    "$-\\frac{a^2}{2}$",
+                                                    "$a^2$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Tam giác $ABC$ đều cạnh $a \\Rightarrow \\widehat{BAC} = 60^\\circ$. Do đó $\\vec{AB} \\cdot \\vec{AC} = a \\cdot a \\cdot \\cos 60^\\circ = \\frac{a^2}{2}$."
+                                    },
+                                    {
+                                            "q": "Cho hình lập phương $ABCD.A'B'C'D'$. Góc giữa hai vectơ $\\vec{AC}$ và $\\vec{DA'}$ bằng:",
+                                            "options": [
+                                                    "$120^\\circ$",
+                                                    "$60^\\circ$",
+                                                    "$90^\\circ$",
+                                                    "$45^\\circ$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{DA'} = \\vec{CB'}$. Tam giác $ACB'$ đều cạnh $a\\sqrt{2} \\Rightarrow \\widehat{ACB'} = 60^\\circ$. Góc giữa $\\vec{AC}$ và $\\vec{CB'}$ bằng $180^\\circ - 60^\\circ = 120^\\circ$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{u} = (1; 0; 1)$ và $\\vec{v} = (0; 1; -1)$. Cosin của góc giữa hai vectơ $\\vec{u}$ và $\\vec{v}$ bằng:",
+                                            "options": [
+                                                    "$-\\frac{1}{2}$",
+                                                    "$\\frac{1}{2}$",
+                                                    "$-\\frac{\\sqrt{2}}{2}$",
+                                                    "$\\frac{\\sqrt{3}}{2}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Tích vô hướng $\\vec{u} \\cdot \\vec{v} = 1(0) + 0(1) + 1(-1) = -1$. Độ dài: $|\\vec{u}| = \\sqrt{1^2+0^2+1^2} = \\sqrt{2}$, $|\\vec{v}| = \\sqrt{0^2+1^2+(-1)^2} = \\sqrt{2}$. Suy ra $\\cos(\\vec{u}, \\vec{v}) = \\frac{-1}{\\sqrt{2} \\cdot \\sqrt{2}} = -\\frac{1}{2}$ (góc giữa hai vectơ là $120^\\circ$)."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Cho hình lập phương $ABCD.A'B'C'D'$. Góc giữa hai vectơ $\\vec{AC}$ và $\\vec{DA'}$ bằng:",
-                        "options": ["$120^\\circ$", "$60^\\circ$", "$90^\\circ$", "$45^\\circ$"],
-                        "answer": "A",
-                        "solution": "Ta có $\\vec{DA'} = \\vec{CB'}$. Tam giác $ACB'$ đều cạnh $a\\sqrt{2} \\Rightarrow \\widehat{ACB'} = 60^\\circ$. Góc giữa $\\vec{AC}$ và $\\vec{CB'}$ bằng $180^\\circ - 60^\\circ = 120^\\circ$."
-                    }
-                ]
-            },
-            {
-                "id": "2.4",
-                "name": "Dạng 2.4: Điều kiện 3 vectơ đồng phẳng & Tích hỗn tạp $[\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0$",
-                "tip": "Ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ đồng phẳng $\\Leftrightarrow [\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0$ hoặc tồn tại $m, n$ sao cho $\\vec{c} = m\\vec{a} + n\\vec{b}$.",
-                "questions": [
-                    {
-                        "q": "Trong không gian $Oxyz$, cho ba vectơ $\\vec{a}=(1; 2; 3), \\vec{b}=(2; 0; 1), \\vec{c}=(3; 2; m)$. Tìm $m$ để ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ đồng phẳng.",
-                        "options": ["$m = 4$", "$m = -4$", "$m = 2$", "$m = 0$"],
-                        "answer": "A",
-                        "solution": "Ta có $[\\vec{a}, \\vec{b}] = (2(1)-3(0); 3(2)-1(1); 1(0)-2(2)) = (2; 5; -4)$. Ba vectơ đồng phẳng $\\Leftrightarrow [\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0 \\Leftrightarrow 2(3) + 5(2) - 4(m) = 0 \\Leftrightarrow 6 + 10 - 4m = 0 \\Leftrightarrow 4m = 16 \\Leftrightarrow m = 4$."
+                            "id": "2.4",
+                            "name": "Dạng 2.4: Hai vectơ cùng phương, cùng hướng, ngược hướng & Vị trí song song / trùng nhau của giá",
+                            "tip": "Hai vectơ $\\vec{u}, \\vec{v}$ (với $\\vec{v} \\ne \\vec{0}$) cùng phương $\\Leftrightarrow \\vec{u} = k\\vec{v}$ (hay $[\\vec{u}, \\vec{v}] = \\vec{0}$). Nếu $k > 0$: cùng hướng; nếu $k < 0$: ngược hướng. Giá của chúng song song hoặc trùng nhau.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{u} = (2; m-1; -4)$ và $\\vec{v} = (-1; 3; 2)$. Tìm giá trị của $m$ để hai vectơ $\\vec{u}$ và $\\vec{v}$ cùng phương, khi đó hai vectơ cùng hướng hay ngược hướng?",
+                                            "options": [
+                                                    "$m = -5$, hai vectơ ngược hướng",
+                                                    "$m = -5$, hai vectơ cùng hướng",
+                                                    "$m = 7$, hai vectơ cùng hướng",
+                                                    "$m = -7$, hai vectơ ngược hướng"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Hai vectơ cùng phương khi và chỉ khi $\\frac{2}{-1} = \\frac{m-1}{3} = \\frac{-4}{2} = -2$. Hệ số tỉ lệ $k = -2 < 0$ nên hai vectơ ngược hướng. Từ $\\frac{m-1}{3} = -2 \\Rightarrow m - 1 = -6 \\Rightarrow m = -5$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Học sinh thường quên rằng giá của hai vectơ cùng phương có thể TRÙNG NHAU (chứ không chỉ song song). Hơn nữa mệnh đề 'nếu a và b cùng phương với c thì a cùng phương với b' chỉ đúng khi c khác vectơ-không!",
+                                            "q": "Trong không gian, cho các khẳng định sau về quan hệ cùng phương của các vectơ:\n(I) Hai vectơ cùng phương thì giá của chúng song song với nhau.\n(II) Vectơ $\\vec{0}$ cùng phương với mọi vectơ trong không gian.\n(III) Nếu $\\vec{a}$ và $\\vec{b}$ cùng phương với $\\vec{c}$ thì $\\vec{a}$ và $\\vec{b}$ luôn cùng phương với nhau.\n(IV) Hai vectơ cùng hướng thì luôn cùng phương.\nSố khẳng định ĐÚNG trong các khẳng định trên là:",
+                                            "options": [
+                                                    "$2$",
+                                                    "$3$",
+                                                    "$4$",
+                                                    "$1$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Phân tích từng mệnh đề:\n- (I) SAI: Giá của hai vectơ cùng phương song song HOẶC TRÙNG NHAU.\n- (II) ĐÚNG: Vectơ $\\vec{0}$ cùng phương, cùng hướng với mọi vectơ.\n- (III) SAI: Chỉ đúng khi $\\vec{c} \\ne \\vec{0}$. Nếu $\\vec{c} = \\vec{0}$ thì với hai vectơ $\\vec{a}, \\vec{b}$ bất kì không cùng phương, chúng đều cùng phương với $\\vec{0}$ nhưng không cùng phương với nhau.\n- (IV) ĐÚNG: Cùng hướng là trường hợp con của cùng phương (hệ số $k > 0$).\nVậy có đúng 2 khẳng định đúng là (II) và (IV)."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{a} = (x; -2; 4)$ và $\\vec{b} = (-3; y; 6)$. Biết hai vectơ $\\vec{a}$ và $\\vec{b}$ cùng hướng, tích $x \\cdot y$ bằng:",
+                                            "options": [
+                                                    "$6$",
+                                                    "$-6$",
+                                                    "$5$",
+                                                    "$-5$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Hai vectơ cùng hướng $\\iff \\frac{x}{-3} = \\frac{-2}{y} = \\frac{4}{6} = k > 0$. Ta có $k = \\frac{2}{3} > 0$. Suy ra $x = -3 \\cdot \\frac{2}{3} = -2$ và $y = \\frac{-2}{2/3} = -3$. Khi đó $x \\cdot y = (-2)(-3) = 6$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Tỉ số toạ độ $\\frac{x_1}{x_2} = \\frac{y_1}{y_2} = \\frac{z_1}{z_2}$ chỉ áp dụng khi mẫu khác 0! Khi toạ độ có chứa số 0, bắt buộc dùng điều kiện tích có hướng $[\u000bec{u}, \u000bec{v}] = \u000bec{0}$ hoặc $\u000bec{u} = k\u000bec{v}$.",
+                                            "q": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{u} = (m; 0; 2)$ và $\\vec{v} = (4; 0; n)$. Tìm tất cả các cặp số thực $(m; n)$ để $\\vec{u}$ và $\\vec{v}$ cùng phương.",
+                                            "options": [
+                                                    "$m \\cdot n = 8$",
+                                                    "$m = 4$ và $n = 2$",
+                                                    "$m \\cdot n = 6$",
+                                                    "$m + n = 6$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Hai vectơ cùng phương khi và chỉ khi $[\\vec{u}, \\vec{v}] = \\vec{0} \\iff (0(n) - 2(0); 2(4) - m(n); m(0) - 4(0)) = (0; 8 - mn; 0) = \\vec{0} \\iff 8 - mn = 0 \\iff mn = 8$."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Cho bốn điểm $A(1; 0; 0), B(0; 1; 0), C(0; 0; 1), D(1; 1; m)$. Tìm $m$ để bốn điểm $A, B, C, D$ cùng thuộc một mặt phẳng (đồng phẳng).",
-                        "options": ["$m = -1$", "$m = 1$", "$m = 0$", "$m = 2$"],
-                        "answer": "A",
-                        "solution": "Mặt phẳng $(ABC)$ có phương trình đoạn chắn: $\\frac{x}{1} + \\frac{y}{1} + \\frac{z}{1} = 1 \\Leftrightarrow x + y + z - 1 = 0$. Điểm $D(1; 1; m) \\in (ABC) \\Leftrightarrow 1 + 1 + m - 1 = 0 \\Leftrightarrow m = -1$."
-                    }
-                ]
-            },
-            {
-                "id": "2.5",
-                "name": "Dạng 2.5: Tọa độ của điểm và vectơ trong hệ tọa độ Oxyz cơ bản",
-                "tip": "Vectơ $\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Rightarrow \\vec{u} = (x; y; z)$. Tọa độ trung điểm $M = \\frac{A+B}{2}$; trọng tâm tam giác $G = \\frac{A+B+C}{3}$.",
-                "questions": [
-                    {
-                        "q": "Trong không gian $Oxyz$, cho vectơ $\\vec{u} = 2\\vec{i} - 3\\vec{k} + \\vec{j}$. Tọa độ của vectơ $\\vec{u}$ là:",
-                        "options": ["$(2; 1; -3)$", "$(2; -3; 1)$", "$(-3; 2; 1)$", "$(2; -3; 0)$"],
-                        "answer": "A",
-                        "solution": "Theo thứ tự chuẩn $(\\vec{i}; \\vec{j}; \\vec{k})$, ta có $\\vec{u} = 2\\vec{i} + 1\\vec{j} - 3\\vec{k} \\Rightarrow \\vec{u} = (2; 1; -3)$."
+                            "id": "2.5",
+                            "name": "Dạng 2.5: Hai vectơ vuông góc trong không gian",
+                            "tip": "Hai vectơ $\\vec{u}, \\vec{v}$ vuông góc $\\Leftrightarrow \\vec{u} \\cdot \\vec{v} = 0 \\Leftrightarrow x_1 x_2 + y_1 y_2 + z_1 z_2 = 0$. Chú ý: Vectơ $\\vec{0}$ vuông góc với mọi vectơ. Tam giác $ABC$ vuông tại $A \\Leftrightarrow \\vec{AB} \\cdot \\vec{AC} = 0$.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{u} = (m; 2; -3)$ và $\\vec{v} = (2; m+1; 4)$. Tìm tất cả các giá trị của tham số $m$ để hai vectơ $\\vec{u}$ và $\\vec{v}$ vuông góc với nhau.",
+                                            "options": [
+                                                    "$m = \\frac{5}{2}$",
+                                                    "$m = -\\frac{5}{2}$",
+                                                    "$m = 2$",
+                                                    "$m = \\frac{7}{2}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{u} \\perp \\vec{v} \\Leftrightarrow \\vec{u} \\cdot \\vec{v} = 0 \\Leftrightarrow m(2) + 2(m+1) + (-3)(4) = 0 \\Leftrightarrow 2m + 2m + 2 - 12 = 0 \\Leftrightarrow 4m = 10 \\Leftrightarrow m = \\frac{5}{2}$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Trong không gian 3D, hai đường thẳng hoặc hai vectơ cùng vuông góc với vectơ thứ ba thì KHÔNG NHẤT THIẾT cùng phương (chúng có thể vuông góc, chéo hoặc cắt nhau). Đừng áp dụng trực giác hình học phẳng 2D!",
+                                            "q": "Trong không gian $Oxyz$, cho ba vectơ khác vectơ-không $\\vec{a}, \\vec{b}, \\vec{c}$. Xét các mệnh đề sau:\n(1) Nếu $\\vec{a} \\perp \\vec{b}$ và $\\vec{b} \\perp \\vec{c}$ thì $\\vec{a}$ cùng phương với $\\vec{c}$.\n(2) Nếu $\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c}$ với $\\vec{a} \\ne \\vec{0}$ thì $\\vec{b} = \\vec{c}$.\n(3) $|\\vec{a} + \\vec{b}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 \\Leftrightarrow \\vec{a} \\perp \\vec{b}$.\n(4) Hai đường thẳng có vectơ chỉ phương vuông góc với nhau thì bắt buộc phải cắt nhau.\nCó bao nhiêu mệnh đề ĐÚNG?",
+                                            "options": [
+                                                    "$1$",
+                                                    "$2$",
+                                                    "$3$",
+                                                    "$0$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Phân tích từng mệnh đề:\n- (1) SAI: Lấy $\\vec{i} \\perp \\vec{j}$ và $\\vec{j} \\perp \\vec{k}$, nhưng $\\vec{i} \\perp \\vec{k}$, không cùng phương.\n- (2) SAI: $\\vec{a} \\cdot (\\vec{b} - \\vec{c}) = 0 \\Rightarrow \\vec{a} \\perp (\\vec{b} - \\vec{c})$, không suy ra $\\vec{b} = \\vec{c}$.\n- (3) ĐÚNG: $|\\vec{a} + \\vec{b}|^2 = |\\vec{a}|^2 + 2\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 \\Leftrightarrow 2\\vec{a}\\cdot\\vec{b} = 0 \\Leftrightarrow \\vec{a} \\perp \\vec{b}$.\n- (4) SAI: Trong không gian, hai đường thẳng vuông góc có thể CẮT NHAU hoặc CHÉO NHAU.\nVậy có duy nhất 1 mệnh đề đúng là (3)."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho ba điểm $A(1; -1; 2), B(3; 1; 1), C(m; 0; 0)$. Tìm giá trị của $m$ để tam giác $ABC$ vuông tại $A$.",
+                                            "options": [
+                                                    "$m = -1$",
+                                                    "$m = 1$",
+                                                    "$m = 2$",
+                                                    "$m = 0$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{AB} = (3-1; 1-(-1); 1-2) = (2; 2; -1)$ và $\\vec{AC} = (m-1; 0-(-1); 0-2) = (m-1; 1; -2)$. Tam giác $ABC$ vuông tại $A \\iff \\vec{AB} \\cdot \\vec{AC} = 0 \\iff 2(m-1) + 2(1) + (-1)(-2) = 0 \\iff 2m - 2 + 2 + 2 = 0 \\iff 2m + 2 = 0 \\iff m = -1$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Nếu tích vô hướng $\\vec{a} \\cdot \\vec{b} = 0$ thì một trong hai vectơ có thể là $\\vec{0}$. Vectơ $\\vec{0}$ được SGK quy ước vuông góc với MỌI vectơ trong không gian!",
+                                            "q": "Trong các khẳng định sau về tích vô hướng và quan hệ vuông góc trong không gian, khẳng định nào SAI?",
+                                            "options": [
+                                                    "Nếu $\\vec{a} \\cdot \\vec{b} = 0$ thì chắc chắn cả hai vectơ $\\vec{a}$ và $\\vec{b}$ đều phải khác $\\vec{0}$",
+                                                    "Vectơ $\\vec{0}$ vuông góc với mọi vectơ trong không gian",
+                                                    "Hai vectơ $\\vec{u}, \\vec{v}$ vuông góc với nhau khi và chỉ khi $\\vec{u} \\cdot \\vec{v} = 0$",
+                                                    "Nếu hai đường thẳng $d_1, d_2$ có VTCP $\\vec{u}_1 \\perp \\vec{u}_2$ thì $d_1$ và $d_2$ vuông góc với nhau"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khẳng định A SAI vì nếu $\\vec{a} = \\vec{0}$ thì với mọi vectơ $\\vec{b}$, ta luôn có $\\vec{a} \\cdot \\vec{b} = 0$. Không bắt buộc cả hai vectơ phải khác $\\vec{0}$."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Trong không gian $Oxyz$, cho 3 điểm $A(1; 2; -1), B(2; -1; 3), C(-4; 7; 5)$. Tìm tọa độ điểm $D$ để tứ giác $ABCD$ là hình bình hành.",
-                        "options": ["$D(-5; 10; 1)$", "$D(3; -6; 7)$", "$D(-1; 4; 9)$", "$D(5; -10; -1)$"],
-                        "answer": "A",
-                        "solution": "$ABCD$ là hình bình hành $\\Leftrightarrow \\vec{AD} = \\vec{BC} = (-6; 8; 2) \\Rightarrow D(1-6; 2+8; -1+2) = D(-5; 10; 1)$."
-                    }
-                ]
-            },
-            {
-                "id": "2.6",
-                "name": "Dạng 2.6: Hình chiếu vuông góc và Điểm đối xứng qua các trục/mặt phẳng tọa độ",
-                "tip": "Chiếu lên cái gì thì giữ nguyên tọa độ đó, còn lại bằng 0. Đối xứng qua cái gì thì giữ nguyên tọa độ đó, các tọa độ còn lại đổi dấu.",
-                "questions": [
-                    {
-                        "q": "Trong không gian $Oxyz$, hình chiếu vuông góc của điểm $M(2; -3; 5)$ lên mặt phẳng $(Oxy)$ là điểm:",
-                        "options": ["$H(2; -3; 0)$", "$H(2; 0; 5)$", "$H(0; -3; 5)$", "$H(0; 0; 5)$"],
-                        "answer": "A",
-                        "solution": "Chiếu lên mặt phẳng $(Oxy)$ thì giữ nguyên hoành độ $x$ và tung độ $y$, cho cao độ $z = 0$. Do đó $H(2; -3; 0)$."
+                            "id": "2.6",
+                            "name": "Dạng 2.6: Vị trí tương đối của giá hai vectơ trong không gian (Song song, Cắt nhau, Chéo nhau)",
+                            "tip": "Giá của $\\vec{AB}$ và $\\vec{CD}$ là hai đường thẳng $AB, CD$. Nếu $\\vec{AB}, \\vec{CD}$ cùng phương $\\Rightarrow$ song song hoặc trùng. Nếu không cùng phương: $[\u000bec{AB}, \\vec{CD}] \\cdot \\vec{AC} = 0 \\Rightarrow$ Cắt nhau; $[\u000bec{AB}, \\vec{CD}] \\cdot \\vec{AC} \\ne 0 \\Rightarrow$ Chéo nhau.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho 4 điểm $A(1; 1; 0), B(3; 2; 1), C(2; 0; 2), D(4; 1; 3)$. Xét vị trí tương đối giữa giá của hai vectơ $\\vec{AB}$ và $\\vec{CD}$.",
+                                            "options": [
+                                                    "Song song với nhau",
+                                                    "Trùng nhau",
+                                                    "Cắt nhau",
+                                                    "Chéo nhau"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{AB} = (2; 1; 1)$ và $\\vec{CD} = (2; 1; 1) \\Rightarrow \\vec{AB} = \\vec{CD}$, hai vectơ cùng phương. Xét $\\vec{AC} = (1; -1; 2)$. Vì $\\frac{1}{2} \\ne \\frac{-1}{1}$ nên $\\vec{AC}$ không cùng phương với $\\vec{AB}$, tức điểm $C \\notin AB$. Do đó hai đường thẳng $AB$ và $CD$ song song với nhau."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Cạm bẫy: Hai đường thẳng chéo nhau khi 4 điểm KHÔNG ĐỒNG PHẲNG (tích hỗn tạp khác 0). Nhiều bạn chỉ thấy hai vectơ không cùng phương liền kết luận cắt nhau là sai!",
+                                            "q": "Trong không gian $Oxyz$, cho 4 điểm $A(1; 0; 1), B(2; 1; 2), C(1; 2; 3), D(3; 2; 1)$. Vị trí tương đối của hai đường thẳng $AB$ (giá của $\\vec{AB}$) và $CD$ (giá của $\\vec{CD}$) là:",
+                                            "options": [
+                                                    "Chéo nhau",
+                                                    "Cắt nhau tại một điểm",
+                                                    "Song song với nhau",
+                                                    "Vuông góc và cắt nhau"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{AB} = (1; 1; 1)$ và $\\vec{CD} = (2; 0; -2)$. Tích có hướng $[\u000bec{AB}, \\vec{CD}] = (-2; 4; -2) \\ne \\vec{0} \\Rightarrow$ hai đường thẳng không song song, không trùng. Xét $\\vec{AC} = (0; 2; 2)$. Tích hỗn tạp $[\u000bec{AB}, \\vec{CD}] \\cdot \\vec{AC} = (-2)(0) + 4(2) + (-2)(2) = 4 \\ne 0$. Vì 4 điểm không đồng phẳng nên hai đường thẳng $AB$ và $CD$ chéo nhau."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho 4 điểm $A(1; 2; 0), B(2; 3; 1), C(0; 1; -1), D(3; 4; 2)$. Vị trí tương đối của hai đường thẳng $AB$ và $CD$ là:",
+                                            "options": [
+                                                    "Trùng nhau",
+                                                    "Song song với nhau",
+                                                    "Cắt nhau",
+                                                    "Chéo nhau"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{AB} = (1; 1; 1)$ và $\\vec{CD} = (3; 3; 3) = 3\\vec{AB}$, nên hai vectơ cùng phương. Xét điểm $C(0; 1; -1)$: $\\vec{AC} = (-1; -1; -1) = -1\\vec{AB} \\implies C \\in AB$. Vì hai đường thẳng cùng phương và có điểm chung $C$ nên hai đường thẳng $AB$ và $CD$ trùng nhau."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Đặc trưng lớn nhất của hình học không gian: Hai đường thẳng chéo nhau hoàn toàn có thể VUÔNG GÓC với nhau. Đừng nhầm tưởng vuông góc thì phải cắt nhau như trong hình phẳng!",
+                                            "q": "Trong không gian, cho hai đường thẳng $d_1$ và $d_2$ chéo nhau. Khẳng định nào sau đây ĐÚNG?",
+                                            "options": [
+                                                    "Hai đường thẳng $d_1$ và $d_2$ hoàn toàn có thể vuông góc với nhau",
+                                                    "Hai đường thẳng $d_1$ và $d_2$ không thể cùng vuông góc với một đường thẳng thứ ba",
+                                                    "Hai đường thẳng $d_1$ và $d_2$ luôn cùng thuộc một mặt phẳng",
+                                                    "Góc giữa $d_1$ và $d_2$ luôn là góc nhọn hoặc góc tù"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khẳng định A ĐÚNG: Trong không gian, hai đường thẳng chéo nhau hoàn toàn có thể vuông góc với nhau (ví dụ: $AB$ và $CC'$ trong hình lập phương $ABCD.A'B'C'D'$). Khẳng định B sai vì đường vuông góc chung của $d_1, d_2$ vuông góc với cả hai đường. Khẳng định C sai vì chéo nhau là không đồng phẳng. Khẳng định D sai vì góc giữa hai đường thẳng luôn $\\le 90^\\circ$."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Điểm đối xứng của điểm $M(1; -4; 3)$ qua trục tung $Oy$ có tọa độ là:",
-                        "options": ["$M'(-1; -4; -3)$", "$M'(1; 4; 3)$", "$M'(-1; 4; -3)$", "$M'(0; -4; 0)$"],
-                        "answer": "A",
-                        "solution": "Đối xứng qua trục $Oy$ thì giữ nguyên tung độ $y = -4$, đổi dấu hoành độ và cao độ thành $x' = -1, z' = -3$. Do đó $M'(-1; -4; -3)$."
-                    }
-                ]
-            },
-            {
-                "id": "2.7",
-                "name": "Dạng 2.7: Tích có hướng của 2 vectơ và Ứng dụng tính diện tích, thể tích",
-                "tip": "Diện tích $S_{\\Delta ABC} = \\frac{1}{2}|[\\vec{AB}, \\vec{AC}]|$. Thể tích $V_{ABCD} = \\frac{1}{6}|[\\vec{AB}, \\vec{AC}] \\cdot \\vec{AD}|$.",
-                "questions": [
-                    {
-                        "q": "Trong không gian $Oxyz$, cho 3 điểm $A(1; 0; 0), B(0; 2; 0), C(0; 0; 3)$. Diện tích của tam giác $ABC$ bằng:",
-                        "options": ["$\\frac{7}{2}$", "$7$", "$\\sqrt{14}$", "$\\frac{\\sqrt{14}}{2}$"],
-                        "answer": "A",
-                        "solution": "Ta có $[\\vec{AB}, \\vec{AC}] = (6; 3; 2) \\Rightarrow |[\\vec{AB}, \\vec{AC}]| = \\sqrt{36+9+4} = 7$. Diện tích $S = \\frac{7}{2}$."
+                            "id": "2.7",
+                            "name": "Dạng 2.7: Điều kiện ba vectơ đồng phẳng & Bốn điểm đồng phẳng",
+                            "tip": "Ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ đồng phẳng $\\Leftrightarrow [\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0$ hoặc tồn tại $m, n$ sao cho $\\vec{c} = m\\vec{a} + n\\vec{b}$. Bốn điểm $A,B,C,D$ đồng phẳng $\\Leftrightarrow [\\vec{AB}, \\vec{AC}] \\cdot \\vec{AD} = 0$.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho ba vectơ $\\vec{a}=(1; 2; 3), \\vec{b}=(2; 0; 1), \\vec{c}=(3; 2; m)$. Tìm $m$ để ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ đồng phẳng.",
+                                            "options": [
+                                                    "$m = 4$",
+                                                    "$m = -4$",
+                                                    "$m = 2$",
+                                                    "$m = 0$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $[\\vec{a}, \\vec{b}] = (2(1)-3(0); 3(2)-1(1); 1(0)-2(2)) = (2; 5; -4)$. Ba vectơ đồng phẳng $\\Leftrightarrow [\\vec{a}, \\vec{b}] \\cdot \\vec{c} = 0 \\Leftrightarrow 2(3) + 5(2) - 4(m) = 0 \\Leftrightarrow 16 - 4m = 0 \\Leftrightarrow m = 4$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Cạm bẫy định nghĩa: Ba vectơ đồng phẳng KHÔNG BẮT BUỘC giá phải cùng nằm trong một mặt phẳng, giá của chúng có thể nằm trên các mặt phẳng song song với nhau. Ngược lại, nếu trong 3 vectơ có 2 vectơ cùng phương thì 3 vectơ đó LUÔN đồng phẳng!",
+                                            "q": "Trong không gian, cho ba vectơ $\\vec{u}, \\vec{v}, \\vec{w}$ bất kỳ. Mệnh đề nào sau đây SAI?",
+                                            "options": [
+                                                    "Nếu ba vectơ $\\vec{u}, \\vec{v}, \\vec{w}$ đồng phẳng thì giá của chúng phải cùng nằm trong một mặt phẳng",
+                                                    "Nếu hai vectơ $\\vec{u}$ và $\\vec{v}$ cùng phương thì ba vectơ $\\vec{u}, \\vec{v}, \\vec{w}$ luôn đồng phẳng với mọi vectơ $\\vec{w}$",
+                                                    "Vectơ $\\vec{0}$ luôn đồng phẳng với hai vectơ bất kì",
+                                                    "Ba vectơ $\\vec{u}, \\vec{v}, \\vec{w}$ đồng phẳng khi và chỉ khi giá của chúng cùng song song hoặc nằm trong một mặt phẳng"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khẳng định A SAI vì định nghĩa đồng phẳng yêu cầu giá của chúng cùng song song hoặc nằm trong một mặt phẳng, tức là giá có thể nằm ở các mặt phẳng song song khác nhau chứ không bắt buộc cùng nằm trên một mặt phẳng duy nhất. Khẳng định B đúng vì $\\vec{u} = k\\vec{v} + 0\\vec{w}$. Khẳng định C đúng vì $\\vec{0} = 0\\vec{u} + 0\\vec{v}$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho 4 điểm $A(2; 0; 0), B(0; 4; 0), C(0; 0; 6)$ và $D(1; 1; m)$. Tìm giá trị của $m$ để 4 điểm $A, B, C, D$ cùng thuộc một mặt phẳng.",
+                                            "options": [
+                                                    "$m = 1.5$",
+                                                    "$m = 2$",
+                                                    "$m = -1.5$",
+                                                    "$m = 3$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Mặt phẳng $(ABC)$ qua 3 điểm trên các trục toạ độ có phương trình đoạn chắn: $\\frac{x}{2} + \\frac{y}{4} + \\frac{z}{6} = 1 \\iff 6x + 3y + 2z - 12 = 0$. Điểm $D(1; 1; m) \\in (ABC) \\iff 6(1) + 3(1) + 2m - 12 = 0 \\iff 2m = 3 \\iff m = 1.5$."
+                                    },
+                                    {
+                                            "q": "Cho hai vectơ không cùng phương $\\vec{a}$ và $\\vec{b}$. Vectơ $\\vec{c} = 2\\vec{a} - 3\\vec{b}$. Khẳng định nào sau đây luôn đúng?",
+                                            "options": [
+                                                    "Ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ luôn đồng phẳng",
+                                                    "Ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ tạo thành một cơ sở không gian",
+                                                    "Vectơ $\\vec{c}$ vuông góc với cả $\\vec{a}$ và $\\vec{b}$",
+                                                    "Ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ không đồng phẳng"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Vì $\\vec{c} = 2\\vec{a} + (-3)\\vec{b}$ được biểu diễn tuyến tính qua $\\vec{a}$ và $\\vec{b}$ nên theo định lý về sự đồng phẳng của ba vectơ, bộ ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ luôn đồng phẳng."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Trong không gian $Oxyz$, cho tứ diện $ABCD$ với $A(0;0;0), B(1;0;0), C(0;2;0), D(0;0;3)$. Thể tích khối tứ diện $ABCD$ bằng:",
-                        "options": ["$1$", "$6$", "$2$", "$\\frac{1}{3}$"],
-                        "answer": "A",
-                        "solution": "Tứ diện có 3 cạnh đôi một vuông góc xuất phát từ gốc $O$: $V = \\frac{1}{6} (1)(2)(3) = 1$."
-                    }
-                ]
-            },
-            {
-                "id": "2.8",
-                "name": "Dạng 2.8: Ứng dụng vectơ mô hình lực tĩnh học 3D và chuyển động",
-                "tip": "Vật đứng yên cân bằng khi tổng hợp lực $\\sum \\vec{F} = \\vec{0}$. Vận tốc thực tế $\\vec{v} = \\vec{v}_1 + \\vec{v}_2$.",
-                "questions": [
-                    {
-                        "q": "Một vật có trọng lượng $P = 100\\text{ N}$ được treo cân bằng bởi 3 sợi dây cáp không giãn trong không gian. Đẳng thức mô tả đúng trạng thái cân bằng lực là:",
-                        "options": ["$\\vec{T}_1 + \\vec{T}_2 + \\vec{T}_3 + \\vec{P} = \\vec{0}$", "$|\\vec{T}_1| + |\\vec{T}_2| + |\\vec{T}_3| = 100$", "$\\vec{T}_1 + \\vec{T}_2 + \\vec{T}_3 = \\vec{P}$", "$\\vec{T}_1 + \\vec{T}_2 = \\vec{T}_3 + \\vec{P}$"],
-                        "answer": "A",
-                        "solution": "Theo định luật cân bằng tĩnh học: $\\sum \\vec{F} = \\vec{T}_1 + \\vec{T}_2 + \\vec{T}_3 + \\vec{P} = \\vec{0}$."
+                            "id": "2.8",
+                            "name": "Dạng 2.8: Ba vectơ không đồng phẳng, Cơ sở không gian & Điều kiện tạo thành tứ diện",
+                            "tip": "Ba vectơ không đồng phẳng $\\Leftrightarrow [\\vec{a}, \\vec{b}] \\cdot \\vec{c} \\ne 0$. Bốn điểm $A,B,C,D$ không đồng phẳng $\\Leftrightarrow$ tạo thành 4 đỉnh tứ diện $\\Leftrightarrow V_{ABCD} = \\frac{1}{6}|[\\vec{AB}, \\vec{AC}] \\cdot \\vec{AD}| > 0$.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho bốn điểm $A(1; 0; 0), B(0; 1; 0), C(0; 0; 1), D(1; 1; m)$. Tìm tất cả các giá trị của tham số $m$ để bốn điểm $A, B, C, D$ tạo thành bốn đỉnh của một khối tứ diện.",
+                                            "options": [
+                                                    "$m \\ne -1$",
+                                                    "$m = -1$",
+                                                    "$m > -1$",
+                                                    "$m \\ne 0$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Bốn điểm tạo thành tứ diện $\\Leftrightarrow$ bốn điểm không đồng phẳng. Mặt phẳng $(ABC)$ có phương trình đoạn chắn: $\\frac{x}{1} + \\frac{y}{1} + \\frac{z}{1} = 1 \\Leftrightarrow x + y + z - 1 = 0$. Điểm $D(1; 1; m) \\notin (ABC) \\Leftrightarrow 1 + 1 + m - 1 \\ne 0 \\Leftrightarrow m + 1 \\ne 0 \\Leftrightarrow m \\ne -1$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Cạm bẫy cơ sở: Ba vectơ chỉ tạo thành một cơ sở của không gian 3 chiều khi và chỉ khi chúng KHÔNG ĐỒNG PHẲNG. Đôi một không cùng phương là điều kiện chưa đủ!",
+                                            "q": "Cho bộ ba vectơ $\\vec{e}_1, \\vec{e}_2, \\vec{e}_3$ trong không gian. Điều kiện cần và đủ để mọi vectơ $\\vec{x}$ bất kỳ đều biểu diễn được duy nhất dưới dạng $\\vec{x} = m\\vec{e}_1 + n\\vec{e}_2 + p\\vec{e}_3$ ($m, n, p \\in \\mathbb{R}$) là:",
+                                            "options": [
+                                                    "Ba vectơ $\\vec{e}_1, \\vec{e}_2, \\vec{e}_3$ không đồng phẳng",
+                                                    "Ba vectơ $\\vec{e}_1, \\vec{e}_2, \\vec{e}_3$ đôi một vuông góc với nhau",
+                                                    "Ba vectơ $\\vec{e}_1, \\vec{e}_2, \\vec{e}_3$ đôi một không cùng phương",
+                                                    "Ba vectơ $\\vec{e}_1, \\vec{e}_2, \\vec{e}_3$ có độ dài khác 0"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Theo định lý phân tích một vectơ theo ba vectơ cơ sở trong không gian: Điều kiện cần và đủ là ba vectơ $\\vec{e}_1, \\vec{e}_2, \\vec{e}_3$ không đồng phẳng. Lưu ý: Lựa chọn 'đôi một không cùng phương' là cạm bẫy vì 3 vectơ nằm trong cùng một mặt phẳng vẫn có thể đôi một không cùng phương nhưng lại đồng phẳng, không thể biểu diễn các vectơ ngoài mặt phẳng đó."
+                                    },
+                                    {
+                                            "q": "Cho tứ diện $ABCD$ có thể tích $V = 6$. Biết toạ độ các đỉnh $A(0;0;0), B(2;0;0), C(0;3;0)$ và $D(0;0;z)$ với $z > 0$. Cao độ $z$ của điểm $D$ bằng:",
+                                            "options": [
+                                                    "$z = 6$",
+                                                    "$z = 3$",
+                                                    "$z = 12$",
+                                                    "$z = 1$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khối tứ diện có 3 cạnh $AB, AC, AD$ đôi một vuông góc xuất phát từ gốc $A(0;0;0)$: $V = \\frac{1}{6} \\cdot OA \\cdot OB \\cdot OC = \\frac{1}{6} (2)(3)(z) = z$. Vì $V = 6 \\implies z = 6$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Không gian 3 chiều có số chiều bằng 3, nên bất kỳ hệ gồm 4 vectơ nào trong không gian cũng luôn luôn PHỤ THUỘC TUYẾN TÍNH (không thể độc lập tuyến tính).",
+                                            "q": "Trong không gian 3 chiều, cho tập hợp gồm 4 vectơ bất kỳ $\\mathcal{S} = \\{\\vec{u}_1, \\vec{u}_2, \\vec{u}_3, \\vec{u}_4\\}$. Khẳng định nào sau đây luôn đúng?",
+                                            "options": [
+                                                    "Bốn vectơ này luôn phụ thuộc tuyến tính",
+                                                    "Bốn vectơ này luôn tạo thành một cơ sở của không gian",
+                                                    "Bốn vectơ này luôn đồng phẳng",
+                                                    "Trong 4 vectơ luôn có ít nhất 2 vectơ cùng phương"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khẳng định A ĐÚNG: Không gian có số chiều bằng 3 nên số vectơ độc lập tuyến tính tối đa chỉ là 3. Do đó bất kỳ tập hợp nào chứa từ 4 vectơ trở lên trong không gian đều phụ thuộc tuyến tính."
+                                    }
+                            ]
                     },
                     {
-                        "q": "Một máy bay bay theo hướng Bắc với vận tốc riêng không đổi $600\\text{ km/h}$. Gió thổi từ hướng Tây sang Đông với vận tốc $80\\text{ km/h}$. Tốc độ thực tế của máy bay so với mặt đất xấp xỉ bằng:",
-                        "options": ["$605.3\\text{ km/h}$", "$680.0\\text{ km/h}$", "$520.0\\text{ km/h}$", "$640.2\\text{ km/h}$"],
-                        "answer": "A",
-                        "solution": "Do 2 hướng vuông góc: $v = \\sqrt{600^2 + 80^2} = \\sqrt{366400} \\approx 605.32\\text{ km/h}$."
+                            "id": "2.9",
+                            "name": "Dạng 2.9: Câu hỏi Lý thuyết & Mệnh đề Đánh lừa về Vectơ và Phép toán không gian",
+                            "tip": "Cảnh giác cao độ: Góc giữa 2 vectơ từ $0^\\circ$ đến $180^\\circ$ (có thể tù). Tích có hướng phản đối xứng $[\u000bec{u}, \u000bec{v}] = -[\u000bec{v}, \u000bec{u}]$. Quy tắc 3 điểm, hình bình hành và hình hộp phải đúng đỉnh xuất phát.",
+                            "questions": [
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Bẫy góc: Góc giữa 2 vectơ có thể TÙ (từ 0 đến 180 độ), còn góc giữa 2 đường thẳng chỉ từ 0 đến 90 độ!",
+                                            "q": "Cho hai vectơ $\\vec{u}, \\vec{v}$ khác $\\vec{0}$. Trong các mệnh đề sau, mệnh đề nào SAI?",
+                                            "options": [
+                                                    "Góc giữa hai vectơ $\\vec{u}$ và $\\vec{v}$ thỏa mãn $0^\\circ \\le (\\vec{u}, \\vec{v}) \\le 90^\\circ$",
+                                                    "Tích vô hướng $\\vec{u} \\cdot \\vec{v} < 0$ khi và chỉ khi góc giữa hai vectơ là góc tù",
+                                                    "$[\\vec{u}, \\vec{v}] = -[\\vec{v}, \\vec{u}]$",
+                                                    "$|\\vec{u} \\cdot \\vec{v}| \\le |\\vec{u}| \\cdot |\\vec{v}|$, dấu bằng xảy ra khi hai vectơ cùng phương"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Mệnh đề A SAI vì theo định nghĩa: Góc giữa hai vectơ $\\vec{u}, \\vec{v}$ nhận giá trị trong đoạn $[0^\\circ; 180^\\circ]$. Chỉ có góc giữa hai ĐƯỜNG THẲNG mới bị giới hạn trong $[0^\\circ; 90^\\circ]$. Đây là bẫy lý thuyết cực phổ biến."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Bẫy quy tắc hình hộp: Phải là tổng của 3 vectơ cạnh xuất phát từ cùng một đỉnh. Chú ý các đỉnh trung gian trong biểu thức quy tắc 3 điểm.",
+                                            "q": "Cho hình hộp chữ nhật $ABCD.A'B'C'D'$. Mệnh đề nào sau đây SAI?",
+                                            "options": [
+                                                    "$\\vec{AC'} = \\vec{AB} + \\vec{BC} + \\vec{CD}$",
+                                                    "$\\vec{AC'} = \\vec{AB} + \\vec{AD} + \\vec{AA'}$",
+                                                    "$\\vec{BD'} = \\vec{BA} + \\vec{BC} + \\vec{BB'}$",
+                                                    "$\\vec{BA} + \\vec{BC} + \\vec{BB'} = \\vec{BD'} \\ne \\vec{AC'}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Mệnh đề A SAI vì theo quy tắc 3 điểm nối tiếp: $\\vec{AB} + \\vec{BC} + \\vec{CD} = \\vec{AD} \\ne \\vec{AC'}$. Để ra $\\vec{AC'}$ thì phải là $\\vec{AB} + \\vec{BC} + \\vec{CC'} = \\vec{AC'}$. Các mệnh đề B, C, D đều đúng theo quy tắc hình hộp."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Phép chia vectơ KHÔNG TỒN TẠI! Từ $\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c}$ tuyệt đối KHÔNG ĐƯỢC triệt tiêu $\\vec{a}$ để suy ra $\\vec{b} = \\vec{c}$.",
+                                            "q": "Cho ba vectơ $\\vec{a}, \\vec{b}, \\vec{c}$ trong không gian với $\\vec{a} \\ne \\vec{0}$. Khẳng định $\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c} \\implies \\vec{b} = \\vec{c}$ là ĐÚNG hay SAI? Vì sao?",
+                                            "options": [
+                                                    "SAI, vì $\\vec{a} \\cdot (\\vec{b} - \\vec{c}) = 0$ chỉ suy ra $\\vec{a} \\perp (\\vec{b} - \\vec{c})$ hoặc $\\vec{b} = \\vec{c}$",
+                                                    "ĐÚNG, vì đây là tính chất giản ước của tích vô hướng",
+                                                    "ĐÚNG, nếu thêm điều kiện $\\vec{b} \\ne \\vec{0}$",
+                                                    "SAI, vì tích vô hướng không có tính chất kết hợp"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khẳng định A ĐÚNG: Chuyển vế ta có $\\vec{a} \\cdot (\\vec{b} - \\vec{c}) = 0$. Vì $\\vec{a} \\ne \\vec{0}$, điều này chỉ chứng tỏ $\\vec{a} \\perp (\\vec{b} - \\vec{c})$ chứ không suy ra $\\vec{b} = \\vec{c}$."
+                                    },
+                                    {
+                                            "is_trap": True,
+                                            "trap_note": "Tích có hướng có tính chất PHẢN ĐỐI XỨNG $[\u000bec{a}, \u000bec{b}] = -[\u000bec{b}, \u000bec{a}]$. Đổi thứ tự hai vectơ thì kết quả đổi dấu!",
+                                            "q": "Cho hai vectơ $\\vec{a}$ và $\\vec{b}$ trong không gian $Oxyz$. Khẳng định nào sau đây SAI?",
+                                            "options": [
+                                                    "$[\\vec{a}, \\vec{b}] = [\\vec{b}, \\vec{a}]$",
+                                                    "$[\\vec{a}, \\vec{b}] \\perp \\vec{a}$ và $[\\vec{a}, \\vec{b}] \\perp \\vec{b}$",
+                                                    "$|[\\vec{a}, \\vec{b}]| = |\\vec{a}| |\\vec{b}| \\sin(\\vec{a}, \\vec{b})$",
+                                                    "Hai vectơ $\\vec{a}, \\vec{b}$ cùng phương $\\iff [\\vec{a}, \\vec{b}] = \\vec{0}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Khẳng định A SAI vì $[\u000bec{a}, \\vec{b}] = -[\\vec{b}, \\vec{a}]$ do tính phản đối xứng của định thức toạ độ. Các khẳng định B, C, D đều đúng."
+                                    }
+                            ]
+                    },
+                    {
+                            "id": "2.10",
+                            "name": "Dạng 2.10: Tọa độ của điểm và vectơ trong hệ tọa độ Oxyz cơ bản",
+                            "tip": "Vectơ $\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Rightarrow \\vec{u} = (x; y; z)$. Tọa độ trung điểm $M = \\frac{A+B}{2}$; trọng tâm tam giác $G = \\frac{A+B+C}{3}$. Điểm $D$ để $ABCD$ là hình bình hành: $D = A + C - B$.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho vectơ $\\vec{u} = 2\\vec{i} - 3\\vec{k} + \\vec{j}$. Tọa độ của vectơ $\\vec{u}$ là:",
+                                            "options": [
+                                                    "$(2; 1; -3)$",
+                                                    "$(2; -3; 1)$",
+                                                    "$(-3; 2; 1)$",
+                                                    "$(2; -3; 0)$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Theo thứ tự chuẩn $(\\vec{i}; \\vec{j}; \\vec{k})$, ta có $\\vec{u} = 2\\vec{i} + 1\\vec{j} - 3\\vec{k} \\Rightarrow \\vec{u} = (2; 1; -3)$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho 3 điểm $A(1; 2; -1), B(2; -1; 3), C(-4; 7; 5)$. Tìm tọa độ điểm $D$ để tứ giác $ABCD$ là hình bình hành.",
+                                            "options": [
+                                                    "$D(-5; 10; 1)$",
+                                                    "$D(3; -6; 7)$",
+                                                    "$D(-1; 4; 9)$",
+                                                    "$D(5; -10; -1)$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "$ABCD$ là hình bình hành $\\Leftrightarrow \\vec{AD} = \\vec{BC} = (-6; 8; 2) \\Rightarrow D(1-6; 2+8; -1+2) = D(-5; 10; 1)$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho hai điểm $A(1; 3; -2)$ và $B(5; -1; 6)$. Tọa độ trung điểm $M$ của đoạn thẳng $AB$ là:",
+                                            "options": [
+                                                    "$M(3; 1; 2)$",
+                                                    "$M(6; 2; 4)$",
+                                                    "$M(2; -2; 4)$",
+                                                    "$M(4; -4; 8)$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Tọa độ trung điểm $M$: $x_M = \\frac{1+5}{2} = 3, y_M = \\frac{3-1}{2} = 1, z_M = \\frac{-2+6}{2} = 2 \\implies M(3; 1; 2)$."
+                                    }
+                            ]
+                    },
+                    {
+                            "id": "2.11",
+                            "name": "Dạng 2.11: Hình chiếu vuông góc và Điểm đối xứng qua các trục/mặt phẳng tọa độ",
+                            "tip": "Chiếu lên cái gì thì giữ nguyên tọa độ đó, còn lại bằng 0. Đối xứng qua cái gì thì giữ nguyên tọa độ đó, các tọa độ còn lại đổi dấu.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, hình chiếu vuông góc của điểm $M(2; -3; 5)$ lên mặt phẳng $(Oxy)$ là điểm:",
+                                            "options": [
+                                                    "$H(2; -3; 0)$",
+                                                    "$H(2; 0; 5)$",
+                                                    "$H(0; -3; 5)$",
+                                                    "$H(0; 0; 5)$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Chiếu lên mặt phẳng $(Oxy)$ thì giữ nguyên hoành độ $x$ và tung độ $y$, cho cao độ $z = 0$. Do đó $H(2; -3; 0)$."
+                                    },
+                                    {
+                                            "q": "Điểm đối xứng của điểm $M(1; -4; 3)$ qua trục tung $Oy$ có tọa độ là:",
+                                            "options": [
+                                                    "$M'(-1; -4; -3)$",
+                                                    "$M'(1; 4; 3)$",
+                                                    "$M'(-1; 4; -3)$",
+                                                    "$M'(0; -4; 0)$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Đối xứng qua trục $Oy$ thì giữ nguyên tung độ $y = -4$, đổi dấu hoành độ và cao độ thành $x' = -1, z' = -3$. Do đó $M'(-1; -4; -3)$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, hình chiếu vuông góc của điểm $A(4; -2; 7)$ lên trục cao $Oz$ có tọa độ là:",
+                                            "options": [
+                                                    "$(0; 0; 7)$",
+                                                    "$(4; -2; 0)$",
+                                                    "$(0; -2; 7)$",
+                                                    "$(4; 0; 7)$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Chiếu lên trục $Oz$ thì giữ nguyên cao độ $z = 7$, cho $x = 0$ và $y = 0$. Tọa độ hình chiếu là $(0; 0; 7)$."
+                                    }
+                            ]
+                    },
+                    {
+                            "id": "2.12",
+                            "name": "Dạng 2.12: Tích có hướng của 2 vectơ và Ứng dụng tính diện tích, thể tích",
+                            "tip": "Diện tích tam giác $S_{\\Delta ABC} = \\frac{1}{2}|[\\vec{AB}, \\vec{AC}]|$. Diện tích hình bình hành $S_{ABCD} = |[\\vec{AB}, \\vec{AD}]|$. Thể tích $V_{ABCD} = \\frac{1}{6}|[\\vec{AB}, \\vec{AC}] \\cdot \\vec{AD}|$.",
+                            "questions": [
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho 3 điểm $A(1; 0; 0), B(0; 2; 0), C(0; 0; 3)$. Diện tích của tam giác $ABC$ bằng:",
+                                            "options": [
+                                                    "$\\frac{7}{2}$",
+                                                    "$7$",
+                                                    "$\\sqrt{14}$",
+                                                    "$\\frac{\\sqrt{14}}{2}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $[\\vec{AB}, \\vec{AC}] = (6; 3; 2) \\Rightarrow |[\\vec{AB}, \\vec{AC}]| = \\sqrt{36+9+4} = 7$. Diện tích $S = \\frac{7}{2}$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho tứ diện $ABCD$ với $A(0;0;0), B(1;0;0), C(0;2;0), D(0;0;3)$. Thể tích khối tứ diện $ABCD$ bằng:",
+                                            "options": [
+                                                    "$1$",
+                                                    "$6$",
+                                                    "$2$",
+                                                    "$\\frac{1}{3}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Tứ diện có 3 cạnh đôi một vuông góc xuất phát từ gốc $O$: $V = \\frac{1}{6} (1)(2)(3) = 1$."
+                                    },
+                                    {
+                                            "q": "Trong không gian $Oxyz$, cho hình bình hành $ABCD$ có $A(1; 0; 1), B(2; 1; 2), D(1; -1; 1)$. Diện tích của hình bình hành $ABCD$ bằng:",
+                                            "options": [
+                                                    "$\\sqrt{2}$",
+                                                    "$\\frac{\\sqrt{2}}{2}$",
+                                                    "$2$",
+                                                    "$2\\sqrt{2}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{AB} = (1; 1; 1)$ và $\\vec{AD} = (0; -1; 0)$. Tích có hướng $[\\vec{AB}, \\vec{AD}] = (1; 0; -1)$. Diện tích hình bình hành $S = |[\\vec{AB}, \\vec{AD}]| = \\sqrt{1^2 + 0^2 + (-1)^2} = \\sqrt{2}$."
+                                    }
+                            ]
+                    },
+                    {
+                            "id": "2.13",
+                            "name": "Dạng 2.13: Ứng dụng vectơ mô hình lực tĩnh học 3D và chuyển động",
+                            "tip": "Vật đứng yên cân bằng khi tổng hợp lực $\\sum \\vec{F} = \\vec{0}$. Vận tốc thực tế $\\vec{v} = \\vec{v}_1 + \\vec{v}_2$. Góc đón nắng: $\\vec{s} = -k\\vec{n} \\implies$ chiếu vuông góc mặt phẳng, hiệu suất cực đại.",
+                            "questions": [
+                                    {
+                                            "q": "Một vật có trọng lượng $P = 100\\text{ N}$ được treo cân bằng bởi 3 sợi dây cáp không giãn trong không gian. Đẳng thức mô tả đúng trạng thái cân bằng lực là:",
+                                            "options": [
+                                                    "$\\vec{T}_1 + \\vec{T}_2 + \\vec{T}_3 + \\vec{P} = \\vec{0}$",
+                                                    "$|\\vec{T}_1| + |\\vec{T}_2| + |\\vec{T}_3| = 100$",
+                                                    "$\\vec{T}_1 + \\vec{T}_2 + \\vec{T}_3 = \\vec{P}$",
+                                                    "$\\vec{T}_1 + \\vec{T}_2 = \\vec{T}_3 + \\vec{P}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Theo định luật cân bằng tĩnh học: $\\sum \\vec{F} = \\vec{T}_1 + \\vec{T}_2 + \\vec{T}_3 + \\vec{P} = \\vec{0}$."
+                                    },
+                                    {
+                                            "q": "Một máy bay bay theo hướng Bắc với vận tốc riêng không đổi $600\\text{ km/h}$. Gió thổi từ hướng Tây sang Đông với vận tốc $80\\text{ km/h}$. Tốc độ thực tế của máy bay so với mặt đất xấp xỉ bằng:",
+                                            "options": [
+                                                    "$605.3\\text{ km/h}$",
+                                                    "$680.0\\text{ km/h}$",
+                                                    "$520.0\\text{ km/h}$",
+                                                    "$640.2\\text{ km/h}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Do 2 hướng vuông góc: $v = \\sqrt{600^2 + 80^2} = \\sqrt{366400} \\approx 605.32\\text{ km/h}$."
+                                    },
+                                    {
+                                            "q": "Một tấm pin mặt trời phẳng có vectơ pháp tuyến $\\vec{n} = (0; 1; \\sqrt{3})$. Ánh sáng mặt trời chiếu tới theo vectơ chỉ phương $\\vec{s} = (0; -1; -\\sqrt{3})$. Góc giữa tia sáng mặt trời và mặt phẳng tấm pin bằng:",
+                                            "options": [
+                                                    "$90^\\circ$",
+                                                    "$60^\\circ$",
+                                                    "$30^\\circ$",
+                                                    "$45^\\circ$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Ta có $\\vec{s} = -\\vec{n}$, tức tia sáng ngược hướng với vectơ pháp tuyến của mặt phẳng tấm pin. Do đó tia sáng chiếu vuông góc với mặt phẳng tấm pin (góc bằng $90^\\circ$)."
+                                    },
+                                    {
+                                            "q": "Một vật nặng có trọng lượng $P = 200\\text{ N}$ được giữ cân bằng tĩnh bởi hai sợi dây cáp đối xứng, mỗi dây tạo với phương thẳng đứng góc $\\alpha = 30^\\circ$. Lực căng $T$ của mỗi sợi dây cáp bằng:",
+                                            "options": [
+                                                    "$\\frac{200}{\\sqrt{3}}\\text{ N} \\approx 115.5\\text{ N}$",
+                                                    "$100\\text{ N}$",
+                                                    "$200\\text{ N}$",
+                                                    "$100\\sqrt{3}\\text{ N} \\approx 173.2\\text{ N}$"
+                                            ],
+                                            "answer": "A",
+                                            "solution": "Chiếu phương trình cân bằng lực lên phương thẳng đứng: $2 T \\cos 30^\\circ - P = 0 \\iff 2 T \\frac{\\sqrt{3}}{2} = 200 \\iff T = \\frac{200}{\\sqrt{3}} \\approx 115.47\\text{ N}$."
+                                    }
+                            ]
                     }
-                ]
-            }
-        ]
+            ]
     },
 
     # =========================================================================

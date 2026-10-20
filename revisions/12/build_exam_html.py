@@ -48,6 +48,11 @@ def build_exam_html():
                 options = q_data["options"]
                 ans = q_data["answer"]
                 solution = q_data["solution"]
+                is_trap = q_data.get("is_trap", False)
+                trap_note = q_data.get("trap_note", "")
+                trap_cls = " is-trap" if is_trap else ""
+                trap_badge_html = '<span class="trap-badge"><i class="fa-solid fa-triangle-exclamation"></i> CÂU HỎI BẪY / ĐÁNH LỪA</span> ' if is_trap else ''
+                trap_warning_html = f'<div class="trap-warning-box"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Cạm bẫy học sinh hay mắc:</strong> {trap_note}</div>' if trap_note else ''
 
                 # Check options length to choose grid layout (2 cols or 4 cols)
                 max_opt_len = max(len(opt) for opt in options)
@@ -70,9 +75,9 @@ def build_exam_html():
                     """
 
                 html_content += f"""
-                <div class="question-item" data-correct="{ans}">
+                <div class="question-item{trap_cls}" data-correct="{ans}">
                     <div class="question-text">
-                        <span class="q-number">Câu {question_counter}:</span> {q_text}
+                        <span class="q-number">Câu {question_counter}:</span> {trap_badge_html}{q_text}
                     </div>
                     <div class="{grid_class}">
                         {opts_html}
@@ -83,6 +88,7 @@ def build_exam_html():
                         </div>
                         <div class="solution-content">
                             {solution}
+                            {trap_warning_html}
                         </div>
                     </div>
                 </div>

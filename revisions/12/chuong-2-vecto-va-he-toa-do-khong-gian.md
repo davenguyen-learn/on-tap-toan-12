@@ -80,12 +80,50 @@ graph TB
   * Nếu $\vec{a}, \vec{b}, \vec{c}$ là ba vectơ **không đồng phẳng** (tức là $[\vec{a}, \vec{b}] \cdot \vec{c} \ne 0$), thì với mọi vectơ $\vec{x}$ bất kỳ trong không gian, luôn tồn tại **duy nhất** bộ ba số thực $(m, n, p)$ sao cho:
     $$\vec{x} = m\vec{a} + n\vec{b} + p\vec{c}$$
 
-### 5. Phân tích cơ sở mở rộng
-* **Định nghĩa đồng phẳng:** Ba vectơ $\vec{a}, \vec{b}, \vec{c}$ được gọi là đồng phẳng nếu giá của chúng cùng song song với một mặt phẳng.
-* **Điều kiện đồng phẳng:** Nếu $\vec{a}$ và $\vec{b}$ không cùng phương thì:
-  $$\vec{a}, \vec{b}, \vec{c} \text{ đồng phẳng} \iff \exists ! (m, n) \in \mathbb{R}: \vec{c} = m\vec{a} + n\vec{b}$$
-* **Định lý phân tích theo bộ ba vectơ không đồng phẳng:** Nếu $\vec{a}, \vec{b}, \vec{c}$ là ba vectơ không đồng phẳng trong không gian thì với mọi vectơ $\vec{x}$ bất kỳ, luôn tồn tại **duy nhất** bộ ba số thực $(m, n, p)$ sao cho:
-  $$\vec{x} = m\vec{a} + n\vec{b} + p\vec{c}$$
+### 5. Toàn cảnh Phân loại Vị trí Tương đối của Vectơ & Giá của Vectơ trong Không gian
+
+| Quan hệ / Vị trí | Điều kiện Vectơ thuần túy | Điều kiện Tọa độ $Oxyz$ | Tính chất hình học |
+| :--- | :--- | :--- | :--- |
+| **Cùng phương** | $\exists k \in \mathbb{R}: \vec{u} = k\vec{v}$ | $[\vec{u}, \vec{v}] = \vec{0} \iff \frac{u_1}{v_1} = \frac{u_2}{v_2} = \frac{u_3}{v_3}$ | Giá của 2 vectơ **song song hoặc trùng nhau** |
+| **Cùng hướng** | $\vec{u} = k\vec{v}$ với $k > 0$ | Cùng phương và các tỉ số toạ độ mang dấu dương | Cùng chiều mũi tên chỉ hướng |
+| **Ngược hướng** | $\vec{u} = k\vec{v}$ với $k < 0$ | Cùng phương và các tỉ số toạ độ mang dấu âm | Ngược chiều mũi tên chỉ hướng |
+| **Vuông góc ($\perp$)** | $\vec{u} \cdot \vec{v} = 0$ | $x_1 x_2 + y_1 y_2 + z_1 z_2 = 0$ | Góc $(\vec{u}, \vec{v}) = 90^\circ$ |
+| **Giá Cắt nhau** | $\vec{AB}, \vec{CD}$ không cùng phương, $A,B,C,D$ đồng phẳng | $[\vec{AB}, \vec{CD}] \ne \vec{0}$ và $[\vec{AB}, \vec{CD}] \cdot \vec{AC} = 0$ | Hai đường thẳng $AB$ và $CD$ giao nhau tại 1 điểm |
+| **Giá Chéo nhau** | $A,B,C,D$ **không đồng phẳng** | $[\vec{AB}, \vec{CD}] \cdot \vec{AC} \ne 0$ | Hai đường thẳng $AB$ và $CD$ không có điểm chung và không cùng nằm trong mp |
+| **Ba vectơ Đồng phẳng** | $\vec{c} = m\vec{a} + n\vec{b}$ | $[\vec{a}, \vec{b}] \cdot \vec{c} = 0$ | Giá của 3 vectơ cùng song song hoặc nằm trong một mặt phẳng |
+| **Ba vectơ Không đồng phẳng** | Không tồn tại cặp $(m, n)$ để $\vec{c} = m\vec{a} + n\vec{b}$ | $[\vec{a}, \vec{b}] \cdot \vec{c} \ne 0$ | Tạo thành một **cơ sở không gian**, 4 điểm tương ứng tạo thành khối **tứ diện** |
+
+---
+
+### 6. Hệ thống Cạm bẫy Lý thuyết & Câu hỏi Đánh lừa (Trap Highlights 9+)
+
+> [!WARNING]
+> #### ⚠️ CẠM BẪY 1: Nhầm lẫn giữa "Góc giữa 2 vectơ" và "Góc giữa 2 đường thẳng"
+> * **Góc giữa 2 vectơ** $(\vec{u}, \vec{v}) \in [0^\circ; 180^\circ]$: Có thể là **góc nhọn, góc vuông hoặc góc tù**! Tích vô hướng có thể **âm** khi góc tù.
+> * **Góc giữa 2 đường thẳng** $(d_1, d_2) \in [0^\circ; 90^\circ]$: Luôn luôn là **góc không tù** ($\cos(d_1, d_2) = \frac{|\vec{u}_1 \cdot \vec{u}_2|}{|\vec{u}_1| |\vec{u}_2|} \ge 0$).
+> * **Đánh lừa thường gặp:** Đề bài khẳng định *"Góc giữa 2 vectơ trong không gian luôn không vượt quá $90^\circ$"* $\implies$ **SAI HOÀN TOÀN**.
+
+> [!CAUTION]
+> #### ⚠️ CẠM BẪY 2: Bẫy Vectơ-Không $\vec{0}$ và Tính chất Bắc cầu Cùng phương
+> * Theo quy ước SGK: Vectơ $\vec{0}$ **cùng phương, cùng hướng với mọi vectơ**, và **vuông góc với mọi vectơ**!
+> * **Khẳng định đánh lừa:** *"Nếu $\vec{a}$ cùng phương với $\vec{c}$ và $\vec{b}$ cùng phương với $\vec{c}$ thì $\vec{a}$ cùng phương với $\vec{b}$"*.
+> * **Sự thật:** Mệnh đề trên **SAI** nếu $\vec{c} = \vec{0}$! Mệnh đề chỉ đúng khi có thêm điều kiện $\vec{c} \ne \vec{0}$.
+
+> [!IMPORTANT]
+> #### ⚠️ CẠM BẪY 3: Giá của hai vectơ cùng phương
+> * **Khẳng định đánh lừa:** *"Hai vectơ cùng phương thì giá của chúng song song với nhau"*.
+> * **Sự thật:** **SAI** vì giá của chúng có thể **TRÙNG NHAU**. Phải phát biểu là *"giá của chúng song song hoặc trùng nhau"*.
+
+> [!TIP]
+> #### ⚠️ CẠM BẪY 4: Vuông góc trong không gian 3D
+> * Trong mặt phẳng 2D: Hai đường thẳng cùng vuông góc với đường thứ ba thì song song nhau.
+> * Trong không gian 3D: Hai đường thẳng hoặc vectơ cùng vuông góc với vectơ thứ ba thì **KHÔNG NHẤT THIẾT cùng phương** (chúng có thể vuông góc, cắt nhau, hoặc chéo nhau!).
+> * Hai đường thẳng vuông góc trong không gian có thể **CẮT NHAU hoặc CHÉO NHAU**.
+
+> [!NOTE]
+> #### ⚠️ CẠM BẪY 5: Điều kiện ba vectơ đồng phẳng
+> * *"Nếu trong 3 vectơ có 2 vectơ cùng phương thì 3 vectơ đó LUÔN ĐỒNG PHẲNG"*: **ĐÚNG** (vì $\vec{a} = k\vec{b} + 0\vec{c}$).
+> * Ba vectơ đồng phẳng **không bắt buộc giá phải cùng nằm trong một mặt phẳng**, giá của chúng có thể nằm trên các mặt phẳng song song với nhau.
 
 ---
 

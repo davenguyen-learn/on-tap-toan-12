@@ -363,6 +363,42 @@ HTML_HEADER = """<!DOCTYPE html>
             color: #15803d;
         }
 
+        /* TRAP & TRICK QUESTION HIGHLIGHTS */
+        .trap-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: 700;
+            margin-right: 6px;
+            vertical-align: middle;
+            letter-spacing: 0.3px;
+        }
+
+        .question-item.is-trap {
+            background: #fffafa;
+            border-left: 4px solid #ef4444;
+            padding: 12px 14px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+        }
+
+        .trap-warning-box {
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #fff7ed;
+            border-left: 3px solid #f97316;
+            border-radius: 4px;
+            color: #9a3412;
+            font-size: 10.5pt;
+            line-height: 1.5;
+        }
+
         /* SOLUTION ACCORDION */
         .solution-box {
             background: #f8fafc;
