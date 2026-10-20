@@ -9,10 +9,24 @@ from exam_data_100 import EXAM_CHAPTERS
 def build_exam_html():
     from generate_all_types_exam import HTML_HEADER, HTML_FOOTER
 
-    html_content = HTML_HEADER
+    total_questions = sum(len(sub["questions"]) for ch in EXAM_CHAPTERS for sub in ch["subtopics"])
+    total_subtopics = sum(len(ch["subtopics"]) for ch in EXAM_CHAPTERS)
+
+    filter_options = [f'<option value="all">📚 Tất cả {len(EXAM_CHAPTERS)} Chương ({total_questions} câu - {total_subtopics} dạng)</option>']
+    for ch in EXAM_CHAPTERS:
+        ch_q_count = sum(len(sub["questions"]) for sub in ch["subtopics"])
+        ch_sub_count = len(ch["subtopics"])
+        filter_options.append(f'<option value="{ch["id"]}">{ch["title"]} ({ch_q_count} câu - {ch_sub_count} dạng)</option>')
+
+    chapter_filter_options_html = "\n                ".join(filter_options)
+    badge_total_html = f"{total_questions} Câu ({total_subtopics} Dạng bài)"
+    exam_instructions_html = f"* Đề thi gồm {total_questions} câu trắc nghiệm bao phủ toàn diện 100% tất cả {total_subtopics} dạng toán cốt lõi của {len(EXAM_CHAPTERS)} chương Toán 12 mới (GDPT 2018). Thí sinh chọn một phương án đúng duy nhất cho mỗi câu."
+
+    html_content = HTML_HEADER.replace("{{BADGE_TOTAL}}", badge_total_html)
+    html_content = html_content.replace("{{CHAPTER_FILTER_OPTIONS}}", chapter_filter_options_html)
+    html_content = html_content.replace("{{EXAM_INSTRUCTIONS}}", exam_instructions_html)
     
     question_counter = 1
-    total_subtopics = 0
 
     for ch in EXAM_CHAPTERS:
         ch_id = ch["id"]
@@ -28,7 +42,6 @@ def build_exam_html():
         """
 
         for sub in ch["subtopics"]:
-            total_subtopics += 1
             sub_id = sub["id"]
             sub_name = sub["name"]
             sub_tip = sub["tip"]

@@ -545,20 +545,20 @@
             <div class="bar-title">
                 <i class="fa-solid fa-file-pdf" style="color: #dc2626;"></i>
                 Đề Kiểm Tra Tổng Hợp Toàn Diện Toán 12
-                <span class="badge-total">144 Câu (72 Dạng &times; 2 Câu)</span>
+                <span class="badge-total" id="badgeTotal">201 Câu (77 Dạng bài)</span>
             </div>
         </div>
 
         <div class="bar-actions">
-            <!-- Filter by Chapter -->
+            <!-- Filter by Chapter (Dynamic) -->
             <select id="chapterFilter" class="filter-select" onchange="filterChapter(this.value)">
-                <option value="all">📚 Tất cả 6 Chương (144 câu)</option>
-                <option value="ch1">Chương 1: Khảo sát hàm số (32 câu)</option>
-                <option value="ch2">Chương 2: Vectơ không gian (16 câu)</option>
-                <option value="ch3">Chương 3: Thống kê ghép nhóm (18 câu)</option>
-                <option value="ch4">Chương 4: Nguyên hàm & Tích phân (30 câu)</option>
-                <option value="ch5">Chương 5: Hình học Oxyz (26 câu)</option>
-                <option value="ch6">Chương 6: Xác suất & Bayes (22 câu)</option>
+                <option value="all">📚 Tất cả 6 Chương (201 câu - 77 dạng)</option>
+                <option value="ch1">Chương 1: Ứng Dụng Đạo Hàm Khảo Sát & Vẽ Đồ Thị Hàm Số (59 câu - 16 dạng)</option>
+                <option value="ch2">Chương 2: Vectơ & Hệ Tọa Độ Trong Không Gian (46 câu - 13 dạng)</option>
+                <option value="ch3">Chương 3: Thống Kê Mẫu Số Liệu Ghép Nhóm (18 câu - 9 dạng)</option>
+                <option value="ch4">Chương 4: Nguyên Hàm & Tích Phân (30 câu - 15 dạng)</option>
+                <option value="ch5">Chương 5: Phương Pháp Tọa Độ Trong Không Gian (Oxyz) (26 câu - 13 dạng)</option>
+                <option value="ch6">Chương 6: Xác Suất Có Điều Kiện & Định Lý Bayes (22 câu - 11 dạng)</option>
             </select>
 
             <!-- Toggle Solutions -->
@@ -576,8 +576,8 @@
     <!-- MAIN EXAM PAPER CONTAINER -->
     <div class="exam-container">
         <!-- EXAM INSTRUCTIONS -->
-        <div style="font-size: 10.5pt; font-style: italic; margin-bottom: 14px; text-align: justify; border-left: 2.5px solid #64748b; padding-left: 8px;">
-            * Đề thi gồm 144 câu trắc nghiệm bao phủ toàn diện 100% tất cả 72 dạng toán cốt lõi của 6 chương Toán 12 (mỗi dạng đúng 2 câu tiêu biểu). Thí sinh chọn một phương án đúng duy nhất cho mỗi câu.
+        <div id="examInstructionText" style="font-size: 10.5pt; font-style: italic; margin-bottom: 14px; text-align: justify; border-left: 2.5px solid #64748b; padding-left: 8px;">
+            * Đề thi gồm 201 câu trắc nghiệm bao phủ toàn diện 100% tất cả 77 dạng toán cốt lõi của 6 chương Toán 12 mới (GDPT 2018). Thí sinh chọn một phương án đúng duy nhất cho mỗi câu.
         </div>
 
         <!-- QUESTIONS CONTENT PLACEHOLDER -->
@@ -8269,9 +8269,9 @@ Vậy có duy nhất 1 mệnh đề đúng là (3).
 
         <!-- ANSWER KEY SECTION (IN TRANG CUỐI) -->
         <div class="answer-key-section" id="answerKeySection">
-            <div class="answer-key-title">BẢNG ĐÁP ÁN 100 CÂU TRẮC NGHIỆM</div>
+            <div class="answer-key-title" id="answerKeyTitle">BẢNG ĐÁP ÁN TRẮC NGHIỆM</div>
             <table class="answer-grid-table" id="answerGridTable">
-                <!-- JS will populate rows -->
+                <!-- JS will populate rows dynamically -->
             </table>
         </div>
 
@@ -8303,49 +8303,95 @@ Vậy có duy nhất 1 mệnh đề đúng là (3).
             }
         }
 
+        // Dynamic Chapter Filter & Realtime Counter
         function filterChapter(ch) {
             const sections = document.querySelectorAll('.chapter-section');
+            let visibleQuestions = 0;
+            let visibleSubtopics = 0;
+
             sections.forEach(sec => {
                 if (ch === 'all' || sec.dataset.chapter === ch) {
                     sec.style.display = 'block';
+                    visibleQuestions += sec.querySelectorAll('.question-item').length;
+                    visibleSubtopics += sec.querySelectorAll('.subtopic-card').length;
                 } else {
                     sec.style.display = 'none';
                 }
             });
-        }
 
-        // Render KaTeX after DOM loaded
-        document.addEventListener("DOMContentLoaded", function() {
-            if (typeof renderMathInElement === 'function') {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        {left: "$$", right: "$$", display: true},
-                        {left: "$", right: "$", display: false},
-                        {left: "\\(", right: "\\)", display: false},
-                        {left: "\\[", right: "\\]", display: true}
-                    ],
-                    throwOnError: false
-                });
+            // Update toolbar counter badge dynamically
+            const badge = document.getElementById('badgeTotal');
+            if (badge) {
+                if (ch === 'all') {
+                    badge.innerHTML = `${visibleQuestions} Câu (${visibleSubtopics} Dạng bài)`;
+                } else {
+                    const sel = document.getElementById('chapterFilter');
+                    const text = sel ? sel.options[sel.selectedIndex].text.split('(')[0].trim() : 'Chương';
+                    badge.innerHTML = `${text} • ${visibleQuestions} Câu (${visibleSubtopics} Dạng)`;
+                }
             }
 
-            // Populate Answer Table
-            renderAnswerTable();
-        });
+            // Update dynamic answer table according to filtered questions
+            renderAnswerTable(ch);
+        }
 
-        function renderAnswerTable() {
-            const table = document.getElementById('answerGridTable');
-            if (!table) return;
+        // Auto Populate Options if not yet filled or if DOM changes
+        function syncChapterFilterOptions() {
+            const filterSelect = document.getElementById('chapterFilter');
+            if (!filterSelect) return;
+            const sections = document.querySelectorAll('.chapter-section');
+            if (sections.length === 0) return;
 
-            // Extract all answers from DOM
-            const qItems = document.querySelectorAll('.question-item');
-            let answers = [];
-            qItems.forEach((q, idx) => {
-                const correctOpt = q.dataset.correct || '?';
-                answers.push({ num: idx + 1, ans: correctOpt });
+            let totalQuestions = document.querySelectorAll('.question-item').length;
+            let totalSubtopics = document.querySelectorAll('.subtopic-card').length;
+            let optionsHtml = `<option value="all">📚 Tất cả ${sections.length} Chương (${totalQuestions} câu - ${totalSubtopics} dạng)</option>`;
+
+            sections.forEach(sec => {
+                const chId = sec.dataset.chapter;
+                const headingEl = sec.querySelector('.chapter-heading span');
+                let title = headingEl ? headingEl.textContent.trim() : chId;
+                const qCount = sec.querySelectorAll('.question-item').length;
+                const subCount = sec.querySelectorAll('.subtopic-card').length;
+                optionsHtml += `<option value="${chId}">${title} (${qCount} câu - ${subCount} dạng)</option>`;
             });
 
-            // Render into a 5-column or 10-column table
-            // 10 columns of (Câu, ĐA) -> each table row has 5 pairs of (Câu, ĐA)
+            const currentVal = filterSelect.value || 'all';
+            filterSelect.innerHTML = optionsHtml;
+            filterSelect.value = currentVal;
+        }
+
+        function renderAnswerTable(filterCh = 'all') {
+            const table = document.getElementById('answerGridTable');
+            const titleElem = document.getElementById('answerKeyTitle');
+            if (!table) return;
+
+            let qItems = [];
+            if (filterCh === 'all') {
+                qItems = Array.from(document.querySelectorAll('.question-item'));
+                if (titleElem) titleElem.textContent = `BẢNG ĐÁP ÁN TỔNG HỢP (${qItems.length} CÂU TRẮC NGHIỆM)`;
+            } else {
+                const targetSec = document.querySelector(`.chapter-section[data-chapter="${filterCh}"]`);
+                if (targetSec) {
+                    qItems = Array.from(targetSec.querySelectorAll('.question-item'));
+                }
+                const sel = document.getElementById('chapterFilter');
+                const chName = sel ? sel.options[sel.selectedIndex].text.split('(')[0].trim() : 'CHƯƠNG';
+                if (titleElem) titleElem.textContent = `BẢNG ĐÁP ÁN: ${chName.toUpperCase()} (${qItems.length} CÂU)`;
+            }
+
+            let answers = [];
+            qItems.forEach((q) => {
+                const qNumEl = q.querySelector('.q-number');
+                let numStr = qNumEl ? qNumEl.textContent.replace('Câu', '').replace(':', '').trim() : '?';
+                const correctOpt = q.dataset.correct || '?';
+                answers.push({ num: numStr, ans: correctOpt });
+            });
+
+            if (answers.length === 0) {
+                table.innerHTML = '<tbody><tr><td colspan="10" style="padding: 12px; text-align: center; color: #64748b;">Không có câu hỏi nào.</td></tr></tbody>';
+                return;
+            }
+
             let html = '<thead><tr>';
             for (let i = 0; i < 5; i++) {
                 html += '<th>Câu</th><th>ĐA</th>';
@@ -8368,6 +8414,27 @@ Vậy có duy nhất 1 mệnh đề đúng là (3).
             html += '</tbody>';
             table.innerHTML = html;
         }
+
+        // Render KaTeX after DOM loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Keep options synchronized dynamically
+            syncChapterFilterOptions();
+
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false},
+                        {left: "\\(", right: "\\)", display: false},
+                        {left: "\\[", right: "\\]", display: true}
+                    ],
+                    throwOnError: false
+                });
+            }
+
+            // Populate Answer Table
+            renderAnswerTable('all');
+        });
     </script>
 </body>
 </html>
