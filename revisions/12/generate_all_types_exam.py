@@ -467,6 +467,180 @@ HTML_HEADER = """<!DOCTYPE html>
             color: #b91c1c;
         }
 
+        /* RESPONSIVE STYLES FOR TABLET & MOBILE */
+        @media screen and (max-width: 850px) {
+            body {
+                font-size: 13pt;
+            }
+
+            .exam-container {
+                margin: 12px auto;
+                padding: 20px 16px;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .no-print-bar {
+                padding: 0.6rem 0.8rem;
+                gap: 0.6rem;
+            }
+
+            .bar-left {
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .bar-title {
+                font-size: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .bar-actions {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .filter-select {
+                flex: 1 1 100%;
+                width: 100%;
+                min-width: 0;
+            }
+
+            .bar-actions .btn {
+                flex: 1 1 calc(50% - 0.25rem);
+                justify-content: center;
+                padding: 0.5rem 0.6rem;
+                font-size: 0.85rem;
+            }
+
+            .exam-header {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .header-left, .header-right {
+                width: 100%;
+            }
+
+            .student-info-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 8px 10px;
+            }
+
+            .info-field {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .info-dots {
+                flex: 1;
+                min-width: 80px;
+                margin-left: 6px;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px 10px;
+            }
+
+            .options-grid.two-cols {
+                grid-template-columns: 1fr;
+            }
+
+            .question-text, .solution-content {
+                text-align: left;
+            }
+
+            .answer-key-section {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px;
+            }
+
+            .answer-grid-table {
+                min-width: 550px;
+            }
+        }
+
+        @media screen and (max-width: 540px) {
+            body {
+                font-size: 12pt;
+            }
+
+            .exam-container {
+                margin: 0;
+                padding: 14px 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .subtopic-card {
+                padding: 10px 8px;
+                margin: 10px 0;
+                border-radius: 3px;
+            }
+
+            .chapter-heading {
+                font-size: 11pt;
+                padding: 6px 8px;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+
+            .chapter-badge {
+                font-size: 8pt;
+            }
+
+            .subtopic-title {
+                font-size: 10.5pt;
+            }
+
+            .subtopic-tip {
+                padding: 6px 8px;
+                font-size: 10pt;
+            }
+
+            .question-text {
+                font-size: 11pt;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr !important;
+                gap: 6px;
+                font-size: 11pt;
+            }
+
+            .bar-actions .btn {
+                flex: 1 1 100%;
+            }
+
+            .katex-display {
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 4px 0;
+            }
+
+            .solution-box {
+                padding: 8px 8px;
+                font-size: 10.5pt;
+            }
+
+            .trap-warning-box {
+                padding: 6px 8px;
+                font-size: 10pt;
+            }
+        }
+
         /* PRINT STYLES */
         @media print {
             body {
